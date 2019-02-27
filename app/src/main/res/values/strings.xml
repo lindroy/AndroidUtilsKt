@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AndroidUtilsKtDemo</string>
+    <string name="util_app_info">应用信息工具类(AppUtil)</string>
+    <string name="util_toast">Toast工具类(ToastUtil)</string>
 </resources>

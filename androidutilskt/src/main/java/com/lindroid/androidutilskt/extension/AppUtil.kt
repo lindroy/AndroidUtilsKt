@@ -35,10 +35,6 @@ fun Context.getAppVersionName(packageName: String = this.packageName): String {
  * 获取应用版本号，默认为本应用
  * @return 失败时返回-1
  */
-/**
- * 获取应用版本号，默认为本应用
- * @return 失败时返回-1
- */
 fun Context.getAppVersionCode(packageName: String = this.packageName): Int {
     return try {
         if (packageName.isBlank()) {
