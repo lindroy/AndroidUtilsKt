@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.support.annotation.StringRes
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.MenuItem
 import com.lindroid.androidutilskt.AppManager
 import com.lindroid.androidutilskt.R
@@ -15,9 +16,13 @@ import kotlinx.android.synthetic.main.toolbar.view.*
  * @function 基类Activity
  * @Description
  */
+
+private const val LAYOUT_ID = "layout_id"
+
 abstract class BaseActivity : AppCompatActivity() {
     protected lateinit var mContext: Context
 
+    //默认值为0
     abstract val contentViewId: Int
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,11 +30,18 @@ abstract class BaseActivity : AppCompatActivity() {
         mContext = this
         AppManager.addActivity(this)
         initBefore()
+        Log.e("Tag", "contentViewId=" + contentViewId)
+//        if (savedInstanceState != null && savedInstanceState.getInt(LAYOUT_ID) != 0) {
+//            setContentView(savedInstanceState.getInt(LAYOUT_ID))
+//        } else {
+//        }
         setContentView(contentViewId)
         initView()
         initOnClick()
 
     }
+
+    open fun layoutId(): Int = 0
 
     open fun initOnClick() {
 
@@ -43,6 +55,11 @@ abstract class BaseActivity : AppCompatActivity() {
 
     }
 
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        outState?.putInt(LAYOUT_ID, contentViewId)
+    }
+
     fun initToolBar(title: String = getString(R.string.app_name), isShowArrow: Boolean = true) {
         val toolView = window.decorView
         toolView.toolBar.title = title
@@ -51,8 +68,8 @@ abstract class BaseActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(isShowArrow)
     }
 
-    fun initToolBar(@StringRes stringId:Int,isShowArrow: Boolean = true){
-        initToolBar(mContext.getString(stringId),isShowArrow)
+    fun initToolBar(@StringRes stringId: Int, isShowArrow: Boolean = true) {
+        initToolBar(mContext.getString(stringId), isShowArrow)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

@@ -18,6 +18,7 @@ object AppManager {
     /**
      * Activity入栈
      */
+    @JvmStatic
     fun addActivity(activity: Activity) {
         activityStack.add(activity)
     }
@@ -25,19 +26,25 @@ object AppManager {
     /**
      * Activity出栈
      */
+    @JvmStatic
     fun finishActivity(activity: Activity) {
-        activity.finish()
-        activityStack.remove(activity)
+        if (!activity.isDestroyed) {
+            activity.finish()
+            activityStack.remove(activity)
+        }
+
     }
 
     /**
     * 获取当前栈顶Activity
     */
+    @JvmStatic
     fun currentActivity(): Activity = activityStack.lastElement()
 
     /**
      * 清理栈中所有的Activity
      */
+    @JvmStatic
     fun finishAllActivity() {
         activityStack.forEach {
             it.finish()
@@ -48,6 +55,7 @@ object AppManager {
     /**
      * 退出应用程序
      */
+    @JvmStatic
     fun exitApp(context: Context) {
         finishAllActivity()
         val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager

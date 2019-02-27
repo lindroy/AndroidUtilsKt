@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.ScreenActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <!--分辨率-->
+    <TextView
+        android:id="@+id/tvResolution"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!--屏幕密度-->
+    <TextView
+        android:id="@+id/tvDensity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp" />
+
+    <!--Dpi-->
+    <TextView
+        android:id="@+id/tvDpi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp" />
+
+    <!--屏幕方向-->
+    <TextView
+        android:id="@+id/tvOrientation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp" />
+
+
+    <SeekBar
+        android:progress="50"
+        android:id="@+id/seekBar"
+        android:min="0"
+        android:max="100"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

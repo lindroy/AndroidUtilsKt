@@ -16,10 +16,13 @@ class CatalogActivity(override val contentViewId: Int = R.layout.activity_catalo
     private lateinit var map: LinkedHashMap<Int, Class<*>>
     private val names: MutableList<String> = ArrayList()
 
+//    override fun layoutId(): Int =R.layout.activity_catalog
+
     override fun initBefore() {
         super.initBefore()
         map = linkedMapOf(
                 R.string.util_app_info to AppInfoActivity::class.java,
+                R.string.util_screen to ScreenActivity::class.java,
                 R.string.util_toast to ToastActivity::class.java
         )
         names.addAll(map.map {
