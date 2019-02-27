@@ -1,13 +1,15 @@
 package com.lindroid.androidutilsktdemo.activity
 
-import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import com.lindroid.androidutilsktdemo.R
+import com.lindroid.androidutilsktdemo.base.BaseActivity
 
-class CatalogActivity : AppCompatActivity() {
+/**
+ * @author Lin
+ * @date 2019/2/27
+ * @function 目录页
+ * @Description
+ */
+class CatalogActivity(override val contentViewId: Int = R.layout.activity_catalog) : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_catalog)
-    }
+
 }
