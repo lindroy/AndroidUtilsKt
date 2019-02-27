@@ -11,5 +11,7 @@ import com.lindroid.androidutilsktdemo.base.BaseActivity
  */
 class CatalogActivity(override val contentViewId: Int = R.layout.activity_catalog) : BaseActivity() {
 
-
+    override fun initView() {
+        super.initView()
+    }
 }
