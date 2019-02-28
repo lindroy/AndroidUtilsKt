@@ -51,7 +51,7 @@ class ScreenActivity(override val contentViewId: Int = R.layout.activity_screen)
     override fun initOnClick() {
         super.initOnClick()
         btnPortrait.setOnClickListener { setScreenPortrait() }
-        btnLandscape.setOnClickListener { setScreenLanscape() }
+        btnLandscape.setOnClickListener { setScreenLandscape() }
     }
 
 

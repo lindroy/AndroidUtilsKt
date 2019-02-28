@@ -13,10 +13,6 @@ import com.lindroid.androidutilskt.extension.setSpDefaultFile
 object AndUtil {
     private lateinit var application: Application
 
-    /*  fun init(application: Application) {
-          this.application = application
-      }*/
-
     fun init(application: Application): Config {
         this.application = application
         return Config.build()
@@ -40,13 +36,4 @@ object AndUtil {
 
 }
 
-/*
-class AndUtilKt{
-    companion object {
-        private lateinit var application: Application
-        fun init(application: Application) {
-            this.application = application
-        }
-        val appContext: Context by lazy { AndUtilKt() }
-    }
-}*/
+

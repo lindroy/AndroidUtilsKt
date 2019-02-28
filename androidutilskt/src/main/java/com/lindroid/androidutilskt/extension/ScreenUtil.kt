@@ -56,7 +56,7 @@ fun getScreenDPI() = Resources.getSystem().displayMetrics.densityDpi
 /**
  * 设置横屏
  */
-fun Activity.setScreenLanscape() {
+fun Activity.setScreenLandscape() {
     requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
 }
 
@@ -68,16 +68,17 @@ fun Activity.setScreenPortrait() {
 }
 
 /**获取屏幕方向**/
-fun Context.getScreenOrientation() = resources.configuration.orientation
+val Context.screenOrientation
+    get() = resources.configuration.orientation
 
 /**是否是横屏**/
 val Context.isLandscape: Boolean
-    get() = getScreenOrientation() == Configuration.ORIENTATION_LANDSCAPE
+    get() = screenOrientation == Configuration.ORIENTATION_LANDSCAPE
 
 
 /**是否是竖屏**/
 val Context.isPortrait: Boolean
-    get() = getScreenOrientation() == Configuration.ORIENTATION_PORTRAIT
+    get() = screenOrientation == Configuration.ORIENTATION_PORTRAIT
 
 /**
  * 设置屏幕亮度
