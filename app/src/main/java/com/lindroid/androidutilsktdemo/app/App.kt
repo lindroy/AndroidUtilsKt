@@ -1,6 +1,7 @@
 package com.lindroid.androidutilsktdemo.app
 
 import android.app.Application
+import com.lindroid.androidutilskt.app.AndUtil
 import com.youngfeng.snake.Snake
 
 /**
@@ -22,5 +23,6 @@ class App : Application() {
         super.onCreate()
         // 对Snake进行初始化
         Snake.init(this)
+        AndUtil.init(this)
     }
 }
