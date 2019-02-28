@@ -12,29 +12,44 @@
     <!--分辨率-->
     <TextView
         android:id="@+id/tvResolution"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        style="@style/MiddleGrayTextStyle" />
 
     <!--屏幕密度-->
     <TextView
         android:id="@+id/tvDensity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/MiddleGrayTextStyle"
         android:layout_marginTop="5dp" />
 
     <!--Dpi-->
     <TextView
         android:id="@+id/tvDpi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/MiddleGrayTextStyle"
         android:layout_marginTop="5dp" />
+
+    <Button
+        android:id="@+id/btnLandscape"
+        android:text="横屏"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btnPortrait"
+        android:text="竖屏"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <!--屏幕方向-->
     <TextView
         android:id="@+id/tvOrientation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/MiddleGrayTextStyle"
         android:layout_marginTop="5dp" />
+
+    <TextView
+        android:id="@+id/tvBright"
+        android:layout_marginBottom="5dp"
+        android:text="调节屏幕亮度："
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
     <SeekBar

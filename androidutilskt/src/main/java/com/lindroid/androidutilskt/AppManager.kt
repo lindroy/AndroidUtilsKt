@@ -13,6 +13,7 @@ import java.util.*
  */
 
 object AppManager {
+
     private val activityStack: Stack<Activity> = Stack()
 
     /**
@@ -27,13 +28,18 @@ object AppManager {
      * Activity出栈
      */
     @JvmStatic
+    fun removeActivity(activity: Activity) {
+        activityStack.remove(activity)
+    }
+
+    @JvmStatic
     fun finishActivity(activity: Activity) {
         if (!activity.isDestroyed) {
             activity.finish()
-            activityStack.remove(activity)
         }
-
+        activityStack.remove(activity)
     }
+
 
     /**
     * 获取当前栈顶Activity
