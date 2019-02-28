@@ -22,9 +22,10 @@ class CatalogActivity(override val contentViewId: Int = R.layout.activity_catalo
         super.initBefore()
         map = linkedMapOf(
                 R.string.util_app_info to AppInfoActivity::class.java,
+            R.string.util_intent to IntentActivity::class.java,
+            R.string.util_keyboard to KeyboardActivity::class.java,
                 R.string.util_screen to ScreenActivity::class.java,
-                R.string.util_toast to ToastActivity::class.java,
-                R.string.util_keyboard to KeyboardActivity::class.java
+            R.string.util_toast to ToastActivity::class.java
         )
         names.addAll(map.map {
             getString(it.key)

@@ -32,4 +32,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation project(':androidutilskt')
     implementation 'com.youngfeng.android:snake:0.3.2'
+    //动态权限
+    implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
 }

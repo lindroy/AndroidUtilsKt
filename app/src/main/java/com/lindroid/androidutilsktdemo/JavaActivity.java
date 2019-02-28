@@ -5,8 +5,6 @@ import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.lindroid.androidutilskt.extension.ScreenUtilKt;
-
 /**
  * @author Lin
  * @date 2019/2/28
