@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              tools:context=".activity.IntentActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.IntentActivity">
 
-    <include layout="@layout/toolbar"/>
-
-    <Button
-            android:id="@+id/btnSystemSetting"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="打开系统设置"/>
+    <include layout="@layout/toolbar" />
 
     <Button
-            android:id="@+id/btnWiFiSetting"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="打开WiFi设置"/>
+        android:id="@+id/btnSystemSetting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="打开系统设置" />
 
     <Button
-            android:id="@+id/btnDialPage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="打开拨号面板"/>
+        android:id="@+id/btnWiFiSetting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="打开WiFi设置" />
 
     <Button
-            android:id="@+id/btnCallPhone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="直接拨打电话"/>
+        android:id="@+id/btnDialPage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="打开拨号面板" />
 
     <Button
-            android:id="@+id/btnBrowser"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="打开浏览器"/>
+        android:id="@+id/btnCallPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="直接拨打电话" />
 
     <Button
-            android:id="@+id/btnCamera"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="打开照相机"/>
+        android:id="@+id/btnBrowser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="打开浏览器" />
 
     <Button
-            android:id="@+id/btnSendSMS"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="发送短信"/>
+        android:id="@+id/btnCamera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="打开照相机" />
+
+    <Button
+        android:id="@+id/btnSendSMS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发送短信" />
 
 </LinearLayout>

@@ -2,11 +2,13 @@ package com.lindroid.androidutilsktdemo.base
 
 import android.content.Context
 import android.os.Bundle
+import android.support.annotation.ColorRes
 import android.support.annotation.StringRes
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import com.lindroid.androidutilskt.AppManager
-import com.lindroid.androidutilskt.R
+import com.lindroid.androidutilsktdemo.R
 import kotlinx.android.synthetic.main.toolbar.view.*
 
 /**
@@ -46,9 +48,13 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
 
-    fun initToolBar(title: String = getString(R.string.app_name), isShowArrow: Boolean = true) {
+    fun initToolBar(
+        title: String = getString(R.string.app_name),
+        isShowArrow: Boolean = true, @ColorRes toolBarColor: Int = R.color.colorPrimary
+    ) {
         val toolView = window.decorView
         toolView.toolBar.title = title
+        toolView.toolBar.setBackgroundColor(ContextCompat.getColor(mContext, toolBarColor))
         //ToolBar的属性设置要在setSupportActionBar方法之前调用
         setSupportActionBar(toolView.toolBar)
         supportActionBar?.setDisplayHomeAsUpEnabled(isShowArrow)
