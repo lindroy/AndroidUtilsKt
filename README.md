@@ -160,8 +160,8 @@
 | setStatusBarColorRes()  | 设置纯颜色状态栏 | Activity | 参数为ColorRes  |
 | setTransParentStatusBar() | 设置透明状态栏 | Activity | 在界面创建时调用才能生效 |
 | setGradientStatusBar() | 设置渐变色状态栏 | Activity | 参数为Drawable或DrawableRes |
-| setStatusBarDarkMode() | 设置状态栏白色字体图标(深色模式) | Activity | 参数为Drawable或DrawableRes |
-| setStatusBarLightMode() | 设置状态栏黑色字体图标(浅色模式) | Activity | 参数为Drawable或DrawableRes |
+| setStatusBarDarkMode() | 设置状态栏白色字体图标(深色模式) | Activity | / |
+| setStatusBarLightMode() | 设置状态栏黑色字体图标(浅色模式) | Activity | / |
 
 ------------
 
