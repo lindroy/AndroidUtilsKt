@@ -22,7 +22,7 @@
 | addActivity()   | Activity入栈  |  /  |   /  |
 | removeActivity()   | Activity出栈  |  /  |  /   |
 | finishActivity()   | 关闭一个Activity  |  /  |  /  |
-| currentActivity()   |  获取当前栈顶Activity |  /  |  /  |
+| currentActivity()   |  获取当前栈顶Activity |  /  |  如果栈内元素为空，则返回null  |
 | finishAllActivity()   |  清理栈中所有的Activity | /  |    / |
 | exitApp()  |  退出应用程序 | /  |   /  |
 
@@ -76,7 +76,7 @@
 | ------------ | ------------ | :------------: | :------------: |
 | showKeyboard()  | 打开软键盘  | View  | /  |
 | hideKeyboard()  | 关闭软键盘  | View  | /  |
-| toggleSoftInput()  | 根据当前软键盘的状态做取反操作  | View  | /  |
+| toggleKeyboard()  | 根据当前软键盘的状态做取反操作  | View  | /  |
 
 
 ------------
@@ -116,8 +116,8 @@
 | ------------ | ------------ | :------------: | :------------: |
 | getScreenWidth()  | 获取屏幕宽度  | Context  | /  |
 | getScreenHeight()  | 获取屏幕高度  | Context  | /  |
-| getScreenDensity()  | 获取屏幕密度  | /  | /  |
-| getScreenDPI()  | 获取屏幕DPI  | /  | /  |
+| getScreenDensity()  | 获取屏幕密度  | Any  | /  |
+| getScreenDPI()  | 获取屏幕DPI  | Any  | /  |
 | setScreenLandscape()  | 设置横屏  | Activity  | /  |
 | setScreenPortrait()  | 设置竖屏  | Activity  | /  |
 | screenOrientation  | 获取屏幕方向  | Context  | /  |

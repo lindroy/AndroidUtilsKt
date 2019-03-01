@@ -2,6 +2,7 @@ package com.lindroid.androidutilsktdemo.activity
 
 import android.content.Intent
 import android.widget.ArrayAdapter
+import com.lindroid.androidutilskt.extension.putSpString
 import com.lindroid.androidutilsktdemo.R
 import com.lindroid.androidutilsktdemo.activity.statusbar.StatusBarActivity
 import com.lindroid.androidutilsktdemo.base.BaseActivity
@@ -47,5 +48,6 @@ class CatalogActivity(override val contentViewId: Int = R.layout.activity_catalo
             }.values.toList()
             startActivity(rightMap[0])
         }
+        putSpString("hh", "aa")
     }
 }

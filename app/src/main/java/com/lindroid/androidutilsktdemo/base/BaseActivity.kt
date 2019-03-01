@@ -71,4 +71,9 @@ abstract class BaseActivity : AppCompatActivity() {
         return true
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        AppManager.removeActivity(this)
+    }
+
 }

@@ -33,7 +33,7 @@ fun View.hideKeyboard(): Boolean {
 /**
  * 根据当前软键盘的状态做取反操作
  */
-fun View.toggleSoftInput() {
+fun View.toggleKeyboard() {
     val imm = context
             .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.RESULT_UNCHANGED_SHOWN)

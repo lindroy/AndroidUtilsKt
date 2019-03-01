@@ -3,6 +3,7 @@ package com.lindroid.androidutilskt.extension
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
+import android.util.Log
 
 /**
  * @author Lin
@@ -23,8 +24,10 @@ internal fun setSpDefaultFile(fileName: String) {
     defFileName = fileName
 }
 
-fun Context.putSpString(key: String, value: String, fileName: String = defFileName): Boolean =
-    getSp(fileName).edit().putString(key, value).commit()
+fun Context.putSpString(key: String, value: String, fileName: String = defFileName): Boolean {
+    Log.e("Tag", "defFileName=" + defFileName)
+    return getSp(fileName).edit().putString(key, value).commit()
+}
 
 fun Context.getSpString(key: String, defValue: String = "", fileName: String = defFileName): String =
     getSp(fileName).getString(key, defValue) ?: ""

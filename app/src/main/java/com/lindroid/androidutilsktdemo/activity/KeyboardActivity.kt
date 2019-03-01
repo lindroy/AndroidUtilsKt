@@ -2,7 +2,7 @@ package com.lindroid.androidutilsktdemo.activity
 
 import com.lindroid.androidutilskt.extension.hideKeyboard
 import com.lindroid.androidutilskt.extension.showKeyboard
-import com.lindroid.androidutilskt.extension.toggleSoftInput
+import com.lindroid.androidutilskt.extension.toggleKeyboard
 import com.lindroid.androidutilsktdemo.R
 import com.lindroid.androidutilsktdemo.base.BaseActivity
 import com.youngfeng.snake.annotations.EnableDragToClose
@@ -26,7 +26,7 @@ class KeyboardActivity(override val contentViewId: Int = R.layout.activity_keybo
         super.initOnClick()
         btnShow.setOnClickListener { editText.showKeyboard() }
         btnHide.setOnClickListener { editText.hideKeyboard() }
-        btnToggle.setOnClickListener { editText.toggleSoftInput() }
+        btnToggle.setOnClickListener { editText.toggleKeyboard() }
 
     }
 }
