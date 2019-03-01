@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AndroidUtilsKt</string>
+    <string name="util_intent_choose_browser">请选择浏览器</string>
 </resources>

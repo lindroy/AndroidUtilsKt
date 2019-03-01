@@ -7,6 +7,7 @@ import android.content.Intent
 import android.net.Uri
 import android.provider.MediaStore
 import android.provider.Settings
+import com.lindroid.androidutilskt.app.AndUtil
 
 /**
  * @author Lin
@@ -15,7 +16,6 @@ import android.provider.Settings
  * @Description
  */
 object IntentUtil {
-    private var browserFailListener: (() -> Unit)? = null
     /**
      * 打开系统设置界面
      */
@@ -41,26 +41,6 @@ object IntentUtil {
     }
 
     /**
-     * 调用浏览器并打开一个网页
-     * @param url : 网页地址
-     * @param browserListener : 是否成功打开浏览器监听
-     */
-    @JvmStatic
-    fun launchBrowse(context: Context, url: String, browserListener: ((isSuccess: Boolean) -> Unit)? = null) {
-        val intentWeb = with(Intent(Intent.ACTION_VIEW)) {
-            addCategory(Intent.CATEGORY_BROWSABLE)
-            data = Uri.parse(url)
-            this
-        }
-        if (intentWeb.resolveActivity(context.packageManager) != null) {
-            browserListener?.invoke(true)
-            context.startActivity(Intent.createChooser(intentWeb, "请选择浏览器"))
-        } else {
-            browserListener?.invoke(false)
-        }
-    }
-
-    /**
      * 直接拨打电话
      */
     @JvmStatic
@@ -68,6 +48,34 @@ object IntentUtil {
     fun callPhone(context: Context, phoneNumber: String) {
         context.startActivity(Intent(Intent.ACTION_CALL, Uri.parse("tel:$phoneNumber")))
     }
+
+    /**
+     * 调用浏览器并打开一个网页
+     * 为了避免手机上面没有安装浏览器引发崩溃，应弹出选择面板
+     * @param url : 网页地址
+     * @param browserListener : 是否成功打开浏览器选择面板的监听
+     */
+    @JvmStatic
+    fun launchBrowse(
+        context: Context,
+        url: String,
+        title: String = AndUtil.appContext.getString(R.string.util_intent_choose_browser),
+        browserListener: ((isSuccess: Boolean) -> Unit)? = null
+    ) {
+        val intentWeb = with(Intent(Intent.ACTION_VIEW)) {
+            addCategory(Intent.CATEGORY_BROWSABLE)
+            data = Uri.parse(url)
+            this
+        }
+        if (intentWeb.resolveActivity(context.packageManager) != null) {
+            browserListener?.invoke(true)
+            context.startActivity(Intent.createChooser(intentWeb, title))
+        } else {
+            //手机上没有安装浏览器
+            browserListener?.invoke(false)
+        }
+    }
+
 
     /**
      * 启动系统相机
