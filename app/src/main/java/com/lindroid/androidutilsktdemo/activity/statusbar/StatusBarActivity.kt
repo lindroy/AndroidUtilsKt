@@ -8,6 +8,7 @@ import com.lindroid.androidutilsktdemo.R
 import com.lindroid.androidutilsktdemo.base.BaseActivity
 import com.youngfeng.snake.annotations.EnableDragToClose
 import kotlinx.android.synthetic.main.activity_status_bar.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 
 /**
@@ -20,7 +21,6 @@ import kotlinx.android.synthetic.main.activity_status_bar.*
 class StatusBarActivity(override val contentViewId: Int = R.layout.activity_status_bar) : BaseActivity() {
     override fun initView() {
         super.initView()
-
         initToolBar(R.string.util_status_bar)
     }
 

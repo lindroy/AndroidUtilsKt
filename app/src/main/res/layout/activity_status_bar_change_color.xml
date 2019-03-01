@@ -7,10 +7,20 @@
     android:orientation="vertical"
     tools:context=".activity.statusbar.StatusBarChangeColorActivity">
 
-    <ImageView
-        android:background="@drawable/img_android"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="220dp" />
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:background="@drawable/img_android"
+            android:layout_width="match_parent"
+            android:layout_height="220dp" />
+
+        <include layout="@layout/toolbar" />
+
+    </FrameLayout>
+
 
     <Button
         android:text="透明"

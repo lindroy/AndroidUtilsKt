@@ -5,6 +5,7 @@ import com.lindroid.androidutilsktdemo.R
 import com.lindroid.androidutilsktdemo.base.BaseActivity
 import com.youngfeng.snake.annotations.EnableDragToClose
 import kotlinx.android.synthetic.main.activity_status_bar_change_color.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 /**
  * @author Lin
@@ -18,6 +19,8 @@ class StatusBarChangeColorActivity(override val contentViewId: Int = R.layout.ac
 
     override fun initView() {
         super.initView()
+        initToolBar("改变状态栏颜色", toolBarColor = android.R.color.transparent)
+        toolBar.setPadding(0, getStatusBarHeight(), 0, 0)
         setTransParentStatusBar()
     }
 

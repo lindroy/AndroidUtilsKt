@@ -2,6 +2,7 @@ package com.lindroid.androidutilskt.app
 
 import android.app.Application
 import android.content.Context
+import com.lindroid.androidutilskt.extension.serverFormat
 import com.lindroid.androidutilskt.extension.setSpDefaultFile
 
 /**
@@ -31,6 +32,12 @@ object AndUtil {
          * 设置默认的SharePreference表名
          */
         fun setDefaultSpFile(fileName: String) = this.apply { setSpDefaultFile(fileName) }
+
+        /**
+         * 设置全局的服务器时间格式
+         */
+
+        fun setServerTimeFormat(timeFormat: String) = this.apply { serverFormat = timeFormat }
     }
 
 
