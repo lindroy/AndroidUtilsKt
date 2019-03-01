@@ -60,7 +60,6 @@ fun Activity.setStatusBarColor(@ColorInt color: Int) {
         //4.4以下暂不考虑沉浸式
         return
     }
-
     //如果设置了渐变色背景再设置状态栏颜色的话不会生效，故应先把背景去除
     val barView = (window.decorView as ViewGroup).findViewById<View>(android.R.id.custom)
     if (barView != null && barView.background != null) {
@@ -124,7 +123,7 @@ private fun setStatusBarView(
 }
 
 /**
- * 透明状态栏
+ * 设置透明状态栏
  * 在界面创建时调用才能生效
  */
 fun Activity.setTransParentStatusBar() {

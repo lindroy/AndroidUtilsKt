@@ -85,7 +85,7 @@
 #### 常量
 
 | 常量名  | 值 | 意义 |
-| ------------ | ------------ | ------------ |
+| ------------ |  :------------: | ------------ |
 | NETWORK_NONE | -1 | 没有网络 |
 | NETWORK_UNKNOWN | -2 | 未知网络 |
 | NETWORK_MOBILE | 1  | 移动网络 |
@@ -148,6 +148,20 @@
 | getSpNumber() | 取出保存Long、Float和Int数据 | Context | /  |
 | deleteSpKey() | 删除某条数据 | Context | /  |
 | clearSp() | 清除SharedPreferences的数据 | 不输入表名则清除默认表中的数据 | /  |
+
+------------
+
+### 状态栏工具类：StatusBarUtil
+
+| 成员名称 | 作用  | 接收类  | 备注  |
+| ------------ | ------------ | :------------: | :------------: |
+| getStatusBarHeight()  | 获取状态栏高度  | Context | 返回值单位为px |
+| setStatusBarColor | 设置纯颜色状态栏  | Activity  | 参数为ColorInt |
+| setStatusBarColorRes()  | 设置纯颜色状态栏 | Activity | 参数为ColorRes  |
+| setTransParentStatusBar() | 设置透明状态栏 | Activity | 在界面创建时调用才能生效 |
+| setGradientStatusBar() | 设置渐变色状态栏 | Activity | 参数为Drawable或DrawableRes |
+| setStatusBarDarkMode() | 设置状态栏白色字体图标(深色模式) | Activity | 参数为Drawable或DrawableRes |
+| setStatusBarLightMode() | 设置状态栏黑色字体图标(浅色模式) | Activity | 参数为Drawable或DrawableRes |
 
 ------------
 
