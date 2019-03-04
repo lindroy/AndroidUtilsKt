@@ -8,7 +8,6 @@ import com.lindroid.androidutilsktdemo.R
 import com.lindroid.androidutilsktdemo.base.BaseActivity
 import com.youngfeng.snake.annotations.EnableDragToClose
 import kotlinx.android.synthetic.main.activity_status_bar.*
-import kotlinx.android.synthetic.main.toolbar.*
 
 
 /**
@@ -31,6 +30,9 @@ class StatusBarActivity(override val contentViewId: Int = R.layout.activity_stat
         }
         btnChangeColor.setOnClickListener {
             launchActivity<StatusBarChangeColorActivity>()
+        }
+        btnImage.setOnClickListener {
+            launchActivity<StatusBarImageActivity>()
         }
         btnSlide.setOnClickListener {
             launchActivity<StatusBarSlideActivity>()

@@ -7,7 +7,12 @@
     android:orientation="vertical"
     tools:context=".activity.statusbar.StatusBarChangeColorActivity">
 
-    <FrameLayout
+    <ImageView
+        android:background="@drawable/img_android"
+        android:layout_width="match_parent"
+        android:layout_height="220dp" />
+
+    <!--<FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -19,7 +24,7 @@
 
         <include layout="@layout/toolbar" />
 
-    </FrameLayout>
+    </FrameLayout>-->
 
 
     <Button

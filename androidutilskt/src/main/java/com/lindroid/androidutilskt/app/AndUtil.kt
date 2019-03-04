@@ -2,6 +2,9 @@ package com.lindroid.androidutilskt.app
 
 import android.app.Application
 import android.content.Context
+import android.support.annotation.ColorRes
+import android.support.annotation.StringRes
+import android.support.v4.content.ContextCompat
 import com.lindroid.androidutilskt.extension.serverFormat
 import com.lindroid.androidutilskt.extension.setSpDefaultFile
 
@@ -22,6 +25,12 @@ object AndUtil {
     @JvmStatic
     val appContext: Context
         get() = application.applicationContext
+
+    @JvmStatic
+    fun getString(@StringRes strId: Int): String = appContext.getString(strId)
+
+    @JvmStatic
+    fun getColor(@ColorRes colorId: Int): Int = ContextCompat.getColor(appContext, colorId)
 
     class Config {
         companion object {

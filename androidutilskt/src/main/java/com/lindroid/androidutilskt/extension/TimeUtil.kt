@@ -1,6 +1,8 @@
 package com.lindroid.androidutilskt.extension
 
 import android.util.Log
+import com.lindroid.androidutilskt.R
+import com.lindroid.androidutilskt.app.AndUtil
 import java.text.ParsePosition
 import java.text.SimpleDateFormat
 import java.util.*
@@ -43,17 +45,17 @@ val currentTimeMillis: Long
 /**
  * 获取当前日期，默认格式为"yyyy-MM-dd"
  */
-fun formatCurrentDate(format: String = FORMAT_YMD) = getTimeFormatStr(format)
+fun formatCurrentDate(pattern: String = FORMAT_YMD) = getTimeFormatStr(pattern)
 
 /**
- * 获取当前时间，格式为"yyyy-MM-dd HH:mm"
+ * 获取当前时间，默认格式为"yyyy-MM-dd HH:mm"
  */
-fun formatCurrentDateTime(format: String = FORMAT_YMDHM) = getTimeFormatStr(format)
+fun formatCurrentDateTime(pattern: String = FORMAT_YMDHM) = getTimeFormatStr(pattern)
 
 /**
  * 获取当前时间，格式为"HH:mm"
  */
-fun formatCurrentTime(format: String = FORMAT_HM) = getTimeFormatStr(format)
+fun formatCurrentTime(pattern: String = FORMAT_HM) = getTimeFormatStr(pattern)
 
 /**
  * 将服务器时间格式转换为年月日
@@ -62,7 +64,7 @@ fun String.formatTimeYMD(pattern: String = serverFormat): String =
     formatTimeWithPattern(FORMAT_YMD, pattern)
 
 /**
- * 将服务器时间格式转换为年月日（帶漢字）
+ * 将服务器时间格式转换为年月日（带汉字）
  */
 fun String.formatTimeYMDChinese(pattern: String = serverFormat): String =
     formatTimeWithPattern(FORMAT_YMD_CHINESE, pattern)
@@ -100,8 +102,11 @@ private fun String.formatTimeWithPattern(target: String, source: String = server
     }
 }
 
-private fun getTimeFormatStr(format: String, original: Any = Date()) =
-    SimpleDateFormat(format, Locale.getDefault()).format(original)
+/**
+ *
+ */
+private fun getTimeFormatStr(pattern: String, original: Any = Date()) =
+    SimpleDateFormat(pattern, Locale.getDefault()).format(original)
         ?: ""
 
 
@@ -109,32 +114,35 @@ private const val ONE_MINUTE = 60000L
 private const val ONE_HOUR = 3600000L
 
 /**
- * 获取当前时间与返回时间的比较值
- *//*
-fun String.formatRelativeTime(): String {
+ * 获取某个时间与当前时间的比较值
+ */
+fun String.formatRelativeTime(pattern: String = serverFormat): String {
     fun Long.toSecond() = this / 1000
     fun Long.toMinutes() = this.toSecond() / 60L
     fun Long.toHour() = this.toMinutes() / 60L
-    val date = SimpleDateFormat(serverFormat, Locale.getDefault()).parse(this)
-    val delta = getCurTimeMillis() - date.time
+    val date = SimpleDateFormat(pattern, Locale.getDefault()).parse(this)
+    val delta = currentTimeMillis - date.time
     return when {
     //xx分钟前
         delta < 1L * ONE_HOUR -> {
             if (delta.toMinutes()<=1){
                 //不足一分钟显示1分钟前
-                "1${App.instance.getString(R.string.time_one_minute_ago)}"
+                AndUtil.getString(R.string.time_one_minute_ago)
             }else{
-                "${delta.toMinutes()}${App.instance.getString(R.string.time_one_minute_ago)}"
+                String.format(AndUtil.getString(R.string.time_minute_ago), delta.toMinutes())
+//                "${delta.toMinutes()}${AndUtil.getString(R.string.time_one_minute_ago)}"
             }
         }
     //xx小時前
-        delta >= ONE_HOUR && delta < 24 * ONE_HOUR -> "${delta.toHour()}${App.instance.getString(R.string.time_one_hour_ago)}"
+        delta >= ONE_HOUR && delta < 24 * ONE_HOUR ->
+            String.format(AndUtil.getString(R.string.time_hour_ago), delta.toHour())
+//            "${delta.toHour()}${AndUtil.getString(R.string.time_one_hour_ago)}"
     //昨天
-        delta >= 24 * ONE_HOUR && delta < 48 * ONE_HOUR -> App.instance.getString(R.string.time_yesterday)
+        delta >= 24 * ONE_HOUR && delta < 48 * ONE_HOUR -> AndUtil.getString(R.string.time_yesterday)
     //前天
-        delta >= 48 * ONE_HOUR && delta < 72 * ONE_HOUR -> App.instance.getString(R.string.time_day_before_yesterday)
+        delta >= 48 * ONE_HOUR && delta < 72 * ONE_HOUR -> AndUtil.getString(R.string.time_day_before_yesterday)
     //顯示年月日
         delta >= 72 * ONE_HOUR -> this.formatTimeYMD()
         else ->this.formatTimeYMD()
     }
-}*/
+}

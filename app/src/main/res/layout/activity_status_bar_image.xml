@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.statusbar.StatusBarImageActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:background="@drawable/img_android"
+            android:layout_width="match_parent"
+            android:layout_height="220dp" />
+
+        <include layout="@layout/toolbar" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:padding="10dp"
+        style="@style/MiddleGrayTextStyle" />
+</LinearLayout>

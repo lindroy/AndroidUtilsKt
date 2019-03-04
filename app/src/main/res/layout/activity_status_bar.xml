@@ -22,6 +22,12 @@
         android:layout_height="wrap_content" />
 
     <Button
+        android:text="顶部为图片"
+        android:id="@+id/btnImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
         android:text="配合侧滑"
         android:id="@+id/btnSlide"
         android:layout_width="match_parent"

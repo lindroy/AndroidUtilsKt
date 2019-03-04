@@ -13,7 +13,7 @@
 | ------------ | ------------ | :------------: | ------------ |
 | launchActivity()  | 启动一个Activity  |  Context  |  启动的Activity作为泛型传入  |
 
-------------
+ ------------
 
 ### App管理器：AppManager
 
@@ -26,7 +26,7 @@
 | finishAllActivity()   |  清理栈中所有的Activity | /  |    / |
 | exitApp()  |  退出应用程序 | /  |   /  |
 
-------------
+ ------------
 
 ### 应用信息工具类：AppUtil
 | 成员名称 | 作用  | 接收类  | 备注  |
@@ -162,6 +162,26 @@
 | setGradientStatusBar() | 设置渐变色状态栏 | Activity | 参数为Drawable或DrawableRes |
 | setStatusBarDarkMode() | 设置状态栏白色字体图标(深色模式) | Activity | / |
 | setStatusBarLightMode() | 设置状态栏黑色字体图标(浅色模式) | Activity | / |
+
+------------
+
+### 时间工具类：TimeUtil
+| 成员名称 | 作用  | 接收类  | 备注  |
+| ------------ | ------------ | :------------: | :------------: |
+| serverFormat  | 服务器返回的时间格式  | Any  | internal，仅用于全局配置  |
+| currentYear | 获取当前年份  | Any  | / |
+| currentMonth | 获取当前年份 | Any  | / |
+| currentDay | 获取当前日 | Any | / |
+| currentTimeMillis | 获取当前时间戳 | Any | / |
+| formatCurrentDate  | 获取当前日期 | Any  | 默认格式为"yyyy-MM-dd"  |
+| formatCurrentDateTime  | 获取当前时间  | Any | 默认格式为"yyyy-MM-dd HH:mm" |
+| formatCurrentTime | 获取当前时间 | Any | "HH:mm" |
+| formatTimeYMD | 将服务器时间格式转换为年月日 | String | / |
+| formatTimeYMDChinese | 将服务器时间格式转换为年月日（带汉字）  | String | / |
+| formatTimeHM | 将服务器时间格式转换为时分 | String | / |
+| formatTimeYMDHM | 将服务器时间格式转换为年月日时分 | String | / |
+| formatTimeYMDHMS | 将服务器时间格式转换为年月日时分秒 | String | / |
+| formatRelativeTime | 获取某个时间与当前时间的比较值 | String | / |
 
 ------------
 

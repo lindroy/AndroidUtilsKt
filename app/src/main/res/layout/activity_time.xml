@@ -1,9 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.TimeActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <include layout="@layout/toolbar" />
+
+    <Button
+        android:text="重新获取"
+        android:id="@+id/btnRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="——获取当前的时间信息——"
+        style="@style/LargeGrayTextStyle" />
+
+    <TextView
+        android:id="@+id/tvCurYear"
+        style="@style/MiddleGrayTextStyle" />
+
+    <TextView
+        android:id="@+id/tvCurMon"
+        style="@style/MiddleGrayTextStyle" />
+
+    <TextView
+        android:id="@+id/tvCurDay"
+        style="@style/MiddleGrayTextStyle" />
+
+    <TextView
+        android:id="@+id/tvCurMilli"
+        style="@style/MiddleGrayTextStyle" />
+
+    <TextView
+        android:id="@+id/tvCurDate"
+        style="@style/MiddleGrayTextStyle" />
+
+    <TextView
+        android:id="@+id/tvCurDateTime"
+        style="@style/MiddleGrayTextStyle" />
+
+    <TextView
+        android:id="@+id/tvCurTime"
+        style="@style/MiddleGrayTextStyle" />
+
+    <TextView
+        android:text="——转换服务器时间——"
+        style="@style/LargeGrayTextStyle" />
+
+    <TextView
+        android:id="@+id/tvServerYMD"
+        style="@style/MiddleGrayTextStyle" />
+
+    <TextView
+        android:id="@+id/tvServerYMDChinese"
+        style="@style/MiddleGrayTextStyle" />
+
+    <TextView
+        android:id="@+id/tvServerTime"
+        style="@style/MiddleGrayTextStyle" />
+
+    <TextView
+        android:id="@+id/tvServerYMDHM"
+        style="@style/MiddleGrayTextStyle" />
+
+    <TextView
+        android:id="@+id/tvServerYMDHMS"
+        style="@style/MiddleGrayTextStyle" />
+</LinearLayout>

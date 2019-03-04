@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">AndroidUtilsKt</string>
     <string name="util_intent_choose_browser">请选择浏览器</string>
+    <!--时间相关字符-->
+    <string name="time_yesterday">昨天</string>
+    <string name="time_day_before_yesterday">前天</string>
+    <string name="time_one_minute_ago">1分钟前</string>
+    <string name="time_minute_ago">分钟前</string>
+    <string name="time_hour_ago">%d小时前</string>
 </resources>
