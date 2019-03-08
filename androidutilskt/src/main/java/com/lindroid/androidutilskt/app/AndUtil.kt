@@ -45,7 +45,6 @@ object AndUtil {
         /**
          * 设置全局的服务器时间格式
          */
-
         fun setServerTimeFormat(timeFormat: String) = this.apply { serverFormat = timeFormat }
     }
 

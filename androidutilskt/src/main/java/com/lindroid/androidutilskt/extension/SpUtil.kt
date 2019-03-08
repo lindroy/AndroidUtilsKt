@@ -59,38 +59,40 @@ fun Context.putSpFloat(key: String, value: Float, fileName: String = defFileName
 fun Context.getSpFloat(key: String, defValue: Float = 0F, fileName: String = defFileName): Float =
     getSp(fileName).getFloat(key, defValue)
 
-/**
- * 保存long、float和int数据，double除外
- * putSpNumber方法的作用跟putSpInt、putSpLong和putSpFloat的作用是一样的
- */
-@SuppressLint("ApplySharedPref")
-fun Context.putSpNumber(key: String, value: Number, fileName: String = defFileName): Boolean {
-    val editor = getSp(fileName).edit()
-    return when (value) {
-        is Int -> editor.putInt(key, value).commit()
-        is Float -> editor.putFloat(key, value).commit()
-        is Long -> editor.putLong(key, value).commit()
-        else -> {
-            false
-        }
-    }
-}
 
 /**
- * 获取数值型数据
- * @param defValue 重要：根据默认值来判断数据类型，如果是double的话就转为float
+ * 保存数据，数据类型由传入的值确定
+ * @throws IllegalArgumentException:数据类型不属于SharedPreferences能保存的类型
  */
-fun Context.getSpNumber(key: String, defValue: Number, fileName: String = defFileName): Number {
-    val preference = getSp(fileName)
-    return when (defValue) {
-        is Int -> preference.getInt(key, defValue)
-        is Float -> preference.getFloat(key, defValue)
-        is Long -> preference.getLong(key, defValue)
-        is Double -> preference.getFloat(key, defValue.toFloat())
-        else -> {
-            defValue
-        }
+@SuppressLint("ApplySharedPref")
+fun <T : Any> Context.putSp(key: String, value: T, fileName: String = defFileName): Boolean =
+    with(getSp(fileName).edit()) {
+        when (value) {
+            is Int -> putInt(key, value)
+            is Float -> putFloat(key, value)
+            is Long -> putLong(key, value)
+            is Double -> putFloat(key, value.toFloat())
+            is Boolean -> putBoolean(key, value)
+            is String -> putString(key, value)
+            else -> throw IllegalArgumentException("This type can not be saved into SharedPreferences!")
+        }.commit()
     }
+
+/**
+ * 取出数据，数据类型由传入的默认值确定
+ * @throws IllegalArgumentException:数据类型不属于SharedPreferences能保存的类型
+ */
+@Suppress("UNCHECKED_CAST", "IMPLICIT_CAST_TO_ANY")
+fun <T : Any> Context.getSp(key: String, defValue: T, fileName: String = defFileName): T = with(getSp(fileName)) {
+    when (defValue) {
+        is Int -> getInt(key, defValue)
+        is Float -> getFloat(key, defValue)
+        is Long -> getLong(key, defValue)
+        is String -> getString(key, defValue)
+        is Boolean -> getBoolean(key, defValue)
+        is Double -> getFloat(key, defValue.toFloat())
+        else -> throw IllegalArgumentException("This type can not be found in SharedPreferences!")
+    } as T
 }
 
 /**
@@ -105,4 +107,6 @@ fun Context.deleteSpKey(key: String, fileName: String = defFileName): Boolean =
  */
 fun Context.clearSp(fileName: String = defFileName): Boolean =
     getSp(fileName).edit().clear().commit()
+
+
 

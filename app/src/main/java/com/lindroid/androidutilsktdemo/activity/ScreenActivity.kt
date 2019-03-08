@@ -5,6 +5,7 @@ import android.widget.SeekBar
 import com.lindroid.androidutilskt.extension.*
 import com.lindroid.androidutilsktdemo.R
 import com.lindroid.androidutilsktdemo.base.BaseActivity
+import com.youngfeng.snake.annotations.EnableDragToClose
 import kotlinx.android.synthetic.main.activity_screen.*
 
 
@@ -14,6 +15,8 @@ import kotlinx.android.synthetic.main.activity_screen.*
  * @function 屏幕相关工具类
  * @Description
  */
+
+@EnableDragToClose
 class ScreenActivity(override val contentViewId: Int = R.layout.activity_screen) : BaseActivity() {
 
     override fun initView() {

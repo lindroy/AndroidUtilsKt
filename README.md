@@ -1,11 +1,11 @@
 # AndroidUtilsKt
 
 
+
 1. 根据工具类文件名的英文字母顺序排序；
 2. 接收类为“/”的表示该工具类并非扩展方式的写法，需要使用类名的形式调用里面的函数或属性；
 3. 成员包含函数和属性，函数名称后面需要加“()”，属性则不用；
 4. 常量另外写一个表格。
-
 
 ### Activity工具类：ActivityUtil
 
@@ -36,7 +36,7 @@
 | getAppSize()   | 获取应用大小，默认为本应用  | Context  | 返回值单位为b  |
 | getAppIcon()   |获取应用图标，默认为本应用| Context  | 失败时返回null  |
 
-------------
+ ------------
 
 ### 剪贴板工具类：ClipboardUtil
 
@@ -44,7 +44,7 @@
 | ------------ | ------------ | ------------ | :------------: |
 | clipPlainText()   | 复制纯文本  | Context | /  |
 
-------------
+ ------------
 
 ### 像素单位转换工具类：DensityUtil
 | 成员名称 | 作用  | 接收类  | 备注  |
@@ -54,7 +54,7 @@
 | sp2px()   | sp转px  | Context  |  /  |
 | px2sp()   | px转sp  | Context  |  /  |
 
-------------
+ ------------
 
 ### 意图工具类：IntentUtil
 
@@ -68,7 +68,7 @@
 | launchCamera()   | 启动系统相机  | /  | 动态权限  |
 | sendSMS()   | 发送短信  | /  | 动态权限  |
 
-------------
+ ------------
 
 ### 软键盘工具类：KeyboardUtil
 
@@ -79,7 +79,7 @@
 | toggleKeyboard()  | 根据当前软键盘的状态做取反操作  | View  | /  |
 
 
-------------
+ ------------
 
 ### 网络状态工具类：NetworkUtil
 #### 常量
@@ -100,7 +100,7 @@
 | isMobileNet  | 是否是移动网络  | Context  | / |
 | isNetworkConnect  | 网络是否连接  | Context  | / |
 
-------------
+ ------------
 
 ### 资源工具类：ResourceUtil
 | 成员名称 | 作用  | 接收类  | 备注  |
@@ -108,7 +108,7 @@
 | getResColor()   | 获取颜色  | Context  | /  |
 | getResDrawable()   | 获取图片资源  | Context  | 返回值可以为null  |
 
-------------
+ ------------
 
 ### 屏幕相关工具类：ScreenUtil
 
@@ -125,7 +125,7 @@
 | isPortrait  | 是否是竖屏  | Context  | /  |
 | setScreenBrightness()  | 设置屏幕亮度  | Activity  | 亮度范围为0~1，1为最亮，默认为-1 |
 
-------------
+ ------------
 
 ### SharedPreferences工具类：SpUtil
 
@@ -144,12 +144,12 @@
 | getSpFloat() | 取出存储的Float值 | Context | / |
 | putSpStrSet() | 存储StringSet | Context | / |
 | getSpStrSet() | 取出存储的StringSet | Context |  /  |
-| putSpNumber() | 保存Long、Float和Int数据 | Context | 不包含Double  |
-| getSpNumber() | 取出保存Long、Float和Int数据 | Context | /  |
+| putSp() | 保存数据 | Context | 数据类型由传入的值确定  |
+| getSp() |取出数据 | Context | 数据类型由传入的默认值确定  |
 | deleteSpKey() | 删除某条数据 | Context | /  |
 | clearSp() | 清除SharedPreferences的数据 | 不输入表名则清除默认表中的数据 | /  |
 
-------------
+ ------------
 
 ### 状态栏工具类：StatusBarUtil
 
@@ -163,7 +163,7 @@
 | setStatusBarDarkMode() | 设置状态栏白色字体图标(深色模式) | Activity | / |
 | setStatusBarLightMode() | 设置状态栏黑色字体图标(浅色模式) | Activity | / |
 
-------------
+ ------------
 
 ### 时间工具类：TimeUtil
 | 成员名称 | 作用  | 接收类  | 备注  |
@@ -183,7 +183,7 @@
 | formatTimeYMDHMS | 将服务器时间格式转换为年月日时分秒 | String | / |
 | formatRelativeTime | 获取某个时间与当前时间的比较值 | String | / |
 
-------------
+ ------------
 
 ### Toast工具类：ToastUtil
 已去除小米手机自带的应用名称。

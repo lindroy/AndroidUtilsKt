@@ -123,26 +123,26 @@ fun String.formatRelativeTime(pattern: String = serverFormat): String {
     val date = SimpleDateFormat(pattern, Locale.getDefault()).parse(this)
     val delta = currentTimeMillis - date.time
     return when {
-    //xx分钟前
+        //xx分钟前
         delta < 1L * ONE_HOUR -> {
-            if (delta.toMinutes()<=1){
+            if (delta.toMinutes() <= 1) {
                 //不足一分钟显示1分钟前
                 AndUtil.getString(R.string.time_one_minute_ago)
-            }else{
+            } else {
                 String.format(AndUtil.getString(R.string.time_minute_ago), delta.toMinutes())
 //                "${delta.toMinutes()}${AndUtil.getString(R.string.time_one_minute_ago)}"
             }
         }
-    //xx小時前
+        //xx小時前
         delta >= ONE_HOUR && delta < 24 * ONE_HOUR ->
             String.format(AndUtil.getString(R.string.time_hour_ago), delta.toHour())
 //            "${delta.toHour()}${AndUtil.getString(R.string.time_one_hour_ago)}"
-    //昨天
+        //昨天
         delta >= 24 * ONE_HOUR && delta < 48 * ONE_HOUR -> AndUtil.getString(R.string.time_yesterday)
-    //前天
+        //前天
         delta >= 48 * ONE_HOUR && delta < 72 * ONE_HOUR -> AndUtil.getString(R.string.time_day_before_yesterday)
-    //顯示年月日
+        //顯示年月日
         delta >= 72 * ONE_HOUR -> this.formatTimeYMD()
-        else ->this.formatTimeYMD()
+        else -> this.formatTimeYMD()
     }
 }
