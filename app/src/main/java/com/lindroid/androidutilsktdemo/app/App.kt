@@ -24,7 +24,9 @@ class App : Application() {
         super.onCreate()
         // 对Snake进行初始化
         Snake.init(this)
-        AndUtil.init(this).setDefaultSpFile("nono")
+        AndUtil.init(this)
+//            .setDefaultSpFile()     //设置SharePreferences的默认表名，默认为“sp_util”
+//            .setServerTimeFormat()  //设置时间格式化中服务器时间格式，默认为“yyyy-MM-dd'T'HH:mm:ss.SSS”
         if (LeakCanary.isInAnalyzerProcess(this)) {
             // This process is dedicated to LeakCanary for heap analysis.
             // You should not init your app in this process.

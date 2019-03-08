@@ -1,11 +1,43 @@
 # AndroidUtilsKt
 
+[![](https://jitpack.io/v/Lindroy/AndroidUtilsKt.svg)](https://jitpack.io/#Lindroy/AndroidUtilsKt)
 
+使用kotlin编写的Android工具类，主要采用扩展函数的方式。目前还在不断补充中。
+
+本说明文档遵循如下的规则：
 
 1. 根据工具类文件名的英文字母顺序排序；
 2. 接收类为“/”的表示该工具类并非扩展方式的写法，需要使用类名的形式调用里面的函数或属性；
 3. 成员包含函数和属性，函数名称后面需要加“()”，属性则不用；
 4. 常量另外写一个表格。
+
+## 配置方法
+
+### 1、在工程gradle中添加：
+```
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+### 2、添加如下依赖：
+
+```
+dependencies {
+	implementation 'com.github.Lindroy:AndroidUtilsKt:1.0.0'
+}
+```
+
+### 3、在Application中初始化
+
+```kotlin
+        AndUtil.init(this)
+            .setDefaultSpFile()     //设置SharePreferences的默认表名，默认为“sp_util”
+            .setServerTimeFormat()  //设置时间格式化中服务器时间格式，默认为“yyyy-MM-dd'T'HH:mm:ss.SSS”
+```
+## 工具类文档
 
 ### Activity工具类：ActivityUtil
 
