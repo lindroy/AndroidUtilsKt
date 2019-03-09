@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">AndUtilsKt</string>
     <string name="util_app_info">应用信息工具类(AppUtil)</string>
+    <string name="util_brightness">亮度工具类(BrightnessUtil)</string>
     <string name="util_intent">Intent工具类(IntentUtil)</string>
     <string name="util_keyboard">软键盘工具类(KeyboardUtil)</string>
     <string name="util_screen">屏幕相关工具类(ScreenUtil)</string>

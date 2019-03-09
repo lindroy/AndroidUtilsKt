@@ -101,9 +101,13 @@ fun Fragment.pmReadContacts(listener: (granted: Boolean) -> Unit) {
     )
 }
 
+/**
+ * 获取发送短信权限
+ */
 fun FragmentActivity.pmSendSMS(listener: (granted: Boolean) -> Unit) {
     RxPermissions(this).checkPermission(listener, Manifest.permission.SEND_SMS, Manifest.permission.READ_CONTACTS)
 }
+
 
 
 

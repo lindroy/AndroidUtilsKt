@@ -26,6 +26,12 @@
         style="@style/MiddleGrayTextStyle"
         android:layout_marginTop="5dp" />
 
+    <!--屏幕方向-->
+    <TextView
+        android:id="@+id/tvOrientation"
+        style="@style/MiddleGrayTextStyle"
+        android:layout_marginTop="5dp" />
+
     <Button
         android:id="@+id/btnLandscape"
         android:text="横屏"
@@ -38,26 +44,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <!--屏幕方向-->
-    <TextView
-        android:id="@+id/tvOrientation"
-        style="@style/MiddleGrayTextStyle"
-        android:layout_marginTop="5dp" />
 
-    <TextView
-        android:id="@+id/tvBright"
-        android:layout_marginBottom="5dp"
-        android:text="调节屏幕亮度："
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-
-    <SeekBar
-        android:progress="50"
-        android:id="@+id/seekBar"
-        android:min="0"
-        android:max="100"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
 </LinearLayout>

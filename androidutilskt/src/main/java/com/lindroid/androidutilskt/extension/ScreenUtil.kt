@@ -80,13 +80,7 @@ val Context.isLandscape: Boolean
 val Context.isPortrait: Boolean
     get() = screenOrientation == Configuration.ORIENTATION_PORTRAIT
 
-/**
- * 设置屏幕亮度
- * @param brightness 亮度范围0~1.0，1.0为最亮,-1.0时为默认值
- */
-fun Activity.setScreenBrightness(brightness: Float = -1.0F) {
-    val lp = window.attributes
-    lp.screenBrightness = if (brightness < 0) -1.0F else brightness
-    window.attributes = lp
-}
+
+
+
 

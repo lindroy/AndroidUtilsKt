@@ -23,6 +23,7 @@ class CatalogActivity(override val contentViewId: Int = R.layout.activity_catalo
         super.initBefore()
         map = linkedMapOf(
             R.string.util_app_info to AppInfoActivity::class.java,
+            R.string.util_brightness to BrightnessActivity::class.java,
             R.string.util_intent to IntentActivity::class.java,
             R.string.util_keyboard to KeyboardActivity::class.java,
             R.string.util_status_bar to StatusBarActivity::class.java,

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.BrightnessActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <TextView
+        android:id="@+id/tvSystemBright"
+        style="@style/MiddleGrayTextStyle" />
+
+    <SeekBar
+        android:id="@+id/sbSystemBright"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!--当前窗口亮度-->
+    <TextView
+        android:id="@+id/tvWindowBright"
+        style="@style/MiddleGrayTextStyle" />
+
+    <SeekBar
+        android:id="@+id/sbWindowBright"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
