@@ -224,3 +224,22 @@ dependencies {
 | ------------ | ------------ | :------------: | :------------: |
 | shortToast()  | 显示短Toast  | Context  | /  |
 | longToast()  | 显示长Toast  | Context  |  / |
+
+
+ ------------
+
+### View工具类：ViewUtil
+| 成员名称 | 作用  | 接收类  | 备注  |
+| ------------ | ------------ | :------------: | :------------: |
+| setGone()  | 将View设置为隐藏  | View | /  |
+| setVisible()  | 将View设置为可见  | View |  / |
+| setInVisible()  | 将View设置为不可见  | View |  / |
+| setWidth()  | 设置View的宽度  | View |  / |
+| setHeight()  | 设置View的高度  | View |  / |
+| setWidthAndHeight()  | 设置View的宽度和高度  | View |  / |
+
+## 感谢
+
+[Anko](https://github.com/Kotlin/anko "Anko")
+[AndroidUtilCode](https://github.com/Blankj/AndroidUtilCode "AndroidUtilCode")
+[Qmui](https://qmuiteam.com/android "Qmui")

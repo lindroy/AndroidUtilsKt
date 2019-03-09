@@ -28,7 +28,8 @@ class CatalogActivity(override val contentViewId: Int = R.layout.activity_catalo
             R.string.util_status_bar to StatusBarActivity::class.java,
             R.string.util_screen to ScreenActivity::class.java,
             R.string.util_time to TimeActivity::class.java,
-            R.string.util_toast to ToastActivity::class.java
+            R.string.util_toast to ToastActivity::class.java,
+            R.string.util_view to ViewActivity::class.java
         )
         names.addAll(map.map {
             getString(it.key)

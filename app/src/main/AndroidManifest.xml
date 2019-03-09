@@ -22,7 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.statusbar.StatusBarImageActivity"></activity>
+        <activity android:name=".activity.ViewActivity"></activity>
+        <activity android:name=".activity.statusbar.StatusBarImageActivity" />
         <activity android:name=".activity.TimeActivity" />
         <activity android:name=".activity.statusbar.StatusBarSlideActivity" />
         <activity android:name=".activity.statusbar.StatusBarChangeColorActivity" />
