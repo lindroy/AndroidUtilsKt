@@ -1,9 +1,9 @@
 package com.lindroid.androidutilskt.extension
 
 import android.app.Activity
-import android.content.Context
 import android.provider.Settings
 import android.support.annotation.IntRange
+import com.lindroid.androidutilskt.app.AndUtil
 
 /**
  * @author Lin
@@ -13,30 +13,45 @@ import android.support.annotation.IntRange
  */
 
 /**
+ * 是否是自动亮度
+ */
+var isAutoBrightness
+    get() = try {
+        Settings.System.getInt(
+            AndUtil.appContext.contentResolver,
+            Settings.System.SCREEN_BRIGHTNESS_MODE
+        ) == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC
+
+    } catch (e: Settings.SettingNotFoundException) {
+        e.printStackTrace()
+        false
+    }
+    set(enable) {
+        Settings.System.putInt(
+            AndUtil.appContext.contentResolver, Settings.System.SCREEN_BRIGHTNESS_MODE,
+            if (enable) Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC else Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL
+        )
+    }
+
+/**
  * 获取系统屏幕亮度
  */
-
-var Context.systemBrightness
+var systemBrightness
     get() = try {
-        Settings.System.getInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS)
+        Settings.System.getInt(AndUtil.appContext.contentResolver, Settings.System.SCREEN_BRIGHTNESS)
     } catch (e: Settings.SettingNotFoundException) {
         e.printStackTrace()
         -1
     }
-    set(@IntRange(from = 0, to = 255) value) {
+    set(@IntRange(from = 0, to = 255) brightness) {
+        if (isAutoBrightness) {
+            //如果当前是自动亮度，则关闭自动亮度
+            isAutoBrightness = false
+        }
         val uri = Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS)
-        Settings.System.putInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS, value)
-        contentResolver.notifyChange(uri, null)
+        Settings.System.putInt(AndUtil.appContext.contentResolver, Settings.System.SCREEN_BRIGHTNESS, brightness)
+        AndUtil.appContext.contentResolver.notifyChange(uri, null)
     }
-
-/**
- * 设置系统亮度
- */
-//fun Context.setSystemBrightness(@IntRange(from = 0, to = 255) brightness: Int) {
-//    val uri = Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS)
-//    Settings.System.putInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS, brightness)
-//    contentResolver.notifyChange(uri, null)
-//}
 
 /**
  * 获取当前窗口亮度
@@ -44,17 +59,10 @@ var Context.systemBrightness
 var Activity.windowBrightness
     get() = window.attributes.screenBrightness
     set(brightness) {
-        val lp = window.attributes
-        lp.screenBrightness = if (brightness < 0) -1.0F else brightness
-        window.attributes = lp
+        window.attributes = window.attributes.apply {
+            screenBrightness = if (brightness < 0) -1.0F else brightness
+        }
+
     }
 
-/**
- * 设置当前窗口亮度
- * @param brightness 亮度范围0~1.0，1.0为最亮,-1.0时为默认值
- */
-//fun Activity.setWindowBrightness(brightness: Float = -1.0F) {
-//    val lp = window.attributes
-//    lp.screenBrightness = if (brightness < 0) -1.0F else brightness
-//    window.attributes = lp
-//}
+

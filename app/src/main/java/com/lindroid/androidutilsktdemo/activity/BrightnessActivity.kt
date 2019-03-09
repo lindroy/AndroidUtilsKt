@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Build
 import android.provider.Settings
 import android.widget.SeekBar
+import com.lindroid.androidutilskt.extension.isAutoBrightness
 import com.lindroid.androidutilskt.extension.systemBrightness
 import com.lindroid.androidutilskt.extension.windowBrightness
 import com.lindroid.androidutilsktdemo.R
@@ -24,6 +25,7 @@ class BrightnessActivity(override val contentViewId: Int = R.layout.activity_bri
     override fun initView() {
         super.initView()
         initToolBar(R.string.util_brightness)
+        tvAutoBright.text = "是否是自动亮度：${if (isAutoBrightness) "是" else "否"}"
         tvWindowBright.text = "当前窗口亮度=$windowBrightness"
         sbWindowBright.progress = if (windowBrightness > 0) (windowBrightness * 100).toInt() else 0
         sbWindowBright.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
@@ -70,8 +72,11 @@ class BrightnessActivity(override val contentViewId: Int = R.layout.activity_bri
 
                 })
             }
-
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
     }
 }
