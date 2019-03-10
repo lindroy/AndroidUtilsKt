@@ -26,7 +26,7 @@
 
 ```
 dependencies {
-    implementation 'com.github.Lindroy:AndroidUtilsKt:1.0.0'
+    implementation 'com.github.Lindroy:AndroidUtilsKt:1.1.0'
 }
 ```
 
