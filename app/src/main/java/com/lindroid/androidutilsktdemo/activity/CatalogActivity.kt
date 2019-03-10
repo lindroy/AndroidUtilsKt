@@ -17,20 +17,19 @@ class CatalogActivity(override val contentViewId: Int = R.layout.activity_catalo
     private lateinit var map: LinkedHashMap<Int, Class<*>>
     private val names: MutableList<String> = ArrayList()
 
-//    override fun layoutId(): Int =R.layout.activity_catalog
-
     override fun initBefore() {
         super.initBefore()
         map = linkedMapOf(
-            R.string.util_app_info to AppInfoActivity::class.java,
-            R.string.util_brightness to BrightnessActivity::class.java,
-            R.string.util_intent to IntentActivity::class.java,
-            R.string.util_keyboard to KeyboardActivity::class.java,
-            R.string.util_status_bar to StatusBarActivity::class.java,
-            R.string.util_screen to ScreenActivity::class.java,
-            R.string.util_time to TimeActivity::class.java,
-            R.string.util_toast to ToastActivity::class.java,
-            R.string.util_view to ViewActivity::class.java
+                R.string.util_app_info to AppInfoActivity::class.java,
+                R.string.util_brightness to BrightnessActivity::class.java,
+                R.string.util_intent to IntentActivity::class.java,
+                R.string.util_keyboard to KeyboardActivity::class.java,
+                R.string.util_status_bar to StatusBarActivity::class.java,
+                R.string.util_screen to ScreenActivity::class.java,
+                R.string.util_time to TimeActivity::class.java,
+                R.string.util_toast to ToastActivity::class.java,
+                R.string.util_vibrator to VibratorActivity::class.java,
+                R.string.util_view to ViewActivity::class.java
         )
         names.addAll(map.map {
             getString(it.key)

@@ -9,4 +9,5 @@
     <string name="util_time">时间工具类(TimeUtil)</string>
     <string name="util_toast">Toast工具类(ToastUtil)</string>
     <string name="util_view">View工具类(ToastUtil)</string>
+    <string name="util_vibrator">手机振动工具类(VibratorUtil)</string>
 </resources>
