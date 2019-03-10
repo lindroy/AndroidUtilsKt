@@ -15,23 +15,28 @@ import com.lindroid.androidutilskt.app.AndUtil
 /**
  * 是否是自动亮度
  */
-var isAutoBrightness
+val isAutoBrightness
     get() = try {
         Settings.System.getInt(
             AndUtil.appContext.contentResolver,
             Settings.System.SCREEN_BRIGHTNESS_MODE
         ) == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC
-
     } catch (e: Settings.SettingNotFoundException) {
         e.printStackTrace()
         false
     }
-    set(enable) {
-        Settings.System.putInt(
-            AndUtil.appContext.contentResolver, Settings.System.SCREEN_BRIGHTNESS_MODE,
-            if (enable) Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC else Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL
-        )
-    }
+
+
+/**
+ * 设置是否开启自动亮度
+ * @param enable : 为true时开启，false时关闭
+ * @return 设置成功返回true
+ */
+fun setAutoBrightness(enable: Boolean) = Settings.System.putInt(
+    AndUtil.appContext.contentResolver, Settings.System.SCREEN_BRIGHTNESS_MODE,
+    if (enable) Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC else Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL
+)
+
 
 /**
  * 获取系统屏幕亮度
@@ -46,7 +51,7 @@ var systemBrightness
     set(@IntRange(from = 0, to = 255) brightness) {
         if (isAutoBrightness) {
             //如果当前是自动亮度，则关闭自动亮度
-            isAutoBrightness = false
+            setAutoBrightness(false)
         }
         val uri = Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS)
         Settings.System.putInt(AndUtil.appContext.contentResolver, Settings.System.SCREEN_BRIGHTNESS, brightness)
@@ -58,11 +63,13 @@ var systemBrightness
  */
 var Activity.windowBrightness
     get() = window.attributes.screenBrightness
-    set(brightness) {
+    set( brightness) {
         window.attributes = window.attributes.apply {
             screenBrightness = if (brightness < 0) -1.0F else brightness
         }
 
     }
+
+
 
 
