@@ -5,6 +5,8 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
+import android.support.annotation.RequiresApi
+import android.util.Log
 import android.widget.SeekBar
 import com.lindroid.androidutilskt.extension.isAutoBrightness
 import com.lindroid.androidutilskt.extension.systemBrightness
@@ -48,13 +50,13 @@ class BrightnessActivity(override val contentViewId: Int = R.layout.activity_bri
         //修改系统屏幕亮度需要修改系统设置的权限
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             //如果当前平台版本大于23平台
-            if (!Settings.System.canWrite(this)) {
+            if (!Settings.System.canWrite(mContext)) {
                 val intent = with(Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS)) {
                     data = Uri.parse("package:$packageName")
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     this
                 }
-                startActivityForResult(intent, 0)
+                startActivityForResult(intent, 100)
             } else {
                 sbSystemBright.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
                     override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
@@ -75,8 +77,15 @@ class BrightnessActivity(override val contentViewId: Int = R.layout.activity_bri
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
+        Log.e("Tag","设置成功requestCode：$requestCode")
+        Log.e("Tag","设置成功resultCode：$resultCode")
+        Log.e("Tag","是否授权Settings.System.canWrite(mContext)+：${Settings.System.canWrite(mContext)}")
+
+
     }
+
 }

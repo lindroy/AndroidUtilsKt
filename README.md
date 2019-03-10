@@ -15,18 +15,18 @@
 
 ### 1、在工程gradle中添加：
 ```
-	allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+    allprojects {
+        repositories {
+            ...
+            maven { url 'https://jitpack.io' }
+        }
+    }
 ```
 ### 2、添加如下依赖：
 
 ```
 dependencies {
-	implementation 'com.github.Lindroy:AndroidUtilsKt:1.0.0'
+    implementation 'com.github.Lindroy:AndroidUtilsKt:1.0.0'
 }
 ```
 
@@ -67,6 +67,38 @@ dependencies {
 | getAppVersionCode()   | 获取应用版本号，默认为本应用  | Context  |  / |
 | getAppSize()   | 获取应用大小，默认为本应用  | Context  | 返回值单位为b  |
 | getAppIcon()   |获取应用图标，默认为本应用| Context  | 失败时返回null  |
+
+ ------------
+
+### 屏幕亮度工具类：BrightnessUtil
+设置系统屏幕亮度时需要动态申请系统设置权限：
+
+```xml
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+```
+
+```java
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            //如果当前平台版本大于23平台
+            if (!Settings.System.canWrite(mContext)) {
+                val intent = with(Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS)) {
+                    data = Uri.parse("package:$packageName")
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    this
+                }
+                startActivityForResult(intent, 100)
+            } else {
+               //获取权限后的操作
+            }
+        }
+```
+
+| 成员名称 | 作用  | 接收类  | 备注  |
+| ------------ | ------------ | :------------: | :------------: |
+| isAutoBrightness  | 是否开启了自动亮度是否开启了自动亮度 | Any  |  / |
+| setAutoBrightness()  | 设置是否开启自动亮度  | Any | 设置成功返回true  |
+| systemBrightness |  获取/设置系统屏幕宽度 | Any | 亮度范围为0~255 |
+| windowBrightness | 当前窗口亮度  | Any | 亮度范围为0~1.0，1为最亮，默认为-1 |
 
  ------------
 
@@ -155,7 +187,7 @@ dependencies {
 | screenOrientation  | 获取屏幕方向  | Context  | /  |
 | isLandscape  | 是否是横屏  | Context  | /  |
 | isPortrait  | 是否是竖屏  | Context  | /  |
-| setScreenBrightness()  | 设置屏幕亮度  | Activity  | 亮度范围为0~1，1为最亮，默认为-1 |
+
 
  ------------
 

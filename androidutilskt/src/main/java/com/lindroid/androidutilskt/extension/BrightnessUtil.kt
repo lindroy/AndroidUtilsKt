@@ -13,7 +13,7 @@ import com.lindroid.androidutilskt.app.AndUtil
  */
 
 /**
- * 是否是自动亮度
+ * 是否开启了自动亮度
  */
 val isAutoBrightness
     get() = try {
@@ -39,7 +39,8 @@ fun setAutoBrightness(enable: Boolean) = Settings.System.putInt(
 
 
 /**
- * 获取系统屏幕亮度
+ * 系统屏幕亮度，需要申请WRITE_SETTINGS权限
+ * 范围为0~255
  */
 var systemBrightness
     get() = try {
@@ -59,13 +60,15 @@ var systemBrightness
     }
 
 /**
- * 获取当前窗口亮度
+ * 当前窗口亮度
+ * 范围为0~1.0,1.0时为最亮，-1为系统默认设置
  */
 var Activity.windowBrightness
     get() = window.attributes.screenBrightness
-    set( brightness) {
+    set(brightness) {
+        //小于0或大于1.0默认为系统亮度
         window.attributes = window.attributes.apply {
-            screenBrightness = if (brightness < 0) -1.0F else brightness
+            screenBrightness = if (brightness > 1.0 || brightness < 0) -1.0F else brightness
         }
 
     }
