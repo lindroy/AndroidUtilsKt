@@ -40,7 +40,6 @@ object AppManager {
         activityStack.remove(activity)
     }
 
-
     /**
      * 获取当前栈顶Activity
      * @return 如果栈内元素为空，则返回null

@@ -54,6 +54,4 @@ class TimeActivity(override val contentViewId: Int = R.layout.activity_time) : B
         tvCurDateTime.text = "当前日期时间：${formatCurrentDateTime()}"
         tvCurTime.text = "当前时间：${formatCurrentTime()}"
     }
-
-
 }

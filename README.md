@@ -7,7 +7,7 @@
 本说明文档遵循如下的规则：
 
 1. 根据工具类文件名的英文字母顺序排序；
-2. 接收类为“/”的表示该工具类并非扩展方式的写法，需要使用类名的形式调用里面的函数或属性；
+2. 接收类不为“/”的表示该工具类为扩展成员写法，放在包“extension”中；接收类为“/”的表示该工具类并非扩展方式的写法，需要使用类名的形式调用里面的函数或属性，放在包“statics”中；
 3. 成员包含函数和属性，函数名称后面需要加“()”，属性则不用；
 4. 常量另外写一个表格。
 
@@ -39,7 +39,7 @@ dependencies {
 ```
 ## 工具类文档
 
-### Activity工具类：ActivityUtil
+### [ActivityUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/ActivityUtil.kt "ActivityUtil")：Activity工具类
 
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | ------------ |
@@ -47,7 +47,7 @@ dependencies {
 
  ------------
 
-### App管理器：AppManager
+### [AppManager](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/statics/AppManager.kt "AppManager")：App管理器
 
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
@@ -60,7 +60,7 @@ dependencies {
 
  ------------
 
-### 应用信息工具类：AppUtil
+### [AppUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/AppUtil.kt "AppUtil")：应用信息工具类
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
 | getAppVersionName()   | 获取应用版本名称，默认为本应用  | Context  | /  |
@@ -70,7 +70,7 @@ dependencies {
 
  ------------
 
-### 屏幕亮度工具类：BrightnessUtil
+### [BrightnessUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/BrightnessUtil.kt "BrightnessUtil")：屏幕亮度工具类
 设置系统屏幕亮度时需要动态申请系统设置权限：
 
 ```xml
@@ -101,7 +101,7 @@ dependencies {
 
  ------------
 
-### 剪贴板工具类：ClipboardUtil
+### [ClipboardUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/ClipboardUtil.kt "ClipboardUtil")： 剪贴板工具类
 
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | ------------ | :------------: |
@@ -109,7 +109,8 @@ dependencies {
 
  ------------
 
-### 像素单位转换工具类：DensityUtil
+### [DensityUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/DensityUtil.kt "DensityUtil")：像素单位转换工具类
+
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
 | dp2px()   | dp转px  | Context  |  /  |
@@ -119,7 +120,7 @@ dependencies {
 
  ------------
 
-### 意图工具类：IntentUtil
+### [IntentUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/IntentUtil.kt "IntentUtil")：意图工具类
 
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
@@ -133,7 +134,7 @@ dependencies {
 
  ------------
 
-### 软键盘工具类：KeyboardUtil
+### [KeyboardUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/KeyboardUtil.kt "KeyboardUtil")：软键盘工具类
 
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
@@ -144,7 +145,7 @@ dependencies {
 
  ------------
 
-### 网络状态工具类：NetworkUtil
+### [NetworkUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/NetworkUtil.kt "NetworkUtil")：网络状态工具类
 #### 常量
 
 | 常量名  | 值 | 意义 |
@@ -165,7 +166,7 @@ dependencies {
 
  ------------
 
-### 资源工具类：ResourceUtil
+### [ResourceUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/ResourceUtil.kt "ResourceUtil")：资源工具类
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
 | getResColor()   | 获取颜色  | Context  | /  |
@@ -173,7 +174,7 @@ dependencies {
 
  ------------
 
-### 屏幕相关工具类：ScreenUtil
+### [ScreenUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/ScreenUtil.kt "ScreenUtil")：屏幕相关工具类
 
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
@@ -184,13 +185,12 @@ dependencies {
 | setScreenLandscape()  | 设置横屏  | Activity  | /  |
 | setScreenPortrait()  | 设置竖屏  | Activity  | /  |
 | screenOrientation  | 获取屏幕方向  | Context  | /  |
-| isLandscape  | 是否是横屏  | Context  | /  |
+| isLandscape  | 是否是横屏  | Context  | / |
 | isPortrait  | 是否是竖屏  | Context  | /  |
-
 
  ------------
 
-### SharedPreferences工具类：SpUtil
+### [SpUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/SpUtil.kt "SpUtil")：SharedPreferences工具类
 
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
@@ -214,7 +214,7 @@ dependencies {
 
  ------------
 
-### 状态栏工具类：StatusBarUtil
+### [StatusBarUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/statusbar/StatusBarUtil.kt "StatusBarUtil")：状态栏工具类
 
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
@@ -228,7 +228,7 @@ dependencies {
 
  ------------
 
-### 时间工具类：TimeUtil
+### [TimeUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/TimeUtil.kt "TimeUtil")：时间工具类
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
 | serverFormat  | 服务器返回的时间格式  | Any  | internal，仅用于全局配置  |
@@ -248,7 +248,7 @@ dependencies {
 
  ------------
 
-### Toast工具类：ToastUtil
+### [Toast工具类](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/ToastUtil.kt "Toast工具类")：ToastUtil
 已去除小米手机自带的应用名称。
 
 | 成员名称 | 作用  | 接收类  | 备注  |
@@ -256,10 +256,9 @@ dependencies {
 | shortToast()  | 显示短Toast  | Context  | /  |
 | longToast()  | 显示长Toast  | Context  |  / |
 
-
  ------------
 
-### View工具类：ViewUtil
+### [ViewUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/ViewUtil.kt "ViewUtil")：View工具类
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
 | setGone()  | 将View设置为隐藏  | View | /  |
@@ -271,6 +270,6 @@ dependencies {
 
 ## 感谢
 
-[Anko](https://github.com/Kotlin/anko "Anko")
-[AndroidUtilCode](https://github.com/Blankj/AndroidUtilCode "AndroidUtilCode")
-[Qmui](https://qmuiteam.com/android "Qmui")
+[Anko](https://github.com/Kotlin/anko "Anko")       
+[AndroidUtilCode](https://github.com/Blankj/AndroidUtilCode "AndroidUtilCode")       
+[Qmui](https://qmuiteam.com/android "Qmui") 

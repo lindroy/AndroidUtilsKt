@@ -74,7 +74,6 @@ var Activity.windowBrightness
         window.attributes = window.attributes.apply {
             screenBrightness = if (brightness > 1.0 || brightness < 0) -1.0F else brightness
         }
-
     }
 
 
