@@ -6,13 +6,14 @@ import android.net.Uri
 import android.os.Build
 import android.provider.Settings
 import android.support.annotation.RequiresApi
-import android.util.Log
 import android.widget.SeekBar
 import com.lindroid.androidutilskt.extension.isAutoBrightness
+import com.lindroid.androidutilskt.extension.shortToast
 import com.lindroid.androidutilskt.extension.systemBrightness
 import com.lindroid.androidutilskt.extension.windowBrightness
 import com.lindroid.androidutilsktdemo.R
 import com.lindroid.androidutilsktdemo.base.BaseActivity
+import com.youngfeng.snake.annotations.EnableDragToClose
 import kotlinx.android.synthetic.main.activity_brightness.*
 
 /**
@@ -21,8 +22,9 @@ import kotlinx.android.synthetic.main.activity_brightness.*
  * @function 亮度工具类
  * @Description
  */
+private const val RQ_WRITE_SETTINGS = 100
 
-private const val RQ_WIRTE_SETTINGS = 100
+@EnableDragToClose
 class BrightnessActivity(override val contentViewId: Int = R.layout.activity_brightness) : BaseActivity() {
 
     @SuppressLint("SetTextI18n")
@@ -55,42 +57,51 @@ class BrightnessActivity(override val contentViewId: Int = R.layout.activity_bri
             if (!Settings.System.canWrite(mContext)) {
                 val intent = with(Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS)) {
                     data = Uri.parse("package:$packageName")
-                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+//                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     this
                 }
-                startActivityForResult(intent, RQ_WIRTE_SETTINGS)
+                startActivityForResult(intent, RQ_WRITE_SETTINGS)
             } else {
-                sbSystemBright.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-                    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                        systemBrightness = progress * 255 / 100
-                        tvSystemBright.text = "系统亮度=$systemBrightness"
-                    }
-
-
-                    override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                    }
-
-
-                    override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                    }
-
-                })
+                changeSystemBrightness()
             }
         } else {
 
         }
     }
 
+    private fun changeSystemBrightness() {
+        sbSystemBright.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                systemBrightness = progress * 255 / 100
+                tvSystemBright.text = "系统亮度=$systemBrightness"
+            }
+
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+            }
+
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+            }
+
+        })
+    }
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
-
-        Log.e("Tag","设置成功requestCode：$requestCode")
-        Log.e("Tag","设置成功resultCode：$resultCode")
-        Log.e("Tag","是否授权Settings.System.canWrite(mContext)+：${Settings.System.canWrite(mContext)}")
-
-
+        when (requestCode) {
+            RQ_WRITE_SETTINGS -> {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (Settings.System.canWrite(mContext)) {
+                        shortToast("已获取权限")
+                        changeSystemBrightness()
+                    } else {
+                        shortToast("你拒绝了权限")
+                    }
+                }
+            }
+        }
     }
 
 }
