@@ -10,6 +10,24 @@ import android.view.View
  */
 
 /**
+ * 当前View是否可见
+ */
+val View.isVisible
+    get() = visibility == View.VISIBLE
+
+/**
+ * 当前View是否不可见
+ */
+val View.isInvisible
+    get() = visibility == View.INVISIBLE
+
+/**
+ * 当前View是否隐藏
+ */
+val View.isGone
+    get() = visibility == View.GONE
+
+/**
  * 将View设置为隐藏
  */
 fun View.setGone() {

@@ -7,13 +7,14 @@
     android:orientation="vertical"
     tools:context=".activity.VibratorActivity">
 
-    <include layout="@layout/toolbar"/>
+    <include layout="@layout/toolbar" />
 
     <Button
         android:id="@+id/btnStart"
         android:text="开始振动"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/btnCancel"
         android:text="停止振动"

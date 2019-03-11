@@ -81,7 +81,7 @@ dependencies {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             //如果当前平台版本大于23平台
             if (!Settings.System.canWrite(mContext)) {
-				//未获取权限
+                //未获取权限
                 val intent = with(Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS)) {
                     data = Uri.parse("package:$packageName")
                     this
@@ -272,6 +272,9 @@ dependencies {
 ### [ViewUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/ViewUtil.kt "ViewUtil")：View工具类
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
+| isVisible  | 当前View是否可见  | View | /  |
+| isInvisible | 当前View是否不可见  | View | / |
+| isGone | 当前View是否隐藏  | View | /  |
 | setGone()  | 将View设置为隐藏  | View | /  |
 | setVisible()  | 将View设置为可见  | View |  / |
 | setInVisible()  | 将View设置为不可见  | View |  / |

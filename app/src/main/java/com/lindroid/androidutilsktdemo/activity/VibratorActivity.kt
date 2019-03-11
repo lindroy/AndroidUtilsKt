@@ -22,14 +22,15 @@ import kotlinx.android.synthetic.main.activity_vibrator.*
  */
 
 @EnableDragToClose
-class VibratorActivity(override val contentViewId: Int= com.lindroid.androidutilsktdemo.R.layout.activity_vibrator) : BaseActivity() {
-    private lateinit var vibrator:Vibrator
+class VibratorActivity(override val contentViewId: Int = com.lindroid.androidutilsktdemo.R.layout.activity_vibrator) :
+    BaseActivity() {
+    private lateinit var vibrator: Vibrator
 
     override fun initView() {
         super.initView()
         initToolBar(R.string.util_vibrator)
-         vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-        Log.e("VibratorActivity","是否有振动器：${vibrator.hasVibrator()}")
+        vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        Log.e("VibratorActivity", "是否有振动器：${vibrator.hasVibrator()}")
     }
 
     override fun initOnClick() {
