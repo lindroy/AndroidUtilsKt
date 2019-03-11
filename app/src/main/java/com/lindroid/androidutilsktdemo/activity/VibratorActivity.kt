@@ -3,7 +3,7 @@ package com.lindroid.androidutilsktdemo.activity
 import android.content.Context
 import android.os.Vibrator
 import android.util.Log
-import com.lindroid.androidutilskt.extension.VibratorUtil
+import com.lindroid.androidutilskt.statics.VibratorUtil
 import com.lindroid.androidutilsktdemo.R
 import com.lindroid.androidutilsktdemo.base.BaseActivity
 import com.youngfeng.snake.annotations.EnableDragToClose

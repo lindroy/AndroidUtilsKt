@@ -83,7 +83,6 @@ dependencies {
             if (!Settings.System.canWrite(mContext)) {
                 val intent = with(Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS)) {
                     data = Uri.parse("package:$packageName")
-                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     this
                 }
                 startActivityForResult(intent, 100)

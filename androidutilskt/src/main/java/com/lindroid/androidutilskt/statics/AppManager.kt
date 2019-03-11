@@ -1,4 +1,4 @@
-package com.lindroid.androidutilskt
+package com.lindroid.androidutilskt.statics
 
 import android.app.Activity
 import android.app.ActivityManager
@@ -42,9 +42,9 @@ object AppManager {
 
 
     /**
-    * 获取当前栈顶Activity
+     * 获取当前栈顶Activity
      * @return 如果栈内元素为空，则返回null
-    */
+     */
     @JvmStatic
     fun currentActivity(): Activity? = if (activityStack.isNotEmpty()) activityStack.lastElement() else null
 

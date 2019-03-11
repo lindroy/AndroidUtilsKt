@@ -1,4 +1,4 @@
-package com.lindroid.androidutilskt.extension
+package com.lindroid.androidutilskt.statics
 
 import android.Manifest.permission.VIBRATE
 import android.content.Context
@@ -15,9 +15,18 @@ import com.lindroid.androidutilskt.app.AndUtil
  */
 object VibratorUtil {
 
+    /**
+     * 获取Vibrator实例
+     */
     val vibrator: Vibrator by lazy {
         AndUtil.appContext.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
     }
+
+    /**
+     * 设备是否具有振动器
+     */
+    val hasVibrator
+        get() = vibrator.hasVibrator()
 
     /**
      * 开启振动
@@ -26,7 +35,7 @@ object VibratorUtil {
      */
     @RequiresPermission(VIBRATE)
     fun vibrate(vararg pattern: Long, repeat: Int = -1) {
-        if (vibrator.hasVibrator()) {
+        if (hasVibrator) {
             vibrator.vibrate(pattern, repeat)
         }
     }
@@ -36,7 +45,7 @@ object VibratorUtil {
      */
     @RequiresPermission(VIBRATE)
     fun cancel() {
-        if (vibrator.hasVibrator()) {
+        if (hasVibrator) {
             vibrator.cancel()
         }
     }

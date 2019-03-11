@@ -1,6 +1,6 @@
 package com.lindroid.androidutilsktdemo.activity
 
-import com.lindroid.androidutilskt.IntentUtil
+import com.lindroid.androidutilskt.statics.IntentUtil
 import com.lindroid.androidutilskt.extension.shortToast
 import com.lindroid.androidutilsktdemo.R
 import com.lindroid.androidutilsktdemo.base.BaseActivity

@@ -7,7 +7,7 @@ import android.support.annotation.StringRes
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
-import com.lindroid.androidutilskt.AppManager
+import com.lindroid.androidutilskt.statics.AppManager
 import com.lindroid.androidutilsktdemo.R
 import kotlinx.android.synthetic.main.toolbar.view.*
 
