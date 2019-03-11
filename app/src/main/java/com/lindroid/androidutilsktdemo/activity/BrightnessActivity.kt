@@ -21,6 +21,8 @@ import kotlinx.android.synthetic.main.activity_brightness.*
  * @function 亮度工具类
  * @Description
  */
+
+private const val RQ_WIRTE_SETTINGS = 100
 class BrightnessActivity(override val contentViewId: Int = R.layout.activity_brightness) : BaseActivity() {
 
     @SuppressLint("SetTextI18n")
@@ -56,7 +58,7 @@ class BrightnessActivity(override val contentViewId: Int = R.layout.activity_bri
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     this
                 }
-                startActivityForResult(intent, 100)
+                startActivityForResult(intent, RQ_WIRTE_SETTINGS)
             } else {
                 sbSystemBright.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
                     override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
@@ -74,12 +76,15 @@ class BrightnessActivity(override val contentViewId: Int = R.layout.activity_bri
 
                 })
             }
+        } else {
+
         }
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
 
         Log.e("Tag","设置成功requestCode：$requestCode")
         Log.e("Tag","设置成功resultCode：$resultCode")

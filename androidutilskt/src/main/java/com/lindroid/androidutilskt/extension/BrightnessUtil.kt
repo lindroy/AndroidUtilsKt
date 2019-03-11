@@ -1,8 +1,10 @@
 package com.lindroid.androidutilskt.extension
 
+import android.Manifest
 import android.app.Activity
 import android.provider.Settings
 import android.support.annotation.IntRange
+import android.support.annotation.RequiresPermission
 import com.lindroid.androidutilskt.app.AndUtil
 
 /**
@@ -42,6 +44,7 @@ fun setAutoBrightness(enable: Boolean) = Settings.System.putInt(
  * 系统屏幕亮度，需要WRITE_SETTINGS权限，并在代码中申请系统设置权限
  * 范围为0~255
  */
+
 var systemBrightness
     get() = try {
         Settings.System.getInt(AndUtil.appContext.contentResolver, Settings.System.SCREEN_BRIGHTNESS)
@@ -49,6 +52,7 @@ var systemBrightness
         e.printStackTrace()
         -1
     }
+    @RequiresPermission(Manifest.permission.WRITE_SETTINGS)
     set(@IntRange(from = 0, to = 255) brightness) {
         if (isAutoBrightness) {
             //如果当前是自动亮度，则关闭自动亮度
