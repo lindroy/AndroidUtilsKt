@@ -1,12 +1,12 @@
 package com.lindroid.androidutilskt.statics
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.provider.MediaStore
 import android.provider.Settings
+import android.support.annotation.RequiresPermission
 import com.lindroid.androidutilskt.R
 import com.lindroid.androidutilskt.app.AndUtil
 
@@ -45,7 +45,7 @@ object IntentUtil {
      * 直接拨打电话
      */
     @JvmStatic
-    @SuppressLint("MissingPermission")
+    @RequiresPermission(android.Manifest.permission.CALL_PHONE)
     fun callPhone(context: Context, phoneNumber: String) {
         context.startActivity(Intent(Intent.ACTION_CALL, Uri.parse("tel:$phoneNumber")))
     }
@@ -57,10 +57,11 @@ object IntentUtil {
      * @param browserListener : 是否成功打开浏览器选择面板的监听
      */
     @JvmStatic
+    @JvmOverloads
     fun launchBrowse(
         context: Context,
         url: String,
-        title: String = AndUtil.appContext.getString(R.string.util_intent_choose_browser),
+        title: String = AndUtil.getString(R.string.util_intent_choose_browser),
         browserListener: ((isSuccess: Boolean) -> Unit)? = null
     ) {
         val intentWeb = with(Intent(Intent.ACTION_VIEW)) {

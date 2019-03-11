@@ -18,13 +18,15 @@ object VibratorUtil {
     /**
      * 获取Vibrator实例
      */
+    @JvmStatic
     val vibrator: Vibrator by lazy {
         AndUtil.appContext.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
     }
 
     /**
-     * 设备是否具有振动器
+     * 检测设备是否具有振动器
      */
+    @JvmStatic
     val hasVibrator
         get() = vibrator.hasVibrator()
 
@@ -33,6 +35,8 @@ object VibratorUtil {
      * @param pattern: 设置振动的间歇和持续时间；每一对中的第一个值表示等待的毫秒数，第二个值表示在持续振动的毫秒数。
      * @param repeat : 重复的次数，默认为-1不重复
      */
+    @JvmStatic
+    @JvmOverloads
     @RequiresPermission(VIBRATE)
     fun vibrate(vararg pattern: Long, repeat: Int = -1) {
         if (hasVibrator) {
@@ -43,6 +47,7 @@ object VibratorUtil {
     /**
      * 取消振动
      */
+    @JvmStatic
     @RequiresPermission(VIBRATE)
     fun cancel() {
         if (hasVibrator) {

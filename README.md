@@ -77,17 +77,18 @@ dependencies {
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 ```
 
-```java
+```kotlin
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             //如果当前平台版本大于23平台
             if (!Settings.System.canWrite(mContext)) {
+				//未获取权限
                 val intent = with(Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS)) {
                     data = Uri.parse("package:$packageName")
                     this
                 }
                 startActivityForResult(intent, 100)
             } else {
-               //获取权限后的操作
+               //已经获得了权限
             }
         }
 ```
@@ -248,7 +249,7 @@ dependencies {
 
  ------------
 
-### [Toast工具类](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/ToastUtil.kt "Toast工具类")：ToastUtil
+### [ToastUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/ToastUtil.kt "Toast工具类")：Toast工具类
 已去除小米手机自带的应用名称。
 
 | 成员名称 | 作用  | 接收类  | 备注  |
@@ -257,6 +258,16 @@ dependencies {
 | longToast()  | 显示长Toast  | Context  |  / |
 
  ------------
+
+###  [VibratorUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/statics/VibratorUtil.kt "VibratorUtil")
+| 成员名称 | 作用  | 接收类  | 备注  |
+| ------------ | ------------ | :------------: | :------------: |
+| vibrator  | 获取Vibrator实例 | Any | / |
+| hasVibrator | 检测设备是否具有振动器 | Any  | / |
+| vibrate() | 开启振动 | Any | / |
+| cancel() | 取消振动 | Any | / |
+
+  ------------
 
 ### [ViewUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/ViewUtil.kt "ViewUtil")：View工具类
 | 成员名称 | 作用  | 接收类  | 备注  |
@@ -270,6 +281,6 @@ dependencies {
 
 ## 感谢
 
-[Anko](https://github.com/Kotlin/anko "Anko")       
-[AndroidUtilCode](https://github.com/Blankj/AndroidUtilCode "AndroidUtilCode")       
-[Qmui](https://qmuiteam.com/android "Qmui") 
+[Anko](https://github.com/Kotlin/anko "Anko")      
+[AndroidUtilCode](https://github.com/Blankj/AndroidUtilCode "AndroidUtilCode")      
+[Qmui](https://qmuiteam.com/android "Qmui")     
