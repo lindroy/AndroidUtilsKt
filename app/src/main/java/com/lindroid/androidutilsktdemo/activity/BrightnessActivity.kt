@@ -65,7 +65,7 @@ class BrightnessActivity(override val contentViewId: Int = R.layout.activity_bri
                 changeSystemBrightness()
             }
         } else {
-
+            changeSystemBrightness()
         }
     }
 

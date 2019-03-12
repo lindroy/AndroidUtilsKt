@@ -5,6 +5,7 @@
     <string name="util_intent">Intent工具类(IntentUtil)</string>
     <string name="util_keyboard">软键盘工具类(KeyboardUtil)</string>
     <string name="util_screen">屏幕相关工具类(ScreenUtil)</string>
+    <string name="util_Spannable">Spannable工具类(SpannableUtil)</string>
     <string name="util_status_bar">状态栏相关工具类(StatusBarUtil)</string>
     <string name="util_time">时间工具类(TimeUtil)</string>
     <string name="util_toast">Toast工具类(ToastUtil)</string>

@@ -24,6 +24,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".activity.SpannableActivity"></activity>
         <activity android:name=".activity.VibratorActivity" />
         <activity android:name=".activity.BrightnessActivity" />
         <activity android:name=".activity.ViewActivity" />
