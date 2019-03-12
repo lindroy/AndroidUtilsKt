@@ -9,48 +9,70 @@
 
     <include layout="@layout/toolbar" />
 
-    <TextView
-        android:shadowColor="@android:color/holo_purple"
-        android:layout_margin="10dp"
+    <android.support.v4.widget.NestedScrollView
+        android:fillViewport="true"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:id="@+id/tvSpannable"
-        style="@style/LargeGrayTextStyle" />
+        android:layout_height="0dp">
 
-    <Button
-        android:id="@+id/btnReset"
-        android:text="重置"
-        android:textAllCaps="false"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <LinearLayout
+            android:divider="@android:color/darker_gray"
+            android:showDividers="middle|end"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btnFgColor"
-        android:text="设置前景色"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tvFgColor"
+                style="@style/SpannableTextStyle" />
 
-    <Button
-        android:id="@+id/btnBgColor"
-        android:text="设置背景色"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tvBgColor"
+                style="@style/SpannableTextStyle" />
 
-    <Button
-        android:id="@+id/btnStrike"
-        android:text="设置删除线"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tvStrike"
+                style="@style/SpannableTextStyle" />
 
-    <Button
-        android:id="@+id/btnUnderline"
-        android:text="设置下划线"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tvUnderline"
+                style="@style/SpannableTextStyle" />
 
-    <Button
-        android:id="@+id/btnClickable"
-        android:text="设置点击文本"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tvBold"
+                style="@style/SpannableTextStyle" />
+
+            <TextView
+                android:id="@+id/tvItalic"
+                style="@style/SpannableTextStyle" />
+
+            <TextView
+                android:id="@+id/tvBoldItalic"
+                style="@style/SpannableTextStyle" />
+
+            <TextView
+                android:id="@+id/tvClickable"
+                style="@style/SpannableTextStyle" />
+
+            <TextView
+                android:id="@+id/tvUrl"
+                style="@style/SpannableTextStyle" />
+
+            <TextView
+                android:id="@+id/tvRelativeSize"
+                style="@style/SpannableTextStyle" />
+
+            <TextView
+                android:id="@+id/tvSuperScript"
+                style="@style/SpannableTextStyle" />
+
+            <TextView
+                android:id="@+id/tvSubscript"
+                style="@style/SpannableTextStyle" />
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+
 </LinearLayout>

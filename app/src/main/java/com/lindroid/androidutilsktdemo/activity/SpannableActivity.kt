@@ -15,44 +15,25 @@ import kotlinx.android.synthetic.main.activity_spannable.*
  */
 @EnableDragToClose
 class SpannableActivity(override val contentViewId: Int = R.layout.activity_spannable) : BaseActivity() {
-    private val content = "零一二三四五六七八九"
 
     override fun initView() {
         super.initView()
         initToolBar(R.string.util_Spannable)
-        tvSpannable.text = content
+        tvFgColor.setFgColorSpan("设置文本前景色", Color.BLUE, 4, 7)
+        tvBgColor.setBgColorSpan("设置文本背景色", Color.YELLOW, 4, 7)
+        tvStrike.setStrikethroughSpan("设置文本删除线", 4, 7)
+        tvUnderline.setUnderlineSpan("设置文本下划线", 4, 7)
+        tvBold.setBoldSpan("设置粗体字", 2, 5)
+        tvItalic.setItalicSpan("设置斜体字", 2, 5)
+        tvBoldItalic.setBoldItalicSpan("同时设置粗体斜体", 4, 8)
+        tvClickable.setClickableSpan("设置可点击文本", 2, 5, textColor = Color.RED) { clickString, widget ->
+            shortToast(clickString)
+        }
+        tvUrl.setUrlSpan("设置超链接", "https://www.baidu.com/", 2, 5, true, textColor = Color.BLUE)
+        tvRelativeSize.setRelativeSize("设置文字相对大小", 6, 7, 1.2F)
+        tvSuperScript.setSuperScriptSpan("设置文字上标：210=1024", 8, 10)
+        tvSubscript.setSubscriptSpan("设置文字下标：H20", 8, 9)
     }
 
-
-    override fun initOnClick() {
-        super.initOnClick()
-        btnReset.setOnClickListener { tvSpannable.text = content }
-        btnFgColor.setOnClickListener { setFgColorSpan() }
-        btnBgColor.setOnClickListener { setBgColorSpan() }
-        btnStrike.setOnClickListener { setStrikethroughSpan() }
-        btnUnderline.setOnClickListener { setUnderlineSpan() }
-        btnClickable.setOnClickListener { setClickableSpan() }
-    }
-
-
-    private fun setFgColorSpan() =
-        tvSpannable.setFgColorSpan(content, getResColor(R.color.colorAccent), 0, 3)
-
-    private fun setBgColorSpan() =
-        tvSpannable.setBgColorSpan(content, getResColor(android.R.color.holo_orange_light), 3, 5)
-
-    private fun setStrikethroughSpan() = tvSpannable.setStrikethroughSpan(content, 0, content.length)
-
-    private fun setUnderlineSpan() = tvSpannable.setUnderlineSpan(content, 0, content.length)
-
-    private fun setClickableSpan() = tvSpannable.setClickableSpan(
-        content,
-        5,
-        9,
-        textColor = Color.RED,
-        bgColor = Color.YELLOW
-    ) { clickString, widget ->
-        shortToast(clickString)
-    }
 
 }
