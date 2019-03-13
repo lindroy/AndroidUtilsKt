@@ -1,9 +1,9 @@
 package com.lindroid.androidutilsktdemo;
 
-import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Color;
+import android.widget.TextView;
+import com.lindroid.androidutilskt.extension.SpanUtilKt;
+import com.lindroid.androidutilsktdemo.base.BaseActivity;
 
 /**
  * @author Lin
@@ -11,10 +11,21 @@ import android.support.v7.app.AppCompatActivity;
  * @function 仅用于测试
  * @Description
  */
-public class JavaActivity extends AppCompatActivity {
+public class JavaActivity extends BaseActivity {
+    private TextView textView;
+
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public int getContentViewId() {
+        return R.layout.activity_java;
     }
+
+    @Override
+    public void initView() {
+        super.initView();
+        textView = findViewById(R.id.textView);
+        textView.setTextColor(Color.BLACK);
+        SpanUtilKt.buildSpan(textView, "123456789").setStart(0).setEnd(5).setBgColor(Color.RED).setBold().create();
+    }
+
 
 }

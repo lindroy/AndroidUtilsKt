@@ -69,6 +69,10 @@
             <TextView
                 android:id="@+id/tvSubscript"
                 style="@style/SpannableTextStyle" />
+
+            <TextView
+                android:id="@+id/tvSpBuilder"
+                style="@style/SpannableTextStyle" />
         </LinearLayout>
 
 

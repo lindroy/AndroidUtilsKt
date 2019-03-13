@@ -38,6 +38,7 @@
         <activity android:name=".activity.ScreenActivity" />
         <activity android:name=".activity.ToastActivity" />
         <activity android:name=".activity.AppInfoActivity" />
+        <activity android:name=".JavaActivity" />
         <activity android:name=".activity.CatalogActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
