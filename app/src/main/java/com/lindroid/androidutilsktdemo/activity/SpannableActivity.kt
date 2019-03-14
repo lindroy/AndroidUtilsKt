@@ -42,10 +42,7 @@ class SpannableActivity(override val contentViewId: Int = R.layout.activity_span
             setSubscript()
             create()
         }
-        tvSpBuilder.buildSpan("0123456") {
-            setFgColor(Color.BLUE, 1, 3)
-            setUnderline(0, 7)
-        }
+
     }
 
 
