@@ -44,7 +44,6 @@ fun setAutoBrightness(enable: Boolean) = Settings.System.putInt(
  * 系统屏幕亮度，需要WRITE_SETTINGS权限，并在代码中申请系统设置权限
  * 范围为0~255
  */
-
 var systemBrightness
     get() = try {
         Settings.System.getInt(AndUtil.appContext.contentResolver, Settings.System.SCREEN_BRIGHTNESS)

@@ -319,6 +319,9 @@ class SpanHelper {
          */
         fun setEnd(end: Int) = apply { endIndex = end }
 
+        /**
+         * 同时设置文字特效开始和结束的位置
+         */
         fun setStartEnd(start: Int, end: Int) = apply {
             setStart(start)
             setEnd(end)
@@ -459,7 +462,6 @@ class SpanHelper {
         fun setBoldItalic(start: Int = startIndex, end: Int = endIndex, flag: Int = this.flag) =
             apply { setStyle(Typeface.BOLD_ITALIC, start, end, flag) }
 
-
         /**
          * 设置文字相对大小
          * @param proportion:放缩比例
@@ -479,6 +481,9 @@ class SpanHelper {
         fun setSubscript(start: Int = startIndex, end: Int = endIndex, flag: Int = this.flag) =
             apply { spBuilder.setSpan(SubscriptSpan(), start, end, flag) }
 
+        /**
+         * 设置特效完毕
+         */
         fun create() {
             textView.text = spBuilder
         }

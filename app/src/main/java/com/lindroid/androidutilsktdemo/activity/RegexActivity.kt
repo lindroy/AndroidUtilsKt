@@ -22,16 +22,13 @@ class RegexActivity(override val contentViewId: Int = R.layout.activity_regex) :
 
     private lateinit var map: LinkedHashMap<String, String>
 
-
     private var content: String by Delegates.observable("") { property: KProperty<*>, oldValue: String, newValue: String ->
-        //        content = etRegex.text.toString()
     }
 
     override fun initView() {
         super.initView()
         initToolBar(R.string.util_regex)
         initSpinner()
-
     }
 
 

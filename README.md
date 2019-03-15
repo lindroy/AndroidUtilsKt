@@ -167,6 +167,25 @@ dependencies {
 
  ------------
 
+### [RegexUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/RegexUtil.kt "RegexUtil")
+
+| 成员名称 | 作用  | 接收类  | 备注  |
+| ------------ | ------------ | :------------: | :------------: |
+| isMobile | 校验内地手机号码 | String | / |
+| isEmail | 校验电子邮箱 | String | / |
+| isWebUrl | 校验网络链接 | String | / |
+| isNumber | 校验数字 | String | / |
+| isPositiveInt | 校验正整数 | String | / |
+| isNegativeInt | 校验负整数 | String | / |
+| isLetter | 校验字母 | String | / |
+| isUpperCaseLetter | 校验大写字母 | String | / |
+| isLowerCaseLetter | 校验小写字母 | String | / |
+| isChinese | 校验汉字 | String | / |
+| isQQ | 校验QQ号码 | String | / |
+| isMacaoMobile | 校验澳门手机号码 | String | / |
+
+ ------------
+
 ### [ResourceUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/ResourceUtil.kt "ResourceUtil")：资源工具类
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
@@ -189,6 +208,78 @@ dependencies {
 | isLandscape  | 是否是横屏  | Context  | / |
 | isPortrait  | 是否是竖屏  | Context  | /  |
 
+ ------------
+### [SpanUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/SpanUtil.kt "SpanUtil")
+
+#### 单一特效文字
+如果给某段文字设置的特效只有一种，可以使用如下比较简单的函数：
+
+| 成员名称 | 作用  | 接收类  | 备注  |
+| ------------ | ------------ | :------------: | :------------: |
+| setFgColorSpan() | 设置前景色 | TextView | / |
+| setBgColorSpan() | 设置背景色 | TextView | / |
+| setStrikethroughSpan() | 设置删除线 | TextView | / |
+| setUnderlineSpan() | 设置下划线 | TextView | / |
+| setClickableSpan() | 设置可点击文本 | TextView | / |
+| setStyleSpan() | 设置文字样式 | TextView | / |
+| setBoldSpan() | 设置粗体字 | TextView | / |
+| setItalicSpan() | 设置斜体字 | TextView | / |
+| setBoldItalicSpan() | 设置粗体和斜体字 | TextView | / |
+| setUrlSpan() | 设置超链接 | TextView | / |
+| setRelativeSizeSpan() | 设置文字相对大小 | TextView | / |
+| setSuperScriptSpan() | 设置文字上标 | TextView | / |
+| setSubscriptSpan() | 设置文字下标 | TextView | / |
+
+#### 多种特效文字
+对于需要给同一段文字设置多种特效需求，这里提供了另一套可以链式调用的函数，首先使用如下的扩展函数开启链式调用：
+
+| 成员名称 | 作用  | 接收类  | 备注  |
+| ------------ | ------------ | :------------: | :------------: |
+| buildSpan | 设置前景色 | TextView | / |
+
+然后则可以使用构造类`SpanHelper.Builder`中的函数去设置特效了：
+
+| 函数名称 | 作用 | 备注 |
+| ------------ | ------------ | :------------: |
+| setStart() | 设置文字特效开始的位置下标 | / |
+| setEnd() | 设置文字特效结束的位置下标 | / |
+| setStartEnd() | 同时设置文字特效开始和结束的位置 | / |
+| setFlag() | 设置标识 | 一共4种 |
+| setFgColor() | 设置前景色 | / |
+| setBgColor() | 设置背景色 | / |
+| setStrikethrough() | 设置删除线 | / |
+| setUnderline() | 设置下划线 | / |
+| setClickable() | 设置可点击文本 | / |
+| setUrl() | 设置超链接 | / |
+| setStyle() | 设置文字样式 | / |
+| setBold() | 设置文字为粗体 | / |
+| setItalic() | 设置文字为斜体 | / |
+| setBoldItalic() | 设置文字为粗体和斜体 | / |
+| setRelativeSize() | 设置文字相对大小 | / |
+| setSuperScript() | 设置文字上标 | / |
+| setSubscript() | 设置文字下标 | / |
+| create() | 设置特效完毕 | / |
+
+调用示例：
+
+```kotlin
+tvSuperScript.buildSpan("设置文字上标：210=1024")
+    .setStartEnd(8, 10)
+    .setRelativeSize(0.6F)
+    .setSuperScript()
+    .create()
+```
+
+或者使用DSL的风格：
+
+```kotlin
+tvSubscript.buildSpan("设置文字下标：H20") {
+    setStartEnd(8, 9)
+    setRelativeSize(0.6F)
+    setSubscript()
+    create()
+}
+```
  ------------
 
 ### [SpUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/SpUtil.kt "SpUtil")：SharedPreferences工具类

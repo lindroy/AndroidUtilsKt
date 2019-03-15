@@ -36,6 +36,13 @@ class SpannableActivity(override val contentViewId: Int = R.layout.activity_span
             setRelativeSize(0.6F)
             setSuperScript()
         }.create()
+
+        tvSuperScript.buildSpan("设置文字上标：210=1024")
+            .setStartEnd(8, 10)
+            .setRelativeSize(0.6F)
+            .setSuperScript()
+            .create()
+
         tvSubscript.buildSpan("设置文字下标：H20") {
             setStartEnd(8, 9)
             setRelativeSize(0.6F)

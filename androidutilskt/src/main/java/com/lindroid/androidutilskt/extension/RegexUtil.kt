@@ -8,6 +8,7 @@ import android.util.Patterns
  * @function 正则表达式工具类
  * @Description
  */
+
 private fun String.checkWithRegex(pattern: String): Boolean {
     return Regex(pattern).matches(this)
 }
