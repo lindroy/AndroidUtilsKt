@@ -4,6 +4,7 @@
     <string name="util_brightness">亮度工具类(BrightnessUtil)</string>
     <string name="util_intent">Intent工具类(IntentUtil)</string>
     <string name="util_keyboard">软键盘工具类(KeyboardUtil)</string>
+    <string name="util_regex">正则表达式工具类(RegexUtil)</string>
     <string name="util_screen">屏幕相关工具类(ScreenUtil)</string>
     <string name="util_Spannable">文本效果工具类(SpannableUtil)</string>
     <string name="util_status_bar">状态栏相关工具类(StatusBarUtil)</string>
@@ -11,4 +12,17 @@
     <string name="util_toast">Toast工具类(ToastUtil)</string>
     <string name="util_view">View工具类(ToastUtil)</string>
     <string name="util_vibrator">手机振动工具类(VibratorUtil)</string>
+
+    <string name="regex_mobile">内地手机号码</string>
+    <string name="regex_email">电子邮箱</string>
+    <string name="regex_url">网络链接</string>
+    <string name="regex_number">数字</string>
+    <string name="regex_pos_int">正整数</string>
+    <string name="regex_neg_int">负整数</string>
+    <string name="regex_letter">字母(无关大小)</string>
+    <string name="regex_upper_case">大写字母</string>
+    <string name="regex_lower_case">小写字母</string>
+    <string name="regex_chinese">汉字</string>
+    <string name="regex_qq">小写字母</string>
+    <string name="regex_macao_mobile">澳门手机号码</string>
 </resources>

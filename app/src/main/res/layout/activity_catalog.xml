@@ -10,6 +10,7 @@
 
     <include layout="@layout/toolbar" />
 
+
     <ListView
         android:dividerHeight="0.5dp"
         android:divider="@android:color/darker_gray"

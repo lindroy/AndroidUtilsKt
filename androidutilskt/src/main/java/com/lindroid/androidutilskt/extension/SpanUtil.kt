@@ -127,8 +127,8 @@ fun TextView.setClickableSpan(
 }
 
 /**
- * @param style: @link Typeface
- *
+ * 设置文字样式
+ * @param style:文字样式
  */
 fun TextView.setStyleSpan(
     content: String,
@@ -432,6 +432,7 @@ class SpanHelper {
 
         /**
          * 设置文字样式
+         * @param style:文字样式
          */
         @JvmOverloads
         fun setStyle(style: Int, start: Int = startIndex, end: Int = endIndex, flag: Int = this.flag) =

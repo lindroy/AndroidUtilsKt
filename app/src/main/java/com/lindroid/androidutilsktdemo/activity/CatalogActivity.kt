@@ -24,6 +24,7 @@ class CatalogActivity(override val contentViewId: Int = R.layout.activity_catalo
             R.string.util_brightness to BrightnessActivity::class.java,
             R.string.util_intent to IntentActivity::class.java,
             R.string.util_keyboard to KeyboardActivity::class.java,
+            R.string.util_regex to RegexActivity::class.java,
             R.string.util_Spannable to SpannableActivity::class.java,
             R.string.util_status_bar to StatusBarActivity::class.java,
             R.string.util_screen to ScreenActivity::class.java,
