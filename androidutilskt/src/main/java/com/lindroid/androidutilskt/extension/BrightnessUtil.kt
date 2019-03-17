@@ -17,7 +17,7 @@ import com.lindroid.androidutilskt.app.AndUtil
 /**
  * 是否开启了自动亮度
  */
-val isAutoBrightness
+val isAutoBrightness: Boolean
     get() = try {
         Settings.System.getInt(
             AndUtil.appContext.contentResolver,

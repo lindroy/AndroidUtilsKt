@@ -13,7 +13,9 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -24,7 +26,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.RegexActivity"></activity>
+        <!--<receiver
+            android:name=".receiver.ScreenActionReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>-->
+
+        <activity android:name=".activity.RegexActivity" />
         <activity android:name=".activity.SpannableActivity" />
         <activity android:name=".activity.VibratorActivity" />
         <activity android:name=".activity.BrightnessActivity" />

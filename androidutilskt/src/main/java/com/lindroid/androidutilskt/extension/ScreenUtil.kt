@@ -1,6 +1,7 @@
 package com.lindroid.androidutilskt.extension
 
 import android.app.Activity
+import android.app.KeyguardManager
 import android.content.Context
 import android.content.Context.WINDOW_SERVICE
 import android.content.pm.ActivityInfo
@@ -8,7 +9,9 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.Point
 import android.os.Build
+import android.os.PowerManager
 import android.view.WindowManager
+import com.lindroid.androidutilskt.app.AndUtil
 
 /**
  * @author Lin
@@ -67,11 +70,15 @@ fun Activity.setScreenPortrait() {
     requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 }
 
-/**获取屏幕方向**/
+/**
+ * 获取屏幕方向
+ **/
 val Context.screenOrientation
     get() = resources.configuration.orientation
 
-/**是否是横屏**/
+/**
+ * 是否是横屏
+ */
 val Context.isLandscape: Boolean
     get() = screenOrientation == Configuration.ORIENTATION_LANDSCAPE
 
@@ -81,6 +88,35 @@ val Context.isPortrait: Boolean
     get() = screenOrientation == Configuration.ORIENTATION_PORTRAIT
 
 
+/**
+ * 屏幕是否亮屏
+ */
+val isScreenOn: Boolean
+    get() {
+        val powerManager = AndUtil.appContext.getSystemService(Context.POWER_SERVICE) as PowerManager
+        return if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
+            powerManager.isScreenOn
+        } else {
+            powerManager.isInteractive
+        }
+    }
 
+/**
+ * 屏幕是否暗屏
+ */
+val isScreenOff
+    get() = !isScreenOn
+
+/**
+ * 屏幕是否锁屏
+ */
+val isScreenLocked
+    get() = (AndUtil.appContext.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager).isKeyguardLocked
+
+/**
+ * 屏幕是否解锁
+ */
+val isScreenUnlocked
+    get() = !isScreenLocked
 
 

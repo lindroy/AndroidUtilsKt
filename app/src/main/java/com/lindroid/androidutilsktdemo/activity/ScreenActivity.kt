@@ -1,8 +1,10 @@
 package com.lindroid.androidutilsktdemo.activity
 
+import android.util.Log
 import com.lindroid.androidutilskt.extension.*
 import com.lindroid.androidutilsktdemo.R
 import com.lindroid.androidutilsktdemo.base.BaseActivity
+import com.lindroid.androidutilsktdemo.receiver.ScreenActionReceiver
 import com.youngfeng.snake.annotations.EnableDragToClose
 import kotlinx.android.synthetic.main.activity_screen.*
 
@@ -16,11 +18,18 @@ import kotlinx.android.synthetic.main.activity_screen.*
 
 @EnableDragToClose
 class ScreenActivity(override val contentViewId: Int = R.layout.activity_screen) : BaseActivity() {
+    private lateinit var screenReceiver: ScreenActionReceiver
+
+    override fun initBefore() {
+        super.initBefore()
+        screenReceiver = ScreenActionReceiver(mContext)
+
+    }
 
     override fun initView() {
         super.initView()
         initToolBar(R.string.util_screen)
-
+        screenReceiver.registerScreenActionReceiver()
         //分辨率
         tvResolution.text = "屏幕宽高:${getScreenWidth()}x${getScreenHeight()}"
         //屏幕密度
@@ -32,12 +41,20 @@ class ScreenActivity(override val contentViewId: Int = R.layout.activity_screen)
             true -> "屏幕方向:横屏"
             false -> "屏幕方向:竖屏"
         }
+
+
     }
 
     override fun initOnClick() {
         super.initOnClick()
         btnPortrait.setOnClickListener { setScreenPortrait() }
         btnLandscape.setOnClickListener { setScreenLandscape() }
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        screenReceiver.unRegisterScreenActionReceiver()
     }
 
 

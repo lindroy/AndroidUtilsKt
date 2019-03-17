@@ -5,7 +5,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
-import android.support.annotation.RequiresApi
 import android.widget.SeekBar
 import com.lindroid.androidutilskt.extension.isAutoBrightness
 import com.lindroid.androidutilskt.extension.shortToast
@@ -65,6 +64,7 @@ class BrightnessActivity(override val contentViewId: Int = R.layout.activity_bri
                 changeSystemBrightness()
             }
         } else {
+            //Android6.0以下的系统则直接修改亮度
             changeSystemBrightness()
         }
     }
@@ -87,7 +87,7 @@ class BrightnessActivity(override val contentViewId: Int = R.layout.activity_bri
         })
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
