@@ -95,7 +95,7 @@ dependencies {
 
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
-| isAutoBrightness  | 是否开启了自动亮度是否开启了自动亮度 | Any  |  / |
+| isAutoBrightness  | 是否开启了自动亮度 | Any  |  / |
 | setAutoBrightness()  | 设置是否开启自动亮度  | Any | 设置成功返回true  |
 | systemBrightness |  获取/设置系统屏幕宽度 | Any | 亮度范围为0~255 |
 | windowBrightness | 获取/设置当前窗口亮度  | Any | 亮度范围为0~1.0，1为最亮，默认为-1 |
