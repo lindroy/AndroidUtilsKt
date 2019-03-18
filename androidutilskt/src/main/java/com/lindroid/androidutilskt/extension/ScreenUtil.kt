@@ -12,7 +12,6 @@ import android.os.Build
 import android.os.PowerManager
 import android.provider.Settings
 import android.support.annotation.RequiresPermission
-import android.view.Window
 import android.view.WindowManager
 import com.lindroid.androidutilskt.app.AndUtil
 
@@ -94,6 +93,39 @@ val Context.isLandscape: Boolean
 val Context.isPortrait: Boolean
     get() = screenOrientation == Configuration.ORIENTATION_PORTRAIT
 
+/**
+ * 判断和设置是否全屏，赋值为true设置成全屏
+ */
+var Activity.isFullScreen: Boolean
+    get() {
+        val flag = WindowManager.LayoutParams.FLAG_FULLSCREEN
+        return (window.attributes.flags and flag) == flag
+    }
+    set(value) {
+        if (value) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        } else {
+            window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        }
+    }
+
+/**
+ * 设置全屏
+ */
+fun Activity.setFullScreen() {
+    if (!isFullScreen) {
+        isFullScreen = true
+    }
+}
+
+/**
+ * 设置非全屏
+ */
+fun Activity.setNonFullScreen() {
+    if (isFullScreen) {
+        isFullScreen = false
+    }
+}
 
 /**
  * 屏幕是否亮屏
@@ -127,22 +159,35 @@ val isScreenUnlocked
     get() = !isScreenLocked
 
 /**
- * 设置是否保持屏幕长亮，只对当前窗口起作用
- * @see Window.setKeepScreenOn
- * @param isKeepScreenOn:true则保持长亮
+ * 判断和设置是否保持屏幕常亮，只作用于当前窗口
  */
-fun Activity.setKeepScreenOn(isKeepScreenOn: Boolean) {
-    window.setKeepScreenOn(isKeepScreenOn)
+var Activity.isKeepScreenOn: Boolean
+    get() {
+        val flag = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+        return (window.attributes.flags and flag) == flag
+    }
+    set(value) {
+        when (value) {
+            true -> window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+            false -> window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        }
+    }
+
+/**
+ * 保持屏幕常亮，只作用于当前窗口
+ */
+fun Activity.setKeepScreenOn() {
+    if (!isKeepScreenOn) {
+        isKeepScreenOn = true
+    }
 }
 
 /**
- * 设置是否保持屏幕长亮，只对当前窗口起作用
- * @param isKeepScreenOn:true则保持长亮
+ * 取消保持屏幕常亮，只作用于当前窗口
  */
-fun Window.setKeepScreenOn(isKeepScreenOn: Boolean) {
-    when (isKeepScreenOn) {
-        true -> addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        false -> clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+fun Activity.setNonKeepScreenOn() {
+    if (isKeepScreenOn) {
+        isKeepScreenOn = false
     }
 }
 
@@ -171,5 +216,7 @@ fun setScreenAutoLockTime(time: Int): Boolean =
  */
 @RequiresPermission(android.Manifest.permission.WRITE_SETTINGS)
 fun setScreenAutoLockNever(): Boolean = setScreenAutoLockTime(Int.MAX_VALUE)
+
+
 
 

@@ -26,7 +26,7 @@
 
 ```
 dependencies {
-    implementation 'com.github.Lindroy:AndroidUtilsKt:latest-version'
+    implementation 'com.github.Lindroy:AndroidUtilsKt:1.1.0'
 }
 ```
 
@@ -198,15 +198,28 @@ dependencies {
 
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
-| getScreenWidth()  | 获取屏幕宽度  | Context  | /  |
-| getScreenHeight()  | 获取屏幕高度  | Context  | /  |
-| getScreenDensity()  | 获取屏幕密度  | Any  | /  |
-| getScreenDPI()  | 获取屏幕DPI  | Any  | /  |
+| screenWidth  | 获取屏幕宽度  | Any  | /  |
+| screenHeight | 获取屏幕高度  | Any  | /  |
+| screenDensity | 获取屏幕密度  | Any  | /  |
+| screenDPI | 获取屏幕DPI  | Any  | /  |
 | setScreenLandscape()  | 设置横屏  | Activity  | /  |
 | setScreenPortrait()  | 设置竖屏  | Activity  | /  |
 | screenOrientation  | 获取屏幕方向  | Context  | /  |
 | isLandscape  | 是否是横屏  | Context  | / |
 | isPortrait  | 是否是竖屏  | Context  | /  |
+| isFullScreen | 判断和设置是否全屏 | Activity | 赋值为true设置成全屏 |
+| setFullScreen() | 设置全屏 | Activity | / |
+| setNonFullScreen() | 设置非全屏 | Activity | / |
+| isScreenOn | 屏幕是否亮屏 | Any | / |
+| isScreenOff | 屏幕是否熄灭 | Any | / |
+| isScreenLocked | 屏幕是否锁屏 | Any | / |
+| isScreenUnlocked | 屏幕是否解锁 | Any | / |
+| isKeepScreenOn | 判断和设置是否保持屏幕常亮 | Activity | 只作用于当前窗口 |
+| setKeepScreenOn() | 保持屏幕常亮 | Activity | 只作用于当前窗口 |
+| setNonKeepScreenOn | 取消保持屏幕常亮 | Activity | 只作用于当前窗口 |
+| getScreenAutoLockTime() | 获取自动锁屏时间 | Any | 需要WRITE_SETTINGS权限 |
+| setScreenAutoLockTime() | 设置自动锁屏时间 | Any | 需要WRITE_SETTINGS权限 |
+| setScreenAutoLockNever() | 设置永不自动锁屏 | Any | 需要WRITE_SETTINGS权限 |
 
  ------------
 ### [SpanUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/SpanUtil.kt "SpanUtil")

@@ -25,7 +25,6 @@ public class JavaActivity extends BaseActivity {
         textView = findViewById(R.id.textView);
         textView.setTextColor(Color.BLACK);
         SpanUtilKt.buildSpan(textView, "123456789").setStart(0).setEnd(5).setBgColor(Color.RED).setBold().create();
-
     }
 
 

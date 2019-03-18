@@ -51,18 +51,15 @@ class ScreenActivity(override val contentViewId: Int = com.lindroid.androidutils
         //分辨率
         tvResolution.text = "屏幕宽高:${screenWidth}x${screenHeight}"
         //屏幕密度
-        tvDensity.text = "屏幕密度:${getScreenDensity()}"
+        tvDensity.text = "屏幕密度:$screenDensity"
         //Dpi
-        tvDpi.text = "屏幕Dpi:${getScreenDPI()}"
+        tvDpi.text = "屏幕Dpi:$screenDPI"
         //屏幕方向
         tvOrientation.text = when (isLandscape) {
             true -> "屏幕方向:横屏"
             false -> "屏幕方向:竖屏"
         }
-
         tvLockTime.text = "${getScreenAutoLockTime() / 1000}秒"
-
-//        Log.e("Tag","休眠时间=$sleepTime")
     }
 
     override fun initOnClick() {
@@ -128,10 +125,15 @@ class ScreenActivity(override val contentViewId: Int = com.lindroid.androidutils
                 Log.d(SCREEN_TAG, "解锁")
             }
         })
-        setKeepScreenOn(swScreenOn.isChecked)
+        isKeepScreenOn = swScreenOn.isChecked
         swScreenOn.setOnCheckedChangeListener { buttonView, isChecked ->
             shortToast(if (isChecked) "已设置屏幕长亮" else "已取消屏幕长亮")
-            setKeepScreenOn(isChecked)
+            isKeepScreenOn = isChecked
+        }
+        isFullScreen = swFullScreen.isChecked
+        swFullScreen.setOnCheckedChangeListener { buttonView, isChecked ->
+            shortToast(if (isChecked) "已设置全屏" else "已取消全屏")
+            isFullScreen = isChecked
         }
     }
 
