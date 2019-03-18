@@ -30,6 +30,7 @@ class ScreenActivity(override val contentViewId: Int = R.layout.activity_screen)
     override fun initView() {
         super.initView()
         initToolBar(R.string.util_screen)
+
         screenReceiver.registerScreenActionReceiver()
         //分辨率
         tvResolution.text = "屏幕宽高:${getScreenWidth()}x${getScreenHeight()}"
@@ -65,10 +66,22 @@ class ScreenActivity(override val contentViewId: Int = R.layout.activity_screen)
             override fun onScreenUnLocked() {
                 Log.d(SCREEN_TAG, "解锁")
             }
-
         })
+        setKeepScreenOn(swScreenOn.isChecked)
+        swScreenOn.setOnCheckedChangeListener { buttonView, isChecked ->
+            shortToast(if (isChecked) "已设置屏幕长亮" else "已取消屏幕长亮")
+            setKeepScreenOn(isChecked)
+        }
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+    }
 
     override fun onDestroy() {
         super.onDestroy()

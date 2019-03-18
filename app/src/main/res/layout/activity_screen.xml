@@ -34,15 +34,33 @@
 
     <Button
         android:id="@+id/btnLandscape"
-        android:text="横屏"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="横屏" />
 
     <Button
         android:id="@+id/btnPortrait"
-        android:text="竖屏"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="竖屏" />
+
+    <FrameLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <TextView
+            style="@style/MiddleGrayTextStyle"
+            android:layout_gravity="start|center_vertical"
+            android:text="设置屏幕长亮" />
+
+        <android.support.v7.widget.SwitchCompat
+            android:checked="false"
+            android:id="@+id/swScreenOn"
+            android:layout_gravity="end|center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
 
 
 </LinearLayout>

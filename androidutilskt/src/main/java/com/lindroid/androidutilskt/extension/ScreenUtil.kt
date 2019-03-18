@@ -10,6 +10,7 @@ import android.content.res.Resources
 import android.graphics.Point
 import android.os.Build
 import android.os.PowerManager
+import android.view.Window
 import android.view.WindowManager
 import com.lindroid.androidutilskt.app.AndUtil
 
@@ -102,7 +103,7 @@ val isScreenOn: Boolean
     }
 
 /**
- * 屏幕是否暗屏
+ * 屏幕是否熄灭
  */
 val isScreenOff
     get() = !isScreenOn
@@ -118,5 +119,24 @@ val isScreenLocked
  */
 val isScreenUnlocked
     get() = !isScreenLocked
+
+/**
+ * 设置是否保持屏幕长亮
+ * @param isKeepScreenOn:true则保持长亮
+ */
+fun Activity.setKeepScreenOn(isKeepScreenOn: Boolean) {
+    window.setKeepScreenOn(isKeepScreenOn)
+}
+
+/**
+ * 设置是否保持屏幕长亮
+ * @param isKeepScreenOn:true则保持长亮
+ */
+fun Window.setKeepScreenOn(isKeepScreenOn: Boolean) {
+    when (isKeepScreenOn) {
+        true -> addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        false -> clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+    }
+}
 
 
