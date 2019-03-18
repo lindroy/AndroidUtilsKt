@@ -43,8 +43,6 @@ class RegexActivity(override val contentViewId: Int = R.layout.activity_regex) :
                 val key = map.keys.toList()[position]
                 content = map[key] ?: ""
                 etRegex.setText(content)
-
-
             }
         }
 

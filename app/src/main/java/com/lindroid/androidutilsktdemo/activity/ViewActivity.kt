@@ -23,13 +23,13 @@ class ViewActivity(override val contentViewId: Int = R.layout.activity_view) : B
     override fun initView() {
         super.initView()
         initToolBar(R.string.util_view)
-        tvWidth.text = "设置View的宽度：${getScreenWidth()}px"
+        tvWidth.text = "设置View的宽度：${screenWidth}px"
         tvHeight.text = "设置View的高度：${(dp2px(150))}px"
         //动态设置宽度
         sbWidth.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                tvWidth.text = "设置View的宽度：${(getScreenWidth() * progress) / 100}px"
-                frameLayout.setWidth((getScreenWidth() * progress) / 100)
+                tvWidth.text = "设置View的宽度：${(screenWidth * progress) / 100}px"
+                frameLayout.setWidth((screenWidth * progress) / 100)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {

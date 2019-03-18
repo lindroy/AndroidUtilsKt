@@ -45,9 +45,10 @@
         android:text="竖屏" />
 
     <FrameLayout
-
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        android:layout_height="50dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp">
 
         <TextView
             style="@style/MiddleGrayTextStyle"
@@ -55,12 +56,42 @@
             android:text="设置屏幕长亮" />
 
         <android.support.v7.widget.SwitchCompat
-            android:checked="false"
             android:id="@+id/swScreenOn"
-            android:layout_gravity="end|center_vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:checked="false" />
     </FrameLayout>
 
+    <View
+        android:background="@color/color_divider"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp" />
 
+    <FrameLayout
+        android:id="@+id/flLockTime"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp">
+
+        <TextView
+            style="@style/MiddleGrayTextStyle"
+            android:layout_gravity="start|center_vertical"
+            android:text="点击设置自动锁屏时间" />
+
+        <TextView
+            android:id="@+id/tvLockTime"
+            style="@style/MiddleGrayTextStyle"
+            android:layout_gravity="end|center_vertical"
+            android:text="跟随系统" />
+    </FrameLayout>
+
+    <View
+        android:background="@color/color_divider"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp" />
 </LinearLayout>

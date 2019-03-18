@@ -10,6 +10,8 @@ import android.content.res.Resources
 import android.graphics.Point
 import android.os.Build
 import android.os.PowerManager
+import android.provider.Settings
+import android.support.annotation.RequiresPermission
 import android.view.Window
 import android.view.WindowManager
 import com.lindroid.androidutilskt.app.AndUtil
@@ -24,38 +26,42 @@ import com.lindroid.androidutilskt.app.AndUtil
 /**
  * 获取屏幕宽度
  */
-fun Context.getScreenWidth(): Int {
-    val wm = getSystemService(WINDOW_SERVICE) as WindowManager
-    val point = Point()
-    when (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-        true -> wm.defaultDisplay.getRealSize(point)
-        false -> wm.defaultDisplay.getSize(point)
+val screenWidth: Int
+    get() {
+        val wm = AndUtil.appContext.getSystemService(WINDOW_SERVICE) as WindowManager
+        val point = Point()
+        when (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            true -> wm.defaultDisplay.getRealSize(point)
+            false -> wm.defaultDisplay.getSize(point)
+        }
+        return point.x
     }
-    return point.x
-}
 
 /**
  * 获取屏幕高度
  */
-fun Context.getScreenHeight(): Int {
-    val wm = getSystemService(WINDOW_SERVICE) as WindowManager
-    val point = Point()
-    when (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-        true -> wm.defaultDisplay.getRealSize(point)
-        false -> wm.defaultDisplay.getSize(point)
+val screenHeight: Int
+    get() {
+        val wm = AndUtil.appContext.getSystemService(WINDOW_SERVICE) as WindowManager
+        val point = Point()
+        when (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            true -> wm.defaultDisplay.getRealSize(point)
+            false -> wm.defaultDisplay.getSize(point)
+        }
+        return point.y
     }
-    return point.y
-}
 
 /**
  * 获取屏幕密度
  */
-fun getScreenDensity() = Resources.getSystem().displayMetrics.density
+val screenDensity
+    get() = Resources.getSystem().displayMetrics.density
 
 /**
  * 获取屏幕DPI
  */
-fun getScreenDPI() = Resources.getSystem().displayMetrics.densityDpi
+val screenDPI
+    get() = Resources.getSystem().displayMetrics.densityDpi
 
 /**
  * 设置横屏
@@ -121,7 +127,8 @@ val isScreenUnlocked
     get() = !isScreenLocked
 
 /**
- * 设置是否保持屏幕长亮
+ * 设置是否保持屏幕长亮，只对当前窗口起作用
+ * @see Window.setKeepScreenOn
  * @param isKeepScreenOn:true则保持长亮
  */
 fun Activity.setKeepScreenOn(isKeepScreenOn: Boolean) {
@@ -129,7 +136,7 @@ fun Activity.setKeepScreenOn(isKeepScreenOn: Boolean) {
 }
 
 /**
- * 设置是否保持屏幕长亮
+ * 设置是否保持屏幕长亮，只对当前窗口起作用
  * @param isKeepScreenOn:true则保持长亮
  */
 fun Window.setKeepScreenOn(isKeepScreenOn: Boolean) {
@@ -138,5 +145,31 @@ fun Window.setKeepScreenOn(isKeepScreenOn: Boolean) {
         false -> clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
     }
 }
+
+/**
+ * 获取自动锁屏时间
+ * @throws Settings.SettingNotFoundException
+ */
+fun getScreenAutoLockTime() = try {
+    Settings.System.getInt(AndUtil.appContext.contentResolver, Settings.System.SCREEN_OFF_TIMEOUT)
+} catch (e: Settings.SettingNotFoundException) {
+    e.printStackTrace()
+    -1
+}
+
+/**
+ * 设置自动锁屏时间
+ * @return 设置成功返回true
+ */
+@RequiresPermission(android.Manifest.permission.WRITE_SETTINGS)
+fun setScreenAutoLockTime(time: Int): Boolean =
+    Settings.System.putInt(AndUtil.appContext.contentResolver, Settings.System.SCREEN_OFF_TIMEOUT, time)
+
+/**
+ * 设置永不自动锁屏，即自动锁屏时间为Int.MAX_VALUE
+ * @return 设置成功返回true
+ */
+@RequiresPermission(android.Manifest.permission.WRITE_SETTINGS)
+fun setScreenAutoLockNever(): Boolean = setScreenAutoLockTime(Int.MAX_VALUE)
 
 

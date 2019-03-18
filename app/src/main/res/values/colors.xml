@@ -3,4 +3,6 @@
     <color name="colorPrimary">#1976D2</color>
     <color name="colorPrimaryDark">#1976D2</color>
     <color name="colorAccent">#0288D1</color>
+
+    <color name="color_divider">#CDCDCD</color>
 </resources>

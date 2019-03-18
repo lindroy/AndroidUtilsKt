@@ -25,4 +25,6 @@
     <string name="regex_chinese">汉字</string>
     <string name="regex_qq">小写字母</string>
     <string name="regex_macao_mobile">澳门手机号码</string>
+    <string name="permission_refuse">你拒绝了权限</string>
+    <string name="permission_granted">已获取权限</string>
 </resources>
