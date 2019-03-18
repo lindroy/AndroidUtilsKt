@@ -4,6 +4,7 @@ import android.util.Log
 import com.lindroid.androidutilskt.extension.*
 import com.lindroid.androidutilsktdemo.R
 import com.lindroid.androidutilsktdemo.base.BaseActivity
+import com.lindroid.androidutilsktdemo.receiver.SCREEN_TAG
 import com.lindroid.androidutilsktdemo.receiver.ScreenActionReceiver
 import com.youngfeng.snake.annotations.EnableDragToClose
 import kotlinx.android.synthetic.main.activity_screen.*
@@ -41,14 +42,31 @@ class ScreenActivity(override val contentViewId: Int = R.layout.activity_screen)
             true -> "屏幕方向:横屏"
             false -> "屏幕方向:竖屏"
         }
-
-
     }
 
     override fun initOnClick() {
         super.initOnClick()
         btnPortrait.setOnClickListener { setScreenPortrait() }
         btnLandscape.setOnClickListener { setScreenLandscape() }
+    }
+
+    override fun initOnListener() {
+        super.initOnListener()
+        //监听屏幕点亮和解锁
+        screenReceiver.setScreenActionListener(object : ScreenActionReceiver.ScreenActionListener {
+            override fun onScreenOn() {
+                Log.d(SCREEN_TAG, "亮屏")
+            }
+
+            override fun onScreenOff() {
+                Log.d(SCREEN_TAG, "暗屏")
+            }
+
+            override fun onScreenUnLocked() {
+                Log.d(SCREEN_TAG, "解锁")
+            }
+
+        })
     }
 
 

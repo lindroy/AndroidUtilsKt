@@ -10,27 +10,28 @@ import com.lindroid.androidutilskt.extension.isScreenOff
 import com.lindroid.androidutilskt.extension.isScreenOn
 import com.lindroid.androidutilskt.extension.isScreenUnlocked
 
-private const val SCREEN_TAG = "ScreenTag"
+const val SCREEN_TAG = "ScreenTag"
 
 class ScreenActionReceiver(private val mContext: Context) : BroadcastReceiver() {
     private var isRegistered = false
+
+    private var screenActionListener: ScreenActionListener? = null
 
     override fun onReceive(context: Context, intent: Intent) {
 
         when (intent.action) {
             Intent.ACTION_SCREEN_ON -> {
-                //开屏
-                Log.d(SCREEN_TAG, "亮屏")
+                //亮屏
+                screenActionListener?.onScreenOn()
             }
             Intent.ACTION_SCREEN_OFF -> {
-                //锁屏
-                Log.d(SCREEN_TAG, "锁屏")
+                //暗屏
+                screenActionListener?.onScreenOff()
 
             }
             Intent.ACTION_USER_PRESENT -> {
-                //解屏
-                Log.d(SCREEN_TAG, "解屏")
-
+                //解锁
+                screenActionListener?.onScreenUnLocked()
             }
         }
         Log.d(SCREEN_TAG, "isScreenLocked：$isScreenLocked")
@@ -56,7 +57,18 @@ class ScreenActionReceiver(private val mContext: Context) : BroadcastReceiver() 
         Log.d(SCREEN_TAG, "解绑锁屏监听广播")
         if (isRegistered) {
             isRegistered = false
+            screenActionListener = null
             mContext.unregisterReceiver(this)
         }
+    }
+
+    fun setScreenActionListener(listener: ScreenActionListener) {
+        screenActionListener = listener
+    }
+
+    interface ScreenActionListener {
+        fun onScreenOn()
+        fun onScreenOff()
+        fun onScreenUnLocked()
     }
 }

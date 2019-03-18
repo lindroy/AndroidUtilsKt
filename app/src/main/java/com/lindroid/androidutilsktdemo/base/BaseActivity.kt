@@ -30,8 +30,11 @@ abstract class BaseActivity : AppCompatActivity() {
         initBefore()
         setContentView(contentViewId)
         initView()
-        initOnClick()
+        initOnListener()
+    }
 
+    open fun initOnListener() {
+        initOnClick()
     }
 
 
