@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.SDCardActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <TextView
+        android:id="@+id/tvMounted"
+        style="@style/LargeGrayTextStyle" />
+
+    <TextView
+        android:id="@+id/tvPath"
+        style="@style/LargeGrayTextStyle" />
+
+    <TextView
+        android:id="@+id/tvTotalSize"
+        style="@style/LargeGrayTextStyle" />
+
+    <TextView
+        android:id="@+id/tvAvailableSize"
+        style="@style/LargeGrayTextStyle" />
+</LinearLayout>

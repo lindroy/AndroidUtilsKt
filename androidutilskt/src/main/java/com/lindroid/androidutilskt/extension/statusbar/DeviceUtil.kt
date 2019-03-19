@@ -1,8 +1,10 @@
 package com.lindroid.androidutilskt.extension.statusbar
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.net.wifi.WifiManager
+import android.support.annotation.RequiresPermission
 import android.text.TextUtils
 import android.util.Log
 import java.util.*
@@ -84,6 +86,7 @@ val isFlyme6Above: Boolean
 /**
  * 获取Mac地址
  */
+@RequiresPermission(Manifest.permission.ACCESS_WIFI_STATE)
 @SuppressLint("HardwareIds")
 fun Context.getMac(): String {
     val wifiManager: WifiManager = applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager

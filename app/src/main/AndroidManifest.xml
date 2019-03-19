@@ -26,11 +26,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <!--<receiver
+        <activity android:name=".activity.SDCardActivity"></activity>
+        <!--
+        <receiver
             android:name=".receiver.ScreenActionReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>-->
-
+            android:exported="true"></receiver>
+        -->
         <activity android:name=".activity.RegexActivity" />
         <activity android:name=".activity.SpannableActivity" />
         <activity android:name=".activity.VibratorActivity" />
