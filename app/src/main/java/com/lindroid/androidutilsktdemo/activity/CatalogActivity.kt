@@ -52,5 +52,7 @@ class CatalogActivity(override val contentViewId: Int = R.layout.activity_catalo
             }.values.toList()
             startActivity(rightMap[0])
         }
+
     }
+
 }

@@ -1,3 +1,4 @@
+@file:JvmName("SpUtil")
 package com.lindroid.androidutilskt.extension
 
 import android.annotation.SuppressLint
