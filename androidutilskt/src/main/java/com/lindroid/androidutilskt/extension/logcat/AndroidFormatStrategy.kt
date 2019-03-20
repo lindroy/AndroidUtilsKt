@@ -92,7 +92,7 @@ class AndroidFormatStrategy(builder: Builder) : FormatStrategy {
                 append(HORIZONTAL_LINE)
                 append(' ')
                 append(logLevel)
-                append(getSimpleClassName(trace[stackIndex].getClassName()))
+                append(getSimpleClassName(trace[stackIndex].className))
                 append(".")
                 append(trace[stackIndex].methodName)
                 append(" ")
@@ -148,7 +148,7 @@ class AndroidFormatStrategy(builder: Builder) : FormatStrategy {
     }
 
     class Builder {
-        var methodCount = 0
+        var methodCount = 1
         var methodOffset = 3
         var isShowThread = true
         var isShowGlobalTag = false

@@ -8,6 +8,7 @@ package com.lindroid.androidutilskt.extension.logcat
  * @function 日志工具类
  * @Description
  */
+
 private val printer: LogPrinter by lazy {
     LogPrinter()
 }
@@ -15,7 +16,6 @@ private val printer: LogPrinter by lazy {
 fun addLogAdapter(adapter: LogAdapter) {
     printer.addAdapter(adapter)
 }
-
 
 fun String.d(vararg args: Any) {
     printer.d(null, this, args)
@@ -32,4 +32,10 @@ fun Any?.d() {
 fun Any?.dt(tag: String) {
     printer.d(tag, content = this)
 }
+
+fun String.i(vararg args: Any) {
+    printer.i(null, this, args)
+}
+
+
 
