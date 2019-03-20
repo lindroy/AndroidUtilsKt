@@ -2,6 +2,7 @@ package com.lindroid.androidutilskt.extension.logcat
 
 import android.util.Log
 
+
 /**
  * @author Lin
  * @date 2019/3/19
@@ -11,6 +12,7 @@ import android.util.Log
 private const val DEFAULT_TAG = "DEFAULT_TAG"
 
 class LogStrategy {
+
     fun log(@LogLevel level: Int, tag: String?, message: String) {
         Log.println(level, tag ?: DEFAULT_TAG, message)
     }

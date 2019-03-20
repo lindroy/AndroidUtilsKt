@@ -6,7 +6,7 @@ package com.lindroid.androidutilskt.extension.logcat
  * @function
  * @Description
  */
-class AndroidLogAdapter : LogAdapter {
+open class AndroidLogAdapter : LogAdapter {
 
     constructor()
 
@@ -14,7 +14,7 @@ class AndroidLogAdapter : LogAdapter {
         this.formatStrategy = formatStrategy
     }
 
-    private var formatStrategy: FormatStrategy = AndroidFormatStrategy.build()
+    private var formatStrategy: FormatStrategy = AndroidFormatStrategy.newBuilder().build()
 
     /**
      * 设置是否打印日志

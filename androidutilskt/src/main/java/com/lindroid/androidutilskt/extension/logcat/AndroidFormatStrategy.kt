@@ -1,5 +1,7 @@
 package com.lindroid.androidutilskt.extension.logcat
 
+import android.util.Log
+
 /**
  * @author Lin
  * @date 2019/3/20
@@ -35,14 +37,13 @@ class AndroidFormatStrategy(builder: Builder) : FormatStrategy {
     private var logTag: String? = builder.tag
 
     companion object {
-        fun build() = Builder().build()
+        fun newBuilder() = Builder()
     }
 
     override fun log(@LogLevel level: Int, tag: String?, message: String) {
-        if (tag.isNullOrEmpty() || this.logTag == tag) {
-            return
+        if (!tag.isNullOrEmpty() && this.logTag != tag) {
+            this.logTag = if (isShowGlobalTag) "${this.logTag}-tag" else tag
         }
-        this.logTag = if (isShowGlobalTag) "${this.logTag}-tag" else tag
         logTopBorder(level, logTag)
         logHeaderContent(level, logTag)
 
@@ -131,10 +132,12 @@ class AndroidFormatStrategy(builder: Builder) : FormatStrategy {
         while (i < trace.size) {
             val e = trace[i]
             val name = e.className
-            if (name != LogPrinter::class.java.name && name != d()::class.java.name) {
+//                    && name != d()::class.java.name 会引起死循环，内存泄露
+            if (name != LogPrinter::class.java.name) {
                 return --i
             }
             i++
+            Log.e("Tag", "i=$i")
         }
         return -1
     }
@@ -145,14 +148,19 @@ class AndroidFormatStrategy(builder: Builder) : FormatStrategy {
     }
 
     class Builder {
-        var methodCount = 2
-        var methodOffset = 0
+        var methodCount = 0
+        var methodOffset = 3
         var isShowThread = true
         var isShowGlobalTag = false
         var logStrategy: LogStrategy? = null
         var tag: String? = "LogUtil"
 
-        fun build() = AndroidFormatStrategy(this)
+        fun build(): AndroidFormatStrategy {
+            if (logStrategy == null) {
+                logStrategy = LogStrategy()
+            }
+            return AndroidFormatStrategy(this)
+        }
 
         fun setMethodCount(count: Int) = this.apply { methodCount = count }
 

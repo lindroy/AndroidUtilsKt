@@ -1,6 +1,7 @@
 package com.lindroid.androidutilskt.extension.logcat
 
 import android.support.annotation.IntDef
+import android.util.Log
 
 /**
  * @author Lin
@@ -9,12 +10,12 @@ import android.support.annotation.IntDef
  * @Description
  */
 
-const val VERBOSE = 1
-const val DEBUG = 2
-const val INFO = 3
-const val WARN = 4
-const val ERROR = 5
-const val ASSERT = 6
+const val VERBOSE = Log.VERBOSE
+const val DEBUG = Log.DEBUG
+const val INFO = Log.INFO
+const val WARN = Log.WARN
+const val ERROR = Log.ERROR
+const val ASSERT = Log.ASSERT
 
 @IntDef(VERBOSE, DEBUG, INFO, WARN, ERROR, ASSERT)
 @Target(AnnotationTarget.FIELD, AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.TYPE)
