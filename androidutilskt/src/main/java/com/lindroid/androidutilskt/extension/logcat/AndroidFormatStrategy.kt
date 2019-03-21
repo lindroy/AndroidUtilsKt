@@ -84,16 +84,17 @@ class AndroidFormatStrategy(builder: Builder) : FormatStrategy {
             realMethodCount = trace.size - stackOffset - 1
             Log.e("Tag", "realMethodCount=$realMethodCount")
         }
-
-        for ((i, item) in (realMethodCount downTo 1).withIndex()) {
-            val stackIndex = i + stackOffset
+        //在方法前面添加空格，层次更为分明
+        var levelSpace = ""
+        for (item in (realMethodCount downTo 1)) {
+            val stackIndex = item + stackOffset
             if (stackIndex >= trace.size) {
                 continue
             }
             val builder = with(StringBuilder()) {
                 append(HORIZONTAL_LINE)
                 append(' ')
-                append("")
+                append(levelSpace)
                 append(getSimpleClassName(trace[stackIndex].className))
                 append(".")
                 append(trace[stackIndex].methodName)
@@ -105,8 +106,13 @@ class AndroidFormatStrategy(builder: Builder) : FormatStrategy {
                 append(")")
                 this
             }
+            levelSpace = "$levelSpace "
             logStrategy?.log(logLevel, tag, builder.toString())
         }
+
+        /*  for ((i, item) in (realMethodCount downTo 1).withIndex()) {
+
+          }*/
     }
 
     private fun logTopBorder(logLevel: Int, tag: String?) {
@@ -133,13 +139,10 @@ class AndroidFormatStrategy(builder: Builder) : FormatStrategy {
         var i = MIN_STACK_OFFSET
         while (i < trace.size) {
             val e = trace[i]
-            val name = e.className
-//                    && name != d()::class.java.name 会引起死循环，内存泄露
-            if (name != LogPrinter::class.java.name) {
+            if (e.className != LogPrinter::class.java.name && !e.fileName.contains("LogUtil")) {
                 return --i
             }
             i++
-//            Log.e("Tag", "i=$i")
         }
         return -1
     }
@@ -151,7 +154,7 @@ class AndroidFormatStrategy(builder: Builder) : FormatStrategy {
 
     class Builder {
         var methodCount = 2
-        var methodOffset = 1
+        var methodOffset = 0
         var isShowThread = true
         var isShowGlobalTag = false
         var logStrategy: LogcatLogStrategy? = null
