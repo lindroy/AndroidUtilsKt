@@ -5,6 +5,7 @@ import com.lindroid.androidutilskt.app.AndUtil
 import com.squareup.leakcanary.LeakCanary
 import com.youngfeng.snake.Snake
 
+
 /**
  * @author Lin
  * @date 2019/2/27
@@ -33,6 +34,12 @@ class App : Application() {
             return
         }
         LeakCanary.install(this)
+
+        /* val formatStrategy = PrettyFormatStrategy.newBuilder()
+             .methodCount(2)
+             .methodOffset(0)
+             .build()
+         Logger.addLogAdapter(AndroidLogAdapter(formatStrategy))*/
 
     }
 }

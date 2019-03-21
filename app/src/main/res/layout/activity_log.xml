@@ -9,15 +9,97 @@
 
     <include layout="@layout/toolbar" />
 
-    <Button
-        android:text="默认Tag的日志"
-        android:id="@+id/btnGlobalTag"
+    <android.support.v4.widget.NestedScrollView
+        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
 
-    <Button
-        android:text="一次性Tag的日志"
-        android:id="@+id/btnOneUseTag"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:textAllCaps="false"
+                android:text="默认Tag的日志"
+                android:id="@+id/btnGlobalTag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:textAllCaps="false"
+                android:text="一次性Tag的日志"
+                android:id="@+id/btnOneUseTag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:textAllCaps="false"
+                android:text="打印StringFormat"
+                android:id="@+id/btnStringFormat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:textAllCaps="false"
+                android:text="打印数组"
+                android:id="@+id/btnArray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:textAllCaps="false"
+                android:text="打印List集合"
+                android:id="@+id/btnList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:textAllCaps="false"
+                android:text="打印Map集合"
+                android:id="@+id/btnMap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:textAllCaps="false"
+                android:text="打印json"
+                android:id="@+id/btnJson"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:textAllCaps="false"
+                android:text="打印xml"
+                android:id="@+id/btnXml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:text="打印超长字符"
+                android:id="@+id/btnLongContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:text="打印超长Json"
+                android:id="@+id/btnLongJson"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:text="打印错误日志并抛出异常"
+                android:id="@+id/btnError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:text="Logger日志"
+                android:id="@+id/btnLogger"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
 </LinearLayout>
