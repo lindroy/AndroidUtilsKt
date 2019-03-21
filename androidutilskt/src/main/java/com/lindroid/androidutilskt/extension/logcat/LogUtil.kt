@@ -20,6 +20,13 @@ fun addLogAdapter(adapter: LogAdapter) {
     printer.addAdapter(adapter)
 }
 
+/**
+ * 如果是在Activity或者Fragment中调用了addLogAdapter（）方法，那么在其销毁时要调用clearLogAdapter清理掉。
+ */
+fun clearLogAdapters() {
+    printer.clearLogAdapters()
+}
+
 fun String.d(vararg args: Any?) {
     printer.d(null, this, *args)
 }

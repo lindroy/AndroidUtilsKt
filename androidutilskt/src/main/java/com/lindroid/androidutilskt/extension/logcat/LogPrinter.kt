@@ -21,7 +21,6 @@ import javax.xml.transform.stream.StreamSource
  */
 class LogPrinter : Printer {
 
-
     private val logAdapters: ArrayList<LogAdapter> = ArrayList()
 
     override fun d(tag: String?, content: Any?) {

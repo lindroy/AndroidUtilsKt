@@ -3,7 +3,6 @@ package com.lindroid.androidutilsktdemo;
 import android.graphics.Color;
 import android.widget.TextView;
 import com.lindroid.androidutilskt.extension.SpanUtilKt;
-import com.lindroid.androidutilskt.extension.logcat.UtilKt;
 import com.lindroid.androidutilsktdemo.base.BaseActivity;
 
 /**

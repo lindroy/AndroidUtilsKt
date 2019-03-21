@@ -1,6 +1,5 @@
 package com.lindroid.androidutilskt.extension.logcat
 
-import android.util.Log
 import com.lindroid.androidutilskt.extension.logcat.logstrategy.LogcatLogStrategy
 
 /**
@@ -43,7 +42,7 @@ class AndroidFormatStrategy(builder: Builder) : FormatStrategy {
 
     override fun log(@LogLevel level: Int, tag: String?, message: String) {
         if (!tag.isNullOrEmpty() && this.logTag != tag) {
-            this.logTag = if (isShowGlobalTag) "${this.logTag}-tag" else tag
+            this.logTag = if (isShowGlobalTag) "${this.logTag}-$tag" else tag
         }
         logTopBorder(level, logTag)
         logHeaderContent(level, logTag)
@@ -82,7 +81,6 @@ class AndroidFormatStrategy(builder: Builder) : FormatStrategy {
         var realMethodCount = methodCount
         if (realMethodCount + stackOffset > trace.size) {
             realMethodCount = trace.size - stackOffset - 1
-            Log.e("Tag", "realMethodCount=$realMethodCount")
         }
         //在方法前面添加空格，层次更为分明
         var levelSpace = ""
@@ -109,10 +107,6 @@ class AndroidFormatStrategy(builder: Builder) : FormatStrategy {
             levelSpace = "$levelSpace "
             logStrategy?.log(logLevel, tag, builder.toString())
         }
-
-        /*  for ((i, item) in (realMethodCount downTo 1).withIndex()) {
-
-          }*/
     }
 
     private fun logTopBorder(logLevel: Int, tag: String?) {

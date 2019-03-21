@@ -36,15 +36,8 @@ class LogActivity(override val contentViewId: Int = R.layout.activity_log) : Bas
         super.initView()
         initToolBar(R.string.util_log)
         btnGlobalTag.setOnClickListener { "默认tag的日志".i() }
-        btnOneUseTag.setOnClickListener { "带tag的日志".vt("MyLog", "", "") }
-        btnStringFormat.setOnClickListener {
-            //            String.format( "今天是%s","2019.03.21").i()
-            "今天是%s".d("2019.03.21")
-            "今天是%s".e("2019.03.21")
-            "今天是%s".w("2019.03.21")
-            "今天是%s".i("2019.03.21")
-            "今天是%s".v("2019.03.21")
-        }
+        btnOneUseTag.setOnClickListener { "带tag的日志".vt("MyLog") }
+        btnStringFormat.setOnClickListener { "今天是%s".i("2019.03.21") }
         btnArray.setOnClickListener { charArrayOf('a', 'b', 'c', 'd', 'e', 'f', 'g').d() }
         btnList.setOnClickListener { listOf("魏", "蜀", "吴").d() }
         btnMap.setOnClickListener { mapOf("魏" to "曹操", "蜀" to "刘备", "吴" to "孙权").d() }
@@ -53,8 +46,10 @@ class LogActivity(override val contentViewId: Int = R.layout.activity_log) : Bas
         btnLongContent.setOnClickListener { longContent.w() }
         btnLongJson.setOnClickListener { longContent.json() }
         btnError.setOnClickListener { "这是一个空指针异常".e(NullPointerException()) }
+    }
 
-
-//        "dd".e(1,2)
+    override fun onDestroy() {
+        super.onDestroy()
+        clearLogAdapters()
     }
 }
