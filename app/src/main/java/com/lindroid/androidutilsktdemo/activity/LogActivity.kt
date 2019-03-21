@@ -23,20 +23,18 @@ class LogActivity(override val contentViewId: Int = R.layout.activity_log) : Bas
 
     override fun initBefore() {
         super.initBefore()
-//        val strategy = AndroidFormatStrategy.newBuilder().build()
         addLogAdapter(object : AndroidLogAdapter() {
             override fun isLoggable(level: Int, tag: String?): Boolean {
                 return true
             }
         })
-
     }
 
     override fun initView() {
         super.initView()
         initToolBar(R.string.util_log)
         btnGlobalTag.setOnClickListener { "默认tag的日志".i() }
-        btnOneUseTag.setOnClickListener { "带tag的日志".vt("MyLog") }
+        btnOneUseTag.setOnClickListener { "临时tag的日志".vt("MyLog") }
         btnStringFormat.setOnClickListener { "今天是%s".i("2019.03.21") }
         btnArray.setOnClickListener { charArrayOf('a', 'b', 'c', 'd', 'e', 'f', 'g').d() }
         btnList.setOnClickListener { listOf("魏", "蜀", "吴").d() }
@@ -51,5 +49,6 @@ class LogActivity(override val contentViewId: Int = R.layout.activity_log) : Bas
     override fun onDestroy() {
         super.onDestroy()
         clearLogAdapters()
+
     }
 }

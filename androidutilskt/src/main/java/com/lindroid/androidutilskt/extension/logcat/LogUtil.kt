@@ -16,6 +16,9 @@ private val printer: LogPrinter by lazy {
     LogPrinter()
 }
 
+/**
+ * 初始化LogUtil
+ */
 fun addLogAdapter(adapter: LogAdapter) {
     printer.addAdapter(adapter)
 }
@@ -27,74 +30,120 @@ fun clearLogAdapters() {
     printer.clearLogAdapters()
 }
 
+/**
+ * 打印Debug日志，仅打印String
+ */
 fun String.d(vararg args: Any?) {
     printer.d(null, this, *args)
 }
 
+/**
+ * 打印临时tag的Debug日志，仅打印String
+ */
 fun String.dt(tag: String, vararg args: Any?) {
     printer.d(tag, this, *args)
 }
 
+/**
+ * 打印Debug日志
+ * @receiver : 支持如下类型：List、Array、Set和Map
+ */
 fun Any?.d() {
     printer.d(null, content = this)
 }
 
+/**
+ * 打印带tag的Debug日志
+ * @receiver : 支持如下类型：List、Array、Set和Map
+ */
 fun Any?.dt(tag: String) {
     printer.d(tag, content = this)
 }
 
+/**
+ *  打印Verbose日志
+ */
 fun String.v(vararg args: Any?) {
     printer.v(null, this, * args)
 }
 
+/**
+ *  打印带tag的Verbose日志
+ */
 fun String.vt(tag: String, vararg args: Any?) {
     printer.v(tag, this, args)
 }
 
+/**
+ *  打印Info日志
+ */
 fun String.i(vararg args: Any?) {
     printer.i(null, this, *args)
 }
 
+/**
+ *  打印带tag的Info日志
+ */
 fun String.it(tag: String, vararg args: Any?) {
     printer.i(tag, this, *args)
 }
 
+/**
+ *  打印Warn日志
+ */
 fun String.w(vararg args: Any?) {
     printer.w(null, this, *args)
 }
 
+/**
+ *  打印带tag的Warn日志
+ */
 fun String.wt(tag: String, vararg args: Any?) {
     printer.w(tag, this, *args)
 }
 
+/**
+ *  打印Error日志
+ */
 fun String.e(vararg args: Any?) {
     printer.e(null, null, this, *args)
 }
 
+/**
+ *  打印带tag的Error日志
+ *  @param throwable: 抛出的异常
+ */
 fun String.e(throwable: Throwable?, vararg args: Any?) {
     printer.e(null, throwable, this, *args)
 }
 
+/**
+ *  打印带tag的Error日志
+ */
 fun String.et(tag: String, vararg args: Any?) {
     printer.e(tag, null, this, *args)
 }
 
+/**
+ *  打印带tag的Error日志
+ *  @param throwable: 抛出的异常
+ */
 fun String.et(tag: String, throwable: Throwable?, vararg args: Any?) {
-    printer.e(tag, null, this, *args)
+    printer.e(tag, throwable, this, *args)
 }
 
 /**
  * 打印格式化的json
  */
 fun String?.json(tag: String? = null) {
-    printer.json(null, this)
+    printer.json(tag, this)
 }
 
 /**
  * 打印格式化的xml
  */
 fun String?.xml(tag: String? = null) {
-    printer.xml(null, this)
+    printer.xml(tag, this)
 }
 
 

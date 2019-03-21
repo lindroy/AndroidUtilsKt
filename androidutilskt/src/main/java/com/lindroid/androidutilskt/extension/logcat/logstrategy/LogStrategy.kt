@@ -10,8 +10,6 @@ import com.lindroid.androidutilskt.extension.logcat.LogLevel
  * @Description
  */
 
-
 interface LogStrategy {
     fun log(@LogLevel level: Int, tag: String?, message: String)
-
 }

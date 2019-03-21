@@ -69,7 +69,7 @@ class LogPrinter : Printer {
 
     override fun xml(tag: String?, xml: String?) {
         if (xml.isNullOrEmpty()) {
-            d(tag, "xml字符不能为空")
+            d(tag, "\"Empty/Null xml content\"")
             return
         }
         try {

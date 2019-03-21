@@ -28,7 +28,7 @@
 
             <Button
                 android:textAllCaps="false"
-                android:text="一次性Tag的日志"
+                android:text="临时Tag的日志"
                 android:id="@+id/btnOneUseTag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -93,11 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <Button
-                android:text="Logger日志"
-                android:id="@+id/btnLogger"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 

@@ -23,7 +23,7 @@ private val TOP_BORDER = TOP_LEFT_CORNER + DOUBLE_DIVIDER + DOUBLE_DIVIDER
 private val BOTTOM_BORDER = BOTTOM_LEFT_CORNER + DOUBLE_DIVIDER + DOUBLE_DIVIDER
 private val MIDDLE_BORDER = MIDDLE_CORNER + SINGLE_DIVIDER + SINGLE_DIVIDER
 
-class AndroidFormatStrategy(builder: Builder) : FormatStrategy {
+class AndroidFormatStrategy(val builder: Builder) : FormatStrategy {
     private val methodCount by lazy { builder.methodCount }
 
     private val methodOffset by lazy { builder.methodOffset }
@@ -57,7 +57,8 @@ class AndroidFormatStrategy(builder: Builder) : FormatStrategy {
                 logBottomBorder(level, logTag)
             }
             false -> {
-                if (methodCount > 0) {
+                if (
+                    methodCount > 0) {
                     logDivider(level, logTag)
                 }
                 var i = 0
@@ -68,6 +69,10 @@ class AndroidFormatStrategy(builder: Builder) : FormatStrategy {
                 }
                 logBottomBorder(level, logTag)
             }
+        }
+        //设置完一次性tag之后要用回默认的tag
+        if (logTag != builder.tag) {
+            logTag = builder.tag
         }
     }
 
