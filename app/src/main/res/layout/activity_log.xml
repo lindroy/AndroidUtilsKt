@@ -4,8 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.LogActivity">
 
     <include layout="@layout/toolbar" />
 
+    <Button
+        android:text="默认Tag的日志"
+        android:id="@+id/btnGlobalTag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="一次性Tag的日志"
+        android:id="@+id/btnOneUseTag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

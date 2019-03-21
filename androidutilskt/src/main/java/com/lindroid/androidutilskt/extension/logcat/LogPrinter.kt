@@ -1,7 +1,6 @@
 package com.lindroid.androidutilskt.extension.logcat
 
 import android.support.annotation.Nullable
-import android.util.Log
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -91,7 +90,6 @@ class LogPrinter : Printer {
 
     @Synchronized
     override fun log(level: Int, tag: String?, message: String?, throwable: Throwable?) {
-        Log.e("Tag", "LogPrint的log方法")
         var msg = message
         if (throwable != null && message != null) {
             msg += (" : ${getStackTraceString(throwable)}")

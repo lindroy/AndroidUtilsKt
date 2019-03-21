@@ -1,6 +1,7 @@
 package com.lindroid.androidutilskt.extension.logcat
 
 import android.util.Log
+import com.lindroid.androidutilskt.extension.logcat.logstrategy.LogcatLogStrategy
 
 /**
  * @author Lin
@@ -78,9 +79,10 @@ class AndroidFormatStrategy(builder: Builder) : FormatStrategy {
         }
         val trace: Array<StackTraceElement> = Thread.currentThread().stackTrace
         val stackOffset = getStackOffset(trace) + methodOffset
-        var realMethodCount = 0
-        if (methodCount + stackOffset > trace.size) {
+        var realMethodCount = methodCount
+        if (realMethodCount + stackOffset > trace.size) {
             realMethodCount = trace.size - stackOffset - 1
+            Log.e("Tag", "realMethodCount=$realMethodCount")
         }
 
         for ((i, item) in (realMethodCount downTo 1).withIndex()) {
@@ -91,7 +93,7 @@ class AndroidFormatStrategy(builder: Builder) : FormatStrategy {
             val builder = with(StringBuilder()) {
                 append(HORIZONTAL_LINE)
                 append(' ')
-                append(logLevel)
+                append("")
                 append(getSimpleClassName(trace[stackIndex].className))
                 append(".")
                 append(trace[stackIndex].methodName)
@@ -137,7 +139,7 @@ class AndroidFormatStrategy(builder: Builder) : FormatStrategy {
                 return --i
             }
             i++
-            Log.e("Tag", "i=$i")
+//            Log.e("Tag", "i=$i")
         }
         return -1
     }
@@ -148,16 +150,16 @@ class AndroidFormatStrategy(builder: Builder) : FormatStrategy {
     }
 
     class Builder {
-        var methodCount = 1
-        var methodOffset = 3
+        var methodCount = 2
+        var methodOffset = 1
         var isShowThread = true
         var isShowGlobalTag = false
-        var logStrategy: LogStrategy? = null
+        var logStrategy: LogcatLogStrategy? = null
         var tag: String? = "LogUtil"
 
         fun build(): AndroidFormatStrategy {
             if (logStrategy == null) {
-                logStrategy = LogStrategy()
+                logStrategy = LogcatLogStrategy()
             }
             return AndroidFormatStrategy(this)
         }
@@ -170,7 +172,7 @@ class AndroidFormatStrategy(builder: Builder) : FormatStrategy {
 
         fun setShowGlobalTag(isShow: Boolean) = this.apply { isShowGlobalTag = isShow }
 
-        fun setLogStrategy(logStrategy: LogStrategy) = this.apply { this.logStrategy = logStrategy }
+        fun setLogStrategy(logStrategy: LogcatLogStrategy) = this.apply { this.logStrategy = logStrategy }
 
         fun setTag(tag: String?) = this.apply { this.tag = tag }
     }
