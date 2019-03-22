@@ -1,5 +1,7 @@
-package com.lindroid.androidutilskt.extension.logcat
+package com.lindroid.androidutilskt.extension.logcat.printer
 
+import com.lindroid.androidutilskt.extension.logcat.*
+import com.lindroid.androidutilskt.extension.logcat.logadapter.LogAdapter
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -7,6 +9,7 @@ import java.io.PrintWriter
 import java.io.StringReader
 import java.io.StringWriter
 import java.net.UnknownHostException
+import java.util.*
 import javax.xml.transform.OutputKeys
 import javax.xml.transform.TransformerException
 import javax.xml.transform.TransformerFactory
@@ -20,11 +23,21 @@ import javax.xml.transform.stream.StreamSource
  * @Description
  */
 class LogPrinter : Printer {
+    /**
+     * 重置成全局设置
+     */
+    override fun resetLogAdapter() {
+        if (logAdapters.isNotEmpty()) {
+            val logAdapter = logAdapters[0]
+            logAdapters.clear()
+            logAdapters.add(logAdapter)
+        }
+    }
 
     private val logAdapters: ArrayList<LogAdapter> = ArrayList()
 
     override fun d(tag: String?, content: Any?) {
-        logContent(DEBUG, tag, content.transToString())
+        logContent(DEBUG, tag, transToString(content))
     }
 
     override fun v(tag: String?, message: String?, vararg args: Any?) {
@@ -103,9 +116,21 @@ class LogPrinter : Printer {
             msg = "Empty/NULL log message"
         }
 
-        logAdapters.forEach {
-            if (it.isLoggable(level, tag)) {
-                it.log(level, tag, msg)
+        /* logAdapters.forEach {
+             if (it.isLoggable(level, tag)) {
+                 it.log(level, tag, msg)
+             }
+         }*/
+
+        //只按照最后一次的设置打印日志
+        if (logAdapters.isNotEmpty()) {
+            logAdapters.last().apply {
+                if (isLoggable(level, tag)) {
+                    log(level, tag, msg)
+                }
+                if (isTempAdapter()) {
+                    logAdapters.remove(this)
+                }
             }
         }
     }
@@ -115,7 +140,9 @@ class LogPrinter : Printer {
     }
 
     override fun clearLogAdapters() {
-        logAdapters.clear()
+        if (logAdapters.isNotEmpty()) {
+            logAdapters.clear()
+        }
     }
 
     @Synchronized
@@ -151,6 +178,25 @@ class LogPrinter : Printer {
                 pw.flush()
                 return sw.toString()
             }
+        }
+    }
+
+    fun transToString(content: Any?): String {
+        return when {
+            content == null -> "null"
+            !(this.javaClass.isArray) -> {
+                this.toString()
+            }
+            content is BooleanArray -> Arrays.toString(content)
+            content is CharArray -> Arrays.toString(content)
+            content is ByteArray -> Arrays.toString(content)
+            content is ShortArray -> Arrays.toString(content)
+            content is IntArray -> Arrays.toString(content)
+            content is LongArray -> Arrays.toString(content)
+            content is FloatArray -> Arrays.toString(content)
+            content is DoubleArray -> Arrays.toString(content)
+            content is Array<*> -> Arrays.deepToString(content)
+            else -> "Couldn't find a correct type for the object"
         }
     }
 

@@ -1,4 +1,6 @@
-package com.lindroid.androidutilskt.extension.logcat
+package com.lindroid.androidutilskt.extension.logcat.logadapter
+
+import com.lindroid.androidutilskt.extension.logcat.LogLevel
 
 /**
  * @author Lin
@@ -17,4 +19,9 @@ interface LogAdapter {
      * 所有日志的打印通道
      */
     fun log(@LogLevel level: Int, tag: String?, message: String)
+
+    /**
+     * 是否是临时的设置
+     */
+    fun isTempAdapter(): Boolean
 }

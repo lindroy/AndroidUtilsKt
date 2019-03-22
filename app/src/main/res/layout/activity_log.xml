@@ -100,7 +100,15 @@
                 android:layout_height="wrap_content" />
 
             <Button
-                android:text="只打印Message"
+                android:textAllCaps="false"
+                android:text="不打印线程信息"
+                android:id="@+id/btnNoThread"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:textAllCaps="false"
+                android:text="只打印Message（临时性配置）"
                 android:id="@+id/btnMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

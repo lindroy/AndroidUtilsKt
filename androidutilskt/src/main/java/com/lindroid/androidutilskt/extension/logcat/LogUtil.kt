@@ -1,9 +1,10 @@
 @file:JvmName("LogUtil")
-
 //此处的文件名修改后需要到com.lindroid.androidutilskt.extension.logcat.AndroidFormatStrategy.getStackOffset方法中同步修改
 
-
 package com.lindroid.androidutilskt.extension.logcat
+
+import com.lindroid.androidutilskt.extension.logcat.logadapter.LogAdapter
+import com.lindroid.androidutilskt.extension.logcat.printer.LogPrinter
 
 /**
  * @author Lin
@@ -19,15 +20,22 @@ private val printer: LogPrinter by lazy {
 /**
  * 初始化LogUtil
  */
-fun addLogAdapter(adapter: LogAdapter) {
+internal fun addLogAdapter(adapter: LogAdapter) {
     printer.addAdapter(adapter)
 }
 
 /**
  * 如果是在Activity或者Fragment中调用了addLogAdapter（）方法，那么在其销毁时要调用clearLogAdapter清理掉。
  */
-fun clearLogAdapters() {
+fun clearLogConfigs() {
     printer.clearLogAdapters()
+}
+
+/**
+ * 重置LogUtil配置
+ */
+fun resetLogConfig() {
+    printer.resetLogAdapter()
 }
 
 /**
@@ -159,6 +167,19 @@ fun String?.json(tag: String? = null) {
 fun String?.xml(tag: String? = null) {
     printer.xml(tag, this)
 }
+
+/**
+ * 设置LogUtil配置，会优先于AndUtil.setLogGlobalConfig()的全局设置，当不会覆盖它
+ */
+fun buildLogConfig(init: (LogConfig.() -> Unit)? = null) = LogConfig(false, init)
+
+/**
+ * 设置临时性的LogUtil配置，打印一次之后就会失效
+ */
+@JvmOverloads
+fun buildLogTempConfig(init: (LogConfig.() -> Unit)? = null) = LogConfig(true, init)
+
+
 
 
 

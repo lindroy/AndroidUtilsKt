@@ -5,6 +5,7 @@ import android.content.Context
 import android.support.annotation.ColorRes
 import android.support.annotation.StringRes
 import android.support.v4.content.ContextCompat
+import com.lindroid.androidutilskt.extension.logcat.LogConfig
 import com.lindroid.androidutilskt.extension.serverFormat
 import com.lindroid.androidutilskt.extension.setSpDefaultFile
 
@@ -46,6 +47,13 @@ object AndUtil {
          * 设置全局的服务器时间格式
          */
         fun setServerTimeFormat(timeFormat: String) = this.apply { serverFormat = timeFormat }
+
+        /**
+         * 设置LogUtil配置
+         */
+        fun setLogGlobalConfig(init: LogConfig.() -> Unit) = this.apply {
+            LogConfig(false, init)
+        }
     }
 
 
