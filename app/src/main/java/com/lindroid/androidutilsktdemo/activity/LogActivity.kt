@@ -33,6 +33,10 @@ class LogActivity(override val contentViewId: Int = R.layout.activity_log) : Bas
     override fun initView() {
         super.initView()
         initToolBar(R.string.util_log)
+        btnNormal.setOnClickListener {
+            clearLogAdapters()
+            addLogAdapter(AndroidLogAdapter())
+        }
         btnGlobalTag.setOnClickListener { "默认tag的日志".i() }
         btnOneUseTag.setOnClickListener { "临时tag的日志".vt("MyLog") }
         btnStringFormat.setOnClickListener { "今天是%s".wtf("2019.03.21") }
@@ -44,6 +48,15 @@ class LogActivity(override val contentViewId: Int = R.layout.activity_log) : Bas
         btnLongContent.setOnClickListener { longContent.w() }
         btnLongJson.setOnClickListener { longContent.json() }
         btnError.setOnClickListener { "这是一个空指针异常".e(NullPointerException()) }
+        btnMessage.setOnClickListener {
+            clearLogAdapters()
+            val formatStrategy = AndroidFormatStrategy.newBuilder()
+                .setMethodCount(0)
+                .setShowThread(false)
+                .build()
+            addLogAdapter(AndroidLogAdapter(formatStrategy))
+            "只打印message".d()
+        }
     }
 
     override fun onDestroy() {

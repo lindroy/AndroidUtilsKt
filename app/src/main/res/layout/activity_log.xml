@@ -20,6 +20,12 @@
             android:layout_height="match_parent">
 
             <Button
+                android:text="恢复默认设置"
+                android:id="@+id/btnNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
                 android:textAllCaps="false"
                 android:text="默认Tag的日志"
                 android:id="@+id/btnGlobalTag"
@@ -93,6 +99,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
+            <Button
+                android:text="只打印Message"
+                android:id="@+id/btnMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

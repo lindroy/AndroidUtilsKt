@@ -23,7 +23,7 @@ private val TOP_BORDER = TOP_LEFT_CORNER + DOUBLE_DIVIDER + DOUBLE_DIVIDER
 private val BOTTOM_BORDER = BOTTOM_LEFT_CORNER + DOUBLE_DIVIDER + DOUBLE_DIVIDER
 private val MIDDLE_BORDER = MIDDLE_CORNER + SINGLE_DIVIDER + SINGLE_DIVIDER
 
-class AndroidFormatStrategy(val builder: Builder) : FormatStrategy {
+class AndroidFormatStrategy(private val builder: Builder) : FormatStrategy {
     private val methodCount by lazy { builder.methodCount }
 
     private val methodOffset by lazy { builder.methodOffset }
@@ -37,7 +37,7 @@ class AndroidFormatStrategy(val builder: Builder) : FormatStrategy {
     private var logTag: String? = builder.tag
 
     companion object {
-        fun newBuilder() = Builder()
+        fun newBuilder() = AndroidFormatStrategy.Builder()
     }
 
     override fun log(@LogLevel level: Int, tag: String?, message: String) {
@@ -152,12 +152,12 @@ class AndroidFormatStrategy(val builder: Builder) : FormatStrategy {
     }
 
     class Builder {
-        var methodCount = 2
-        var methodOffset = 0
-        var isShowThread = true
-        var isShowGlobalTag = false
-        var logStrategy: LogcatLogStrategy? = null
-        var tag: String? = "LogUtil"
+        internal var methodCount = 2
+        internal var methodOffset = 0
+        internal var isShowThread = true
+        internal var isShowGlobalTag = false
+        internal var logStrategy: LogcatLogStrategy? = null
+        internal var tag: String? = "LogUtil"
 
         fun build(): AndroidFormatStrategy {
             if (logStrategy == null) {
@@ -178,4 +178,6 @@ class AndroidFormatStrategy(val builder: Builder) : FormatStrategy {
 
         fun setTag(tag: String?) = this.apply { this.tag = tag }
     }
+
 }
+
