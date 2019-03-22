@@ -103,6 +103,20 @@ fun String.wt(tag: String, vararg args: Any?) {
 }
 
 /**
+ *  打印带tag的wtf日志
+ */
+fun String.wtft(tag: String, vararg args: Any?) {
+    printer.wtf(tag, this, *args)
+}
+
+/**
+ *  打印wtf日志
+ */
+fun String.wtf(vararg args: Any?) {
+    printer.wtf(null, this, *args)
+}
+
+/**
  *  打印Error日志
  */
 fun String.e(vararg args: Any?) {

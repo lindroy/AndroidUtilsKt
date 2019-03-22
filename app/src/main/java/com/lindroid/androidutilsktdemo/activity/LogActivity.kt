@@ -35,7 +35,7 @@ class LogActivity(override val contentViewId: Int = R.layout.activity_log) : Bas
         initToolBar(R.string.util_log)
         btnGlobalTag.setOnClickListener { "默认tag的日志".i() }
         btnOneUseTag.setOnClickListener { "临时tag的日志".vt("MyLog") }
-        btnStringFormat.setOnClickListener { "今天是%s".i("2019.03.21") }
+        btnStringFormat.setOnClickListener { "今天是%s".wtf("2019.03.21") }
         btnArray.setOnClickListener { charArrayOf('a', 'b', 'c', 'd', 'e', 'f', 'g').d() }
         btnList.setOnClickListener { listOf("魏", "蜀", "吴").d() }
         btnMap.setOnClickListener { mapOf("魏" to "曹操", "蜀" to "刘备", "吴" to "孙权").d() }

@@ -47,9 +47,13 @@ class LogPrinter : Printer {
         logContent(ERROR, tag, message, throwable, *args)
     }
 
+    override fun wtf(tag: String?, message: String, vararg args: Any?) {
+        logContent(ASSERT, tag, message, args = *args)
+    }
+
     override fun json(tag: String?, json: String?) {
         if (json.isNullOrEmpty()) {
-            d(tag, "json字符不能为空")
+            d(tag, "Empty/Null json content")
             return
         }
         try {
@@ -69,7 +73,7 @@ class LogPrinter : Printer {
 
     override fun xml(tag: String?, xml: String?) {
         if (xml.isNullOrEmpty()) {
-            d(tag, "\"Empty/Null xml content\"")
+            d(tag, "Empty/Null xml content")
             return
         }
         try {

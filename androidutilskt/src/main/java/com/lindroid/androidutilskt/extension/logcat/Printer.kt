@@ -20,6 +20,8 @@ interface Printer {
 
     fun e(tag: String?, throwable: Throwable? = null, message: String, vararg args: Any?)
 
+    fun wtf(tag: String?, message: String, vararg args: Any?)
+
     fun json(tag: String?, json: String?)
 
     fun xml(tag: String?, xml: String?)
