@@ -1,4 +1,6 @@
-package com.lindroid.androidutilskt.extension.logcat
+package com.lindroid.androidutilskt.extension.logcat.logadapter
+
+import com.lindroid.androidutilskt.extension.logcat.LogLevel
 
 /**
  * @author Lin

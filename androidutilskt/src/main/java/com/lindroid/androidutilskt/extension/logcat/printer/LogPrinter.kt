@@ -1,5 +1,7 @@
-package com.lindroid.androidutilskt.extension.logcat
+package com.lindroid.androidutilskt.extension.logcat.printer
 
+import com.lindroid.androidutilskt.extension.logcat.*
+import com.lindroid.androidutilskt.extension.logcat.logadapter.LogAdapter
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -20,6 +22,16 @@ import javax.xml.transform.stream.StreamSource
  * @Description
  */
 class LogPrinter : Printer {
+    /**
+     * 重置成全局设置
+     */
+    override fun resetLogAdapter() {
+        if (logAdapters.isNotEmpty()) {
+            val logAdapter = logAdapters[0]
+            logAdapters.clear()
+            logAdapters.add(logAdapter)
+        }
+    }
 
     private val logAdapters: ArrayList<LogAdapter> = ArrayList()
 
@@ -103,9 +115,18 @@ class LogPrinter : Printer {
             msg = "Empty/NULL log message"
         }
 
-        logAdapters.forEach {
-            if (it.isLoggable(level, tag)) {
-                it.log(level, tag, msg)
+        /* logAdapters.forEach {
+             if (it.isLoggable(level, tag)) {
+                 it.log(level, tag, msg)
+             }
+         }*/
+
+        //只按照最后一次的设置打印日志
+        if (logAdapters.isNotEmpty()) {
+            logAdapters.last().apply {
+                if (isLoggable(level, tag)) {
+                    log(level, tag, msg)
+                }
             }
         }
     }
@@ -115,7 +136,9 @@ class LogPrinter : Printer {
     }
 
     override fun clearLogAdapters() {
-        logAdapters.clear()
+        if (logAdapters.isNotEmpty()) {
+            logAdapters.clear()
+        }
     }
 
     @Synchronized

@@ -1,4 +1,7 @@
-package com.lindroid.androidutilskt.extension.logcat
+package com.lindroid.androidutilskt.extension.logcat.printer
+
+import com.lindroid.androidutilskt.extension.logcat.LogLevel
+import com.lindroid.androidutilskt.extension.logcat.logadapter.LogAdapter
 
 /**
  * @author Lin
@@ -31,4 +34,9 @@ interface Printer {
     fun addAdapter(adapter: LogAdapter)
 
     fun clearLogAdapters()
+
+    /**
+     * 重置成全局设置
+     */
+    fun resetLogAdapter()
 }

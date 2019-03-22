@@ -23,19 +23,19 @@ class LogActivity(override val contentViewId: Int = R.layout.activity_log) : Bas
 
     override fun initBefore() {
         super.initBefore()
-        addLogAdapter(object : AndroidLogAdapter() {
-            override fun isLoggable(level: Int, tag: String?): Boolean {
-                return true
-            }
-        })
+//        addLogAdapter(object : AndroidLogAdapter() {
+//            override fun isLoggable(level: Int, tag: String?): Boolean {
+//                return true
+//            }
+//        })
     }
 
     override fun initView() {
         super.initView()
         initToolBar(R.string.util_log)
         btnNormal.setOnClickListener {
-            clearLogAdapters()
-            addLogAdapter(AndroidLogAdapter())
+            resetLogConfig()
+//            addLogAdapter(AndroidLogAdapter())
         }
         btnGlobalTag.setOnClickListener { "默认tag的日志".i() }
         btnOneUseTag.setOnClickListener { "临时tag的日志".vt("MyLog") }
@@ -49,19 +49,23 @@ class LogActivity(override val contentViewId: Int = R.layout.activity_log) : Bas
         btnLongJson.setOnClickListener { longContent.json() }
         btnError.setOnClickListener { "这是一个空指针异常".e(NullPointerException()) }
         btnMessage.setOnClickListener {
-            clearLogAdapters()
-            val formatStrategy = AndroidFormatStrategy.newBuilder()
-                .setMethodCount(0)
-                .setShowThread(false)
-                .build()
-            addLogAdapter(AndroidLogAdapter(formatStrategy))
+            //            clearLogAdapters()
+            setLogTempConfig {
+                setMethodCount(0)
+                setShowThread(false)
+            }
+            /*     val formatStrategy = AndroidFormatStrategy.newBuilder().build()
+     //                .setMethodCount(0)
+     //                .setShowThread(false)
+
+                 addLogAdapter(AndroidLogAdapter(formatStrategy))*/
             "只打印message".d()
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        clearLogAdapters()
+        clearLogConfigs()
 
     }
 }

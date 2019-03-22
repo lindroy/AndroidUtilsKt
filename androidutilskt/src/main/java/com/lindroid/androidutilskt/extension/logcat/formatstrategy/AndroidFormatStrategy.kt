@@ -1,6 +1,9 @@
-package com.lindroid.androidutilskt.extension.logcat
+package com.lindroid.androidutilskt.extension.logcat.formatstrategy
 
+import com.lindroid.androidutilskt.extension.logcat.LogConfig
+import com.lindroid.androidutilskt.extension.logcat.LogLevel
 import com.lindroid.androidutilskt.extension.logcat.logstrategy.LogcatLogStrategy
+import com.lindroid.androidutilskt.extension.logcat.printer.LogPrinter
 
 /**
  * @author Lin
@@ -23,7 +26,8 @@ private val TOP_BORDER = TOP_LEFT_CORNER + DOUBLE_DIVIDER + DOUBLE_DIVIDER
 private val BOTTOM_BORDER = BOTTOM_LEFT_CORNER + DOUBLE_DIVIDER + DOUBLE_DIVIDER
 private val MIDDLE_BORDER = MIDDLE_CORNER + SINGLE_DIVIDER + SINGLE_DIVIDER
 
-class AndroidFormatStrategy(private val builder: Builder) : FormatStrategy {
+class AndroidFormatStrategy(private val builder: LogConfig) : FormatStrategy {
+
     private val methodCount = builder.methodCount
 
     private val methodOffset by lazy { builder.methodOffset }
@@ -39,7 +43,8 @@ class AndroidFormatStrategy(private val builder: Builder) : FormatStrategy {
     private var logTag: String? = builder.tag
 
     companion object {
-        fun newBuilder() = AndroidFormatStrategy.Builder()
+        //        fun newBuilder() = Builder()
+        fun newBuilder() = LogConfig()
     }
 
     override fun log(@LogLevel level: Int, tag: String?, message: String) {
@@ -65,7 +70,10 @@ class AndroidFormatStrategy(private val builder: Builder) : FormatStrategy {
                 }
                 var i = 0
                 while (i < length) {
-                    val count = Math.min(length - i, CHUNK_SIZE)
+                    val count = Math.min(
+                        length - i,
+                        CHUNK_SIZE
+                    )
                     logContent(level, logTag, String(message.toByteArray(), i, count))
                     i += CHUNK_SIZE
                 }
@@ -80,7 +88,7 @@ class AndroidFormatStrategy(private val builder: Builder) : FormatStrategy {
 
     private fun logHeaderContent(logLevel: Int, tag: String?) {
         if (isShowThread) {
-            logStrategy?.log(
+            logStrategy.log(
                 logLevel,
                 tag,
                 "${if (isShowBorder) HORIZONTAL_LINE else ""} Thread: ${Thread.currentThread().name}"
@@ -118,25 +126,25 @@ class AndroidFormatStrategy(private val builder: Builder) : FormatStrategy {
                 this
             }
             levelSpace = "$levelSpace "
-            logStrategy?.log(logLevel, tag, builder.toString())
+            logStrategy.log(logLevel, tag, builder.toString())
         }
     }
 
     private fun logTopBorder(logLevel: Int, tag: String?) {
         if (isShowBorder) {
-            logStrategy?.log(logLevel, tag, TOP_BORDER)
+            logStrategy.log(logLevel, tag, TOP_BORDER)
         }
     }
 
     private fun logDivider(logLevel: Int, tag: String?) {
         if (isShowBorder) {
-            logStrategy?.log(logLevel, tag, MIDDLE_BORDER)
+            logStrategy.log(logLevel, tag, MIDDLE_BORDER)
         }
     }
 
     private fun logBottomBorder(logLevel: Int, tag: String?) {
         if (isShowBorder) {
-            logStrategy?.log(logLevel, tag, BOTTOM_BORDER)
+            logStrategy.log(logLevel, tag, BOTTOM_BORDER)
         }
     }
 
@@ -144,7 +152,7 @@ class AndroidFormatStrategy(private val builder: Builder) : FormatStrategy {
 //        System.getProperty("line.separator")
         val lines = content.split(System.lineSeparator())
         lines.forEach {
-            logStrategy?.log(logLevel, tag, "${if (isShowBorder) HORIZONTAL_LINE else ""} $it")
+            logStrategy.log(logLevel, tag, "${if (isShowBorder) HORIZONTAL_LINE else ""} $it")
         }
     }
 
@@ -174,12 +182,18 @@ class AndroidFormatStrategy(private val builder: Builder) : FormatStrategy {
         internal var logStrategy: LogcatLogStrategy? = null
         internal var tag: String? = "LogUtil"
 
-        fun build(): AndroidFormatStrategy {
-            if (logStrategy == null) {
-                logStrategy = LogcatLogStrategy()
-            }
-            return AndroidFormatStrategy(this)
+        constructor()
+
+        constructor(init: Builder.() -> Unit) : this() {
+            init()
         }
+
+//        fun build(): AndroidFormatStrategy {
+//            if (logStrategy == null) {
+//                logStrategy = LogcatLogStrategy()
+//            }
+//            return AndroidFormatStrategy(this)
+//        }
 
         fun setMethodCount(count: Int) = this.apply { methodCount = count }
 

@@ -5,6 +5,9 @@
 
 package com.lindroid.androidutilskt.extension.logcat
 
+import com.lindroid.androidutilskt.extension.logcat.logadapter.LogAdapter
+import com.lindroid.androidutilskt.extension.logcat.printer.LogPrinter
+
 /**
  * @author Lin
  * @date 2019/3/19
@@ -19,15 +22,22 @@ private val printer: LogPrinter by lazy {
 /**
  * 初始化LogUtil
  */
-fun addLogAdapter(adapter: LogAdapter) {
+internal fun addLogAdapter(adapter: LogAdapter) {
     printer.addAdapter(adapter)
 }
 
 /**
  * 如果是在Activity或者Fragment中调用了addLogAdapter（）方法，那么在其销毁时要调用clearLogAdapter清理掉。
  */
-fun clearLogAdapters() {
+fun clearLogConfigs() {
     printer.clearLogAdapters()
+}
+
+/**
+ * 重置LogUtil配置
+ */
+fun resetLogConfig() {
+    printer.resetLogAdapter()
 }
 
 /**
@@ -159,6 +169,16 @@ fun String?.json(tag: String? = null) {
 fun String?.xml(tag: String? = null) {
     printer.xml(tag, this)
 }
+
+/**
+ * 设置临时性的log配置
+ */
+@JvmOverloads
+fun setLogTempConfig(init: (LogConfig.() -> Unit)? = null) {
+    LogConfig(init)
+}
+
+
 
 
 
