@@ -8,19 +8,19 @@ package com.lindroid.androidutilskt.extension.logcat
  */
 interface Printer {
 
-    fun v(tag: String?, message: String, vararg args: Any?)
+    fun v(tag: String?, message: String?, vararg args: Any?)
 
-    fun i(tag: String?, message: String, vararg args: Any?)
+    fun i(tag: String?, message: String?, vararg args: Any?)
 
-    fun d(tag: String?, message: String, vararg args: Any?)
+    fun d(tag: String?, message: String?, vararg args: Any?)
 
     fun d(tag: String?, content: Any?)
 
-    fun w(tag: String?, message: String, vararg args: Any?)
+    fun w(tag: String?, message: String?, vararg args: Any?)
 
-    fun e(tag: String?, throwable: Throwable? = null, message: String, vararg args: Any?)
+    fun e(tag: String?, throwable: Throwable? = null, message: String?, vararg args: Any?)
 
-    fun wtf(tag: String?, message: String, vararg args: Any?)
+    fun wtf(tag: String?, message: String?, vararg args: Any?)
 
     fun json(tag: String?, json: String?)
 

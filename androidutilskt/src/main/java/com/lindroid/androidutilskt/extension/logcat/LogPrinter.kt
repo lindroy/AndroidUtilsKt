@@ -27,27 +27,27 @@ class LogPrinter : Printer {
         logContent(DEBUG, tag, content.transToString())
     }
 
-    override fun v(tag: String?, message: String, vararg args: Any?) {
+    override fun v(tag: String?, message: String?, vararg args: Any?) {
         logContent(VERBOSE, tag, message, args = *args)
     }
 
-    override fun i(tag: String?, message: String, vararg args: Any?) {
+    override fun i(tag: String?, message: String?, vararg args: Any?) {
         logContent(INFO, tag, message, args = *args)
     }
 
-    override fun d(tag: String?, message: String, vararg args: Any?) {
+    override fun d(tag: String?, message: String?, vararg args: Any?) {
         logContent(DEBUG, tag, message, args = *args)
     }
 
-    override fun w(tag: String?, message: String, vararg args: Any?) {
+    override fun w(tag: String?, message: String?, vararg args: Any?) {
         logContent(WARN, tag, message, args = *args)
     }
 
-    override fun e(tag: String?, throwable: Throwable?, message: String, vararg args: Any?) {
+    override fun e(tag: String?, throwable: Throwable?, message: String?, vararg args: Any?) {
         logContent(ERROR, tag, message, throwable, *args)
     }
 
-    override fun wtf(tag: String?, message: String, vararg args: Any?) {
+    override fun wtf(tag: String?, message: String?, vararg args: Any?) {
         logContent(ASSERT, tag, message, args = *args)
     }
 
@@ -122,11 +122,15 @@ class LogPrinter : Printer {
     private fun logContent(
         level: Int,
         tag: String?,
-        message: String,
+        message: String?,
         throwable: Throwable? = null,
         vararg args: Any?
     ) {
-        fun createMessage() = if (args.isEmpty()) message else String.format(message, *args)
+        fun createMessage() = if (message == null) {
+            "null"
+        } else {
+            if (args.isEmpty()) message else String.format(message, *args)
+        }
         log(level, tag, createMessage(), throwable)
     }
 

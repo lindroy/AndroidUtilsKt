@@ -33,14 +33,14 @@ fun clearLogAdapters() {
 /**
  * 打印Debug日志，仅打印String
  */
-fun String.d(vararg args: Any?) {
+fun String?.d(vararg args: Any?) {
     printer.d(null, this, *args)
 }
 
 /**
  * 打印临时tag的Debug日志，仅打印String
  */
-fun String.dt(tag: String, vararg args: Any?) {
+fun String?.dt(tag: String, vararg args: Any?) {
     printer.d(tag, this, *args)
 }
 
@@ -63,63 +63,63 @@ fun Any?.dt(tag: String) {
 /**
  *  打印Verbose日志
  */
-fun String.v(vararg args: Any?) {
+fun String?.v(vararg args: Any?) {
     printer.v(null, this, * args)
 }
 
 /**
  *  打印带tag的Verbose日志
  */
-fun String.vt(tag: String, vararg args: Any?) {
+fun String?.vt(tag: String, vararg args: Any?) {
     printer.v(tag, this, args)
 }
 
 /**
  *  打印Info日志
  */
-fun String.i(vararg args: Any?) {
+fun String?.i(vararg args: Any?) {
     printer.i(null, this, *args)
 }
 
 /**
  *  打印带tag的Info日志
  */
-fun String.it(tag: String, vararg args: Any?) {
+fun String?.it(tag: String, vararg args: Any?) {
     printer.i(tag, this, *args)
 }
 
 /**
  *  打印Warn日志
  */
-fun String.w(vararg args: Any?) {
+fun String?.w(vararg args: Any?) {
     printer.w(null, this, *args)
 }
 
 /**
  *  打印带tag的Warn日志
  */
-fun String.wt(tag: String, vararg args: Any?) {
+fun String?.wt(tag: String, vararg args: Any?) {
     printer.w(tag, this, *args)
 }
 
 /**
  *  打印带tag的wtf日志
  */
-fun String.wtft(tag: String, vararg args: Any?) {
+fun String?.wtft(tag: String, vararg args: Any?) {
     printer.wtf(tag, this, *args)
 }
 
 /**
  *  打印wtf日志
  */
-fun String.wtf(vararg args: Any?) {
+fun String?.wtf(vararg args: Any?) {
     printer.wtf(null, this, *args)
 }
 
 /**
  *  打印Error日志
  */
-fun String.e(vararg args: Any?) {
+fun String?.e(vararg args: Any?) {
     printer.e(null, null, this, *args)
 }
 
@@ -127,14 +127,14 @@ fun String.e(vararg args: Any?) {
  *  打印带tag的Error日志
  *  @param throwable: 抛出的异常
  */
-fun String.e(throwable: Throwable?, vararg args: Any?) {
+fun String?.e(throwable: Throwable?, vararg args: Any?) {
     printer.e(null, throwable, this, *args)
 }
 
 /**
  *  打印带tag的Error日志
  */
-fun String.et(tag: String, vararg args: Any?) {
+fun String?.et(tag: String, vararg args: Any?) {
     printer.e(tag, null, this, *args)
 }
 
@@ -142,7 +142,7 @@ fun String.et(tag: String, vararg args: Any?) {
  *  打印带tag的Error日志
  *  @param throwable: 抛出的异常
  */
-fun String.et(tag: String, throwable: Throwable?, vararg args: Any?) {
+fun String?.et(tag: String, throwable: Throwable?, vararg args: Any?) {
     printer.e(tag, throwable, this, *args)
 }
 
@@ -159,5 +159,7 @@ fun String?.json(tag: String? = null) {
 fun String?.xml(tag: String? = null) {
     printer.xml(tag, this)
 }
+
+
 
 

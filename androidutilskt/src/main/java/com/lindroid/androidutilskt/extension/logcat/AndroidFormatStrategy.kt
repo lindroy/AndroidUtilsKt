@@ -24,13 +24,15 @@ private val BOTTOM_BORDER = BOTTOM_LEFT_CORNER + DOUBLE_DIVIDER + DOUBLE_DIVIDER
 private val MIDDLE_BORDER = MIDDLE_CORNER + SINGLE_DIVIDER + SINGLE_DIVIDER
 
 class AndroidFormatStrategy(private val builder: Builder) : FormatStrategy {
-    private val methodCount by lazy { builder.methodCount }
+    private val methodCount = builder.methodCount
 
     private val methodOffset by lazy { builder.methodOffset }
 
     private val isShowThread by lazy { builder.isShowThread }
 
     private val isShowGlobalTag by lazy { builder.isShowGlobalTag }
+
+    private val isShowBorder = builder.isShowBorder
 
     private val logStrategy by lazy { builder.logStrategy }
 
@@ -78,7 +80,11 @@ class AndroidFormatStrategy(private val builder: Builder) : FormatStrategy {
 
     private fun logHeaderContent(logLevel: Int, tag: String?) {
         if (isShowThread) {
-            logStrategy?.log(logLevel, tag, "$HORIZONTAL_LINE Thread: ${Thread.currentThread().name}")
+            logStrategy?.log(
+                logLevel,
+                tag,
+                "${if (isShowBorder) HORIZONTAL_LINE else ""} Thread: ${Thread.currentThread().name}"
+            )
             logDivider(logLevel, tag)
         }
         val trace: Array<StackTraceElement> = Thread.currentThread().stackTrace
@@ -95,7 +101,9 @@ class AndroidFormatStrategy(private val builder: Builder) : FormatStrategy {
                 continue
             }
             val builder = with(StringBuilder()) {
-                append(HORIZONTAL_LINE)
+                if (isShowBorder) {
+                    append(HORIZONTAL_LINE)
+                }
                 append(' ')
                 append(levelSpace)
                 append(getSimpleClassName(trace[stackIndex].className))
@@ -115,22 +123,28 @@ class AndroidFormatStrategy(private val builder: Builder) : FormatStrategy {
     }
 
     private fun logTopBorder(logLevel: Int, tag: String?) {
-        logStrategy?.log(logLevel, tag, TOP_BORDER)
+        if (isShowBorder) {
+            logStrategy?.log(logLevel, tag, TOP_BORDER)
+        }
     }
 
     private fun logDivider(logLevel: Int, tag: String?) {
-        logStrategy?.log(logLevel, tag, MIDDLE_BORDER)
+        if (isShowBorder) {
+            logStrategy?.log(logLevel, tag, MIDDLE_BORDER)
+        }
     }
 
     private fun logBottomBorder(logLevel: Int, tag: String?) {
-        logStrategy?.log(logLevel, tag, BOTTOM_BORDER)
+        if (isShowBorder) {
+            logStrategy?.log(logLevel, tag, BOTTOM_BORDER)
+        }
     }
 
     private fun logContent(logLevel: Int, tag: String?, content: String) {
 //        System.getProperty("line.separator")
         val lines = content.split(System.lineSeparator())
         lines.forEach {
-            logStrategy?.log(logLevel, tag, "$HORIZONTAL_LINE $it")
+            logStrategy?.log(logLevel, tag, "${if (isShowBorder) HORIZONTAL_LINE else ""} $it")
         }
     }
 
@@ -152,10 +166,11 @@ class AndroidFormatStrategy(private val builder: Builder) : FormatStrategy {
     }
 
     class Builder {
-        internal var methodCount = 2
+        internal var methodCount = 1
         internal var methodOffset = 0
         internal var isShowThread = true
-        internal var isShowGlobalTag = false
+        internal var isShowGlobalTag = true
+        internal var isShowBorder = true
         internal var logStrategy: LogcatLogStrategy? = null
         internal var tag: String? = "LogUtil"
 
