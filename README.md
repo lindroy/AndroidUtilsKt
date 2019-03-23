@@ -26,9 +26,10 @@
 
 ```
 dependencies {
-    implementation 'com.github.Lindroy:AndroidUtilsKt:1.1.0'
+    implementation 'com.github.Lindroy:AndroidUtilsKt:latest-version'
 }
 ```
+`latest-version`参见图标`jitpack`后面的版本号。
 
 ### 3、在Application中初始化
 
