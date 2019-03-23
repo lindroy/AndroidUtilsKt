@@ -24,6 +24,7 @@ class LogActivity(override val contentViewId: Int = R.layout.activity_log) : Bas
     override fun initView() {
         super.initView()
         initToolBar(R.string.util_log)
+        clearLogConfigs()
         btnNormal.setOnClickListener {
             resetLogConfig()
 //            addLogAdapter(AndroidLogAdapter())

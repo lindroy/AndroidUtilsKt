@@ -73,7 +73,7 @@ class LogConfig constructor() {
     fun setShowThread(isShow: Boolean) = this.apply { isShowThread = isShow }
 
     /**
-     * 设置是否在临时Tag前面
+     * 设置是否在临时Tag前面显示全局Tag
      */
     fun setShowGlobalTag(isShow: Boolean) = this.apply { isShowGlobalTag = isShow }
 

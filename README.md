@@ -143,6 +143,70 @@ dependencies {
 | hideKeyboard()  | 关闭软键盘  | View  | /  |
 | toggleKeyboard()  | 根据当前软键盘的状态做取反操作  | View  | /  |
 
+ ------------
+
+### [LogUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/logcat/LogUtil.kt "LogUtil")：日志工具类
+
+#### 初始配置
+`LogUtil`具有默认的配置，你也可以根据自己的需要自行配置。建议在`Application`中调用`setLogGlobalConfig()`做全局配置：
+```kotlin
+        AndUtil.init(this)
+            .setLogGlobalConfig {
+               ……
+            }
+```
+配置如下：
+
+| 方法名称 | 作用  | 默认值  | 备注  |
+| :------------: | :------------: | :------------: | :------------: |
+| setLogEnable() | 设置是否显示日志 | true  | / |
+| setMethodCount() | 设置显示的方法数 | 1  | / |
+| setMethodOffset() | 设置栈偏移量 | 0 / |
+| setShowThread() | 设置是否显示线程 | true | / |
+| setShowGlobalTag() | 设置是否在临时Tag前面显示全局Tag | false  | / |
+| setLogStrategy()  | 自定义日志打印策略 | / | / |
+| setShowBorder()  | 设置是否显示边框 | true | 为了美观，建议显示 |
+| setTag()  | 自定义日志打印策略 | LogUtil | / |
+
+#### 对外API
+
+| 成员名称 | 作用  | 接收类  | 备注  |
+| :------------: | ------------ | :------------: | :------------: |
+| d() | 打印Debug日志 | String? | 仅支持可空String，为null时打印“null” |
+| d() | 打印Debug日志 | Any? | 支持如下类型：List、Array、Set和Map |
+| dt()  | 打印带临时性tag的Debug日志 | String? | 仅支持可空String，为null时打印“null” |
+| dt() | 打印带临时性tag的Debug日志 | Any? | 支持如下类型：List、Array、Set和Map |
+| v() | 打印Verbose日志 | String? | 仅支持可空String，为null时打印“null” |
+| vt() | 打印带临时性tag的Verbose日志 | String? | 仅支持可空String，为null时打印“null”  |
+| i() | 打印Verbose日志 | String? | 仅支持可空String，为null时打印“null” |
+| it() | 打印带临时性tag的Verbose日志 | String? | 仅支持可空String，为null时打印“null”  |
+| w() | 打印Verbose日志 | String? | 仅支持可空String，为null时打印“null” |
+| wt() | 打印带临时性tag的Verbose日志 | String? | 仅支持可空String，为null时打印“null”  |
+| e() | 打印Error日志 | String? | 仅支持可空String，可抛出异常 |
+| et() | 打印带临时性tag的Error日志 | String? | 仅支持可空String，可抛出异常 |
+| wtf() | 打印wtf日志 | String? | 仅支持可空String，为null时打印“null” |
+| wtft() | 打印带临时性tag的wtf日志 | String? | 仅支持可空String，为null时打印“null”  |
+| json() | 打印格式化的json | String? | 等级为Debug，仅支持可空String |
+| xml() | 打印格式化的xml | String? | 等级为Debug，仅支持可空String |
+| buildLogConfig() | 设置LogUtil配置 | Any? | 会优先于AndUtil.setLogGlobalConfig()的全局设置，但不会覆盖它 |
+| buildLogTempConfig() | 设置临时性的LogUtil配置 | Any? | 打印一次之后就会失效 |
+| clearLogConfigs() | 清除所有的配置 | Any? | 清除后需要重新配置才能打印 |
+| resetLogConfig() | 重置LogUtil配置为全局配置 | Any? | / |
+
+`buildLogConfig()`和`buildLogTempConfig()`有两种书写形式，分别是DSL和链式调用：
+DSL:
+```kotlin
+    buildLogConfig {
+        setShowThread(false)
+	}
+```
+链式调用（主要供Java代码使用）：
+```kotlin
+       buildLogTempConfig()
+       .setShowThread(true)
+       .build()
+```
+注意：链式调用最后需要调用`build()`方法，DSL则不必。
 
  ------------
 
@@ -391,3 +455,4 @@ tvSubscript.buildSpan("设置文字下标：H20") {
 [Anko](https://github.com/Kotlin/anko "Anko")      
 [AndroidUtilCode](https://github.com/Blankj/AndroidUtilCode "AndroidUtilCode")      
 [Qmui](https://qmuiteam.com/android "Qmui")     
+[Logger](https://github.com/orhanobut/logger "Logger")

@@ -1,4 +1,5 @@
 @file:JvmName("LogUtil")
+
 //此处的文件名修改后需要到com.lindroid.androidutilskt.extension.logcat.AndroidFormatStrategy.getStackOffset方法中同步修改
 
 package com.lindroid.androidutilskt.extension.logcat
@@ -25,7 +26,7 @@ internal fun addLogAdapter(adapter: LogAdapter) {
 }
 
 /**
- * 如果是在Activity或者Fragment中调用了addLogAdapter（）方法，那么在其销毁时要调用clearLogAdapter清理掉。
+ * 清除所有的配置
  */
 fun clearLogConfigs() {
     printer.clearLogAdapters()
@@ -39,14 +40,16 @@ fun resetLogConfig() {
 }
 
 /**
- * 打印Debug日志，仅打印String
+ * 打印Debug日志，仅支持String?
+ * @receiver : 仅支持可空String，为null时打印“null”
  */
 fun String?.d(vararg args: Any?) {
     printer.d(null, this, *args)
 }
 
 /**
- * 打印临时tag的Debug日志，仅打印String
+ * 打印临时tag的Debug日志
+ * @receiver : 仅支持可空String，为null时打印“null”
  */
 fun String?.dt(tag: String, vararg args: Any?) {
     printer.d(tag, this, *args)
@@ -61,7 +64,7 @@ fun Any?.d() {
 }
 
 /**
- * 打印带tag的Debug日志
+ * 打印临时性Tag的Debug日志
  * @receiver : 支持如下类型：List、Array、Set和Map
  */
 fun Any?.dt(tag: String) {
@@ -70,13 +73,15 @@ fun Any?.dt(tag: String) {
 
 /**
  *  打印Verbose日志
+ *  @receiver : 仅支持可空String，为null时打印“null”
  */
 fun String?.v(vararg args: Any?) {
     printer.v(null, this, * args)
 }
 
 /**
- *  打印带tag的Verbose日志
+ *  打印带临时性tag的Verbose日志
+ *  @receiver : 仅支持可空String，为null时打印“null”
  */
 fun String?.vt(tag: String, vararg args: Any?) {
     printer.v(tag, this, args)
@@ -84,6 +89,7 @@ fun String?.vt(tag: String, vararg args: Any?) {
 
 /**
  *  打印Info日志
+ *  @receiver : 仅支持可空String，为null时打印“null”
  */
 fun String?.i(vararg args: Any?) {
     printer.i(null, this, *args)
@@ -91,6 +97,7 @@ fun String?.i(vararg args: Any?) {
 
 /**
  *  打印带tag的Info日志
+ *  @receiver : 仅支持可空String，为null时打印“null”
  */
 fun String?.it(tag: String, vararg args: Any?) {
     printer.i(tag, this, *args)
@@ -98,6 +105,7 @@ fun String?.it(tag: String, vararg args: Any?) {
 
 /**
  *  打印Warn日志
+ *  @receiver : 仅支持可空String，为null时打印“null”
  */
 fun String?.w(vararg args: Any?) {
     printer.w(null, this, *args)
@@ -105,27 +113,15 @@ fun String?.w(vararg args: Any?) {
 
 /**
  *  打印带tag的Warn日志
+ *  @receiver : 仅支持可空String，为null时打印“null”
  */
 fun String?.wt(tag: String, vararg args: Any?) {
     printer.w(tag, this, *args)
 }
 
 /**
- *  打印带tag的wtf日志
- */
-fun String?.wtft(tag: String, vararg args: Any?) {
-    printer.wtf(tag, this, *args)
-}
-
-/**
- *  打印wtf日志
- */
-fun String?.wtf(vararg args: Any?) {
-    printer.wtf(null, this, *args)
-}
-
-/**
  *  打印Error日志
+ *  @receiver : 仅支持可空String，为null时打印“null”
  */
 fun String?.e(vararg args: Any?) {
     printer.e(null, null, this, *args)
@@ -140,7 +136,7 @@ fun String?.e(throwable: Throwable?, vararg args: Any?) {
 }
 
 /**
- *  打印带tag的Error日志
+ *  打印带临时性tag的Error日志
  */
 fun String?.et(tag: String, vararg args: Any?) {
     printer.e(tag, null, this, *args)
@@ -152,6 +148,22 @@ fun String?.et(tag: String, vararg args: Any?) {
  */
 fun String?.et(tag: String, throwable: Throwable?, vararg args: Any?) {
     printer.e(tag, throwable, this, *args)
+}
+
+/**
+ *  打印wtf日志
+ *  @receiver : 仅支持可空String，为null时打印“null”
+ */
+fun String?.wtf(vararg args: Any?) {
+    printer.wtf(null, this, *args)
+}
+
+/**
+ *  打印带tag的wtf日志
+ *  @receiver : 仅支持可空String，为null时打印“null”
+ */
+fun String?.wtft(tag: String, vararg args: Any?) {
+    printer.wtf(tag, this, *args)
 }
 
 /**
@@ -169,8 +181,9 @@ fun String?.xml(tag: String? = null) {
 }
 
 /**
- * 设置LogUtil配置，会优先于AndUtil.setLogGlobalConfig()的全局设置，当不会覆盖它
+ * 设置LogUtil配置，会优先于AndUtil.setLogGlobalConfig()的全局设置，但不会覆盖它
  */
+@JvmOverloads
 fun buildLogConfig(init: (LogConfig.() -> Unit)? = null) = LogConfig(false, init)
 
 /**
@@ -178,9 +191,3 @@ fun buildLogConfig(init: (LogConfig.() -> Unit)? = null) = LogConfig(false, init
  */
 @JvmOverloads
 fun buildLogTempConfig(init: (LogConfig.() -> Unit)? = null) = LogConfig(true, init)
-
-
-
-
-
-
