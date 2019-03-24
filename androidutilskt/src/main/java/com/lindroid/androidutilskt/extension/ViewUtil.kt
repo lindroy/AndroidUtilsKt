@@ -86,3 +86,12 @@ fun View.setWidthAndHeight(width: Int, height: Int) {
     }
 }
 
+fun View.setPadding(
+    left: Int = paddingLeft,
+    top: Int = paddingTop,
+    right: Int = paddingRight,
+    bottom: Int = paddingBottom
+) {
+    setPadding(left, top, right, bottom)
+}
+

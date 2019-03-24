@@ -53,6 +53,7 @@ class ViewActivity(override val contentViewId: Int = R.layout.activity_view) : B
             }
 
         })
+        btnGone.setPadding()
     }
 
     override fun initOnClick() {
