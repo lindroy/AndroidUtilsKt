@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,47 +19,72 @@
             android:background="@android:color/holo_blue_dark" />
     </FrameLayout>
 
-
-    <Button
-        android:id="@+id/btnVisible"
+    <android.support.v4.widget.NestedScrollView
+        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="设为Visible"
-        android:textAllCaps="false" />
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btnInvisible"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="设为Invisible"
-        android:textAllCaps="false" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnGone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="设为Gone"
-        android:textAllCaps="false" />
+            <Button
+                android:id="@+id/btnVisible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="设为Visible"
+                android:textAllCaps="false" />
 
-    <TextView
-        android:id="@+id/tvHeight"
-        style="@style/MiddleGrayTextStyle"
-        android:text="设置View的高度" />
+            <Button
+                android:id="@+id/btnInvisible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="设为Invisible"
+                android:textAllCaps="false" />
 
-    <android.support.v7.widget.AppCompatSeekBar
-        android:id="@+id/sbHeight"
-        android:progress="100"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btnGone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="设为Gone"
+                android:textAllCaps="false" />
 
-    <TextView
-        android:id="@+id/tvWidth"
-        style="@style/MiddleGrayTextStyle"
-        android:text="设置View的宽度" />
+            <TextView
+                android:id="@+id/tvHeight"
+                style="@style/MiddleGrayTextStyle"
+                android:text="设置View的高度" />
 
-    <android.support.v7.widget.AppCompatSeekBar
-        android:id="@+id/sbWidth"
-        android:progress="100"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/sbHeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progress="100" />
+
+            <TextView
+                android:id="@+id/tvWidth"
+                style="@style/MiddleGrayTextStyle"
+                android:text="设置View的宽度" />
+
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/sbWidth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progress="100" />
+
+            <Button
+                android:id="@+id/btnToBitmap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="将View转换为Bitmap"
+                android:textAllCaps="false" />
+
+            <ImageView
+                android:id="@+id/ivBitmap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
 </LinearLayout>

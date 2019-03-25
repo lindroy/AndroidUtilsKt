@@ -12,7 +12,7 @@
     <string name="util_status_bar">状态栏相关工具类(StatusBarUtil)</string>
     <string name="util_time">时间工具类(TimeUtil)</string>
     <string name="util_toast">Toast工具类(ToastUtil)</string>
-    <string name="util_view">View工具类(ToastUtil)</string>
+    <string name="util_view">View工具类(ViewUtil)</string>
     <string name="util_vibrator">手机振动工具类(VibratorUtil)</string>
 
     <string name="regex_mobile">内地手机号码</string>

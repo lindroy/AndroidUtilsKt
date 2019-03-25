@@ -25,6 +25,21 @@ class ViewActivity(override val contentViewId: Int = R.layout.activity_view) : B
         initToolBar(R.string.util_view)
         tvWidth.text = "设置View的宽度：${screenWidth}px"
         tvHeight.text = "设置View的高度：${(dp2px(150))}px"
+
+    }
+
+    override fun initOnClick() {
+        super.initOnClick()
+        btnVisible.setOnClickListener { frameLayout.setVisible() }
+        btnInvisible.setOnClickListener { frameLayout.setInVisible() }
+        btnGone.setOnClickListener { frameLayout.setGone() }
+        btnToBitmap.setOnClickListener {
+            ivBitmap.setImageBitmap(frameLayout.toBitmap())
+        }
+    }
+
+    override fun initOnListener() {
+        super.initOnListener()
         //动态设置宽度
         sbWidth.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
@@ -53,13 +68,6 @@ class ViewActivity(override val contentViewId: Int = R.layout.activity_view) : B
             }
 
         })
-    }
-
-    override fun initOnClick() {
-        super.initOnClick()
-        btnVisible.setOnClickListener { frameLayout.setVisible() }
-        btnInvisible.setOnClickListener { frameLayout.setInVisible() }
-        btnGone.setOnClickListener { frameLayout.setGone() }
     }
 
 }
