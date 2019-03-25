@@ -1,3 +1,4 @@
+@file:JvmName("SpanUtil")
 package com.lindroid.androidutilskt.extension
 
 import android.graphics.Color

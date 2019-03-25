@@ -58,5 +58,7 @@ class LogActivity(override val contentViewId: Int = R.layout.activity_log) : Bas
     override fun onDestroy() {
         super.onDestroy()
         clearLogConfigs()
+
     }
+
 }

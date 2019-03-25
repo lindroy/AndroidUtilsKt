@@ -24,21 +24,21 @@ private fun RxPermissions.checkPermission(listener: (granted: Boolean) -> Unit, 
 /**
  * 获取拨打电话权限
  */
-fun FragmentActivity.pmCallPhone(listener: (granted: Boolean) -> Unit) {
+fun FragmentActivity.permCallPhone(listener: (granted: Boolean) -> Unit) {
     RxPermissions(this).checkPermission(listener, Manifest.permission.CALL_PHONE)
 }
 
 /**
  * 获取拨打电话权限
  */
-fun Fragment.pmCallPhone(listener: (granted: Boolean) -> Unit) {
+fun Fragment.permCallPhone(listener: (granted: Boolean) -> Unit) {
     RxPermissions(this).checkPermission(listener, Manifest.permission.CALL_PHONE)
 }
 
 /**
  * 获取读取存储权限
  */
-fun FragmentActivity.pmStorage(listener: (granted: Boolean) -> Unit) {
+fun FragmentActivity.permStorage(listener: (granted: Boolean) -> Unit) {
     RxPermissions(this).checkPermission(
         listener,
         Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -49,7 +49,7 @@ fun FragmentActivity.pmStorage(listener: (granted: Boolean) -> Unit) {
 /**
  * 获取读取存储权限
  */
-fun Fragment.pmStorage(listener: (granted: Boolean) -> Unit) {
+fun Fragment.permStorage(listener: (granted: Boolean) -> Unit) {
     RxPermissions(this).checkPermission(
         listener,
         Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -60,7 +60,7 @@ fun Fragment.pmStorage(listener: (granted: Boolean) -> Unit) {
 /**
  * 获取拍照权限
  */
-fun FragmentActivity.pmCamera(listener: (granted: Boolean) -> Unit) {
+fun FragmentActivity.permCamera(listener: (granted: Boolean) -> Unit) {
     RxPermissions(this).checkPermission(
         listener,
         Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -71,7 +71,7 @@ fun FragmentActivity.pmCamera(listener: (granted: Boolean) -> Unit) {
 /**
  * 获取拍照权限
  */
-fun Fragment.pmCamera(listener: (granted: Boolean) -> Unit) {
+fun Fragment.permCamera(listener: (granted: Boolean) -> Unit) {
     RxPermissions(this).checkPermission(
         listener,
         Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -82,7 +82,7 @@ fun Fragment.pmCamera(listener: (granted: Boolean) -> Unit) {
 /**
  * 获取读取通讯录权限
  */
-fun FragmentActivity.pmReadContacts(listener: (granted: Boolean) -> Unit) {
+fun FragmentActivity.permReadContacts(listener: (granted: Boolean) -> Unit) {
     RxPermissions(this).checkPermission(
         listener,
         Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -93,7 +93,7 @@ fun FragmentActivity.pmReadContacts(listener: (granted: Boolean) -> Unit) {
 /**
  * 获取读取通讯录权限
  */
-fun Fragment.pmReadContacts(listener: (granted: Boolean) -> Unit) {
+fun Fragment.permReadContacts(listener: (granted: Boolean) -> Unit) {
     RxPermissions(this).checkPermission(
         listener,
         Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -104,7 +104,7 @@ fun Fragment.pmReadContacts(listener: (granted: Boolean) -> Unit) {
 /**
  * 获取发送短信权限
  */
-fun FragmentActivity.pmSendSMS(listener: (granted: Boolean) -> Unit) {
+fun FragmentActivity.permSendSMS(listener: (granted: Boolean) -> Unit) {
     RxPermissions(this).checkPermission(listener, Manifest.permission.SEND_SMS, Manifest.permission.READ_CONTACTS)
 }
 

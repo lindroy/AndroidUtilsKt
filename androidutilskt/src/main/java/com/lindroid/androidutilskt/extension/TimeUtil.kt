@@ -1,3 +1,4 @@
+@file:JvmName("TimeUtil")
 package com.lindroid.androidutilskt.extension
 
 import android.util.Log

@@ -1,3 +1,4 @@
+@file:JvmName("ClipboardUtil")
 package com.lindroid.androidutilskt.extension
 
 import android.content.ClipData

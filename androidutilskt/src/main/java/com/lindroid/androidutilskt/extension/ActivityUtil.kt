@@ -1,3 +1,4 @@
+@file:JvmName("ActivityUtil")
 package com.lindroid.androidutilskt.extension
 
 import android.app.Activity

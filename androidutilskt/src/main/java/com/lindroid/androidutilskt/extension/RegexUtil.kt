@@ -1,3 +1,4 @@
+@file:JvmName("RegexUtil")
 package com.lindroid.androidutilskt.extension
 
 import android.util.Patterns

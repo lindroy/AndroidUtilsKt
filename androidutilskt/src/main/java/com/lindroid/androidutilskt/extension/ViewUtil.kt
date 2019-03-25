@@ -1,3 +1,4 @@
+@file:JvmName("ViewUtil")
 package com.lindroid.androidutilskt.extension
 
 import android.view.View

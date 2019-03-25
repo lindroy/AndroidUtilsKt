@@ -1,3 +1,4 @@
+@file:JvmName("BrightnessUtil")
 package com.lindroid.androidutilskt.extension
 
 import android.Manifest

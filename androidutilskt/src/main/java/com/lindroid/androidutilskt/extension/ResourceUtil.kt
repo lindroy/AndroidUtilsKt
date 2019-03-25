@@ -1,3 +1,4 @@
+@file:JvmName("ResourceUtil")
 package com.lindroid.androidutilskt.extension
 
 import android.content.Context

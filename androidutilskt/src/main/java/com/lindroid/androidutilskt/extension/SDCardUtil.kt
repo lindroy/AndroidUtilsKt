@@ -1,3 +1,4 @@
+@file:JvmName("SDCardUtil")
 package com.lindroid.androidutilskt.extension
 
 import android.os.Environment

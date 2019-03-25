@@ -1,3 +1,4 @@
+@file:JvmName("AppUtil")
 package com.lindroid.androidutilskt.extension
 
 import android.content.Context

@@ -1,3 +1,4 @@
+@file:JvmName("KeyboardUtil")
 package com.lindroid.androidutilskt.extension
 
 import android.content.Context
@@ -16,7 +17,7 @@ import android.view.inputmethod.InputMethodManager
  */
 fun View.showKeyboard(): Boolean {
     val imm = context
-            .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     requestFocus()
     return imm.showSoftInput(this, InputMethodManager.RESULT_UNCHANGED_SHOWN)
 }
@@ -26,7 +27,7 @@ fun View.showKeyboard(): Boolean {
  */
 fun View.hideKeyboard(): Boolean {
     val imm = context
-            .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     return imm.hideSoftInputFromWindow(this.windowToken, InputMethodManager.RESULT_UNCHANGED_SHOWN)
 }
 
@@ -35,6 +36,6 @@ fun View.hideKeyboard(): Boolean {
  */
 fun View.toggleKeyboard() {
     val imm = context
-            .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.RESULT_UNCHANGED_SHOWN)
 }

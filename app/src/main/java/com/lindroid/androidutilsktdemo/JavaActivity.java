@@ -2,8 +2,6 @@ package com.lindroid.androidutilsktdemo;
 
 import android.graphics.Color;
 import android.widget.TextView;
-import com.lindroid.androidutilskt.extension.SpanUtilKt;
-import com.lindroid.androidutilskt.extension.logcat.LogUtil;
 import com.lindroid.androidutilsktdemo.base.BaseActivity;
 
 /**
@@ -25,8 +23,6 @@ public class JavaActivity extends BaseActivity {
         super.initView();
         textView = findViewById(R.id.textView);
         textView.setTextColor(Color.BLACK);
-        SpanUtilKt.buildSpan(textView, "123456789").setStart(0).setEnd(5).setBgColor(Color.RED).setBold().create();
-        LogUtil.buildLogTempConfig();
     }
 
 

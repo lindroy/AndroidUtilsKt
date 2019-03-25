@@ -1,12 +1,12 @@
 package com.lindroid.androidutilsktdemo.activity
 
-import com.lindroid.androidutilskt.statics.IntentUtil
 import com.lindroid.androidutilskt.extension.shortToast
+import com.lindroid.androidutilskt.statics.IntentUtil
 import com.lindroid.androidutilsktdemo.R
 import com.lindroid.androidutilsktdemo.base.BaseActivity
-import com.lindroid.androidutilsktdemo.util.pmCallPhone
-import com.lindroid.androidutilsktdemo.util.pmCamera
-import com.lindroid.androidutilsktdemo.util.pmSendSMS
+import com.lindroid.androidutilsktdemo.util.permCallPhone
+import com.lindroid.androidutilsktdemo.util.permCamera
+import com.lindroid.androidutilsktdemo.util.permSendSMS
 import com.youngfeng.snake.annotations.EnableDragToClose
 import kotlinx.android.synthetic.main.activity_intent.*
 
@@ -40,7 +40,7 @@ class IntentActivity(override val contentViewId: Int = R.layout.activity_intent)
         }
         //直接拨打电话
         btnCallPhone.setOnClickListener {
-            pmCallPhone {
+            permCallPhone {
                 if (it) {
                     IntentUtil.callPhone(mContext, "1008611")
                 }
@@ -58,13 +58,13 @@ class IntentActivity(override val contentViewId: Int = R.layout.activity_intent)
         }
         //启动相机
         btnCamera.setOnClickListener {
-            pmCamera {
+            permCamera {
                 IntentUtil.launchCamera(this, 100)
             }
         }
         //发送短信
         btnSendSMS.setOnClickListener {
-            pmSendSMS {
+            permSendSMS {
                 IntentUtil.sendSMS(mContext, "10086", "这是一条短信")
             }
         }
