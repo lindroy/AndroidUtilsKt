@@ -44,6 +44,18 @@
         android:layout_height="wrap_content"
         android:text="竖屏" />
 
+    <Button
+        android:id="@+id/btnLock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="锁屏" />
+
+    <Button
+        android:id="@+id/btnUnlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="取消锁屏" />
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -64,9 +76,9 @@
     </FrameLayout>
 
     <View
-        android:background="@color/color_divider"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp" />
+        android:layout_height="0.5dp"
+        android:background="@color/color_divider" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -88,9 +100,9 @@
     </FrameLayout>
 
     <View
-        android:background="@color/color_divider"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp" />
+        android:layout_height="0.5dp"
+        android:background="@color/color_divider" />
 
     <FrameLayout
         android:id="@+id/flLockTime"
@@ -115,7 +127,7 @@
     </FrameLayout>
 
     <View
-        android:background="@color/color_divider"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp" />
+        android:layout_height="0.5dp"
+        android:background="@color/color_divider" />
 </LinearLayout>

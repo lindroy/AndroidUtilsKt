@@ -45,7 +45,7 @@ class ScreenActivity(override val contentViewId: Int = com.lindroid.androidutils
 
     override fun initView() {
         super.initView()
-        initToolBar(com.lindroid.androidutilsktdemo.R.string.util_screen)
+        initToolBar(R.string.util_screen)
         screenReceiver.registerScreenActionReceiver()
 
         //分辨率
@@ -66,6 +66,8 @@ class ScreenActivity(override val contentViewId: Int = com.lindroid.androidutils
         super.initOnClick()
         btnPortrait.setOnClickListener { setScreenPortrait() }
         btnLandscape.setOnClickListener { setScreenLandscape() }
+        btnLock.setOnClickListener { lockScreenOrientation() }
+        btnUnlock.setOnClickListener { unlockScreenOrientation() }
         flLockTime.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 //如果当前平台版本大于23平台

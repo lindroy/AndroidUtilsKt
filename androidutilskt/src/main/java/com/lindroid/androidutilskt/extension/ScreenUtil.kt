@@ -1,4 +1,5 @@
 @file:JvmName("ScreenUtil")
+
 package com.lindroid.androidutilskt.extension
 
 import android.app.Activity
@@ -65,9 +66,12 @@ val screenDPI
 
 /**
  * 设置横屏
+ * 横屏有两个方向，在某个横屏方向下再次设置横屏会选择180°，故需要先判断当前是否已经横屏。
  */
 fun Activity.setScreenLandscape() {
-    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+    if (isPortrait) {
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+    }
 }
 
 /**
@@ -80,19 +84,46 @@ fun Activity.setScreenPortrait() {
 /**
  * 获取屏幕方向
  **/
-val Context.screenOrientation
-    get() = resources.configuration.orientation
+val screenOrientation
+    get() = AndUtil.appContext.resources.configuration.orientation
 
 /**
  * 是否是横屏
  */
-val Context.isLandscape: Boolean
+val isLandscape: Boolean
     get() = screenOrientation == Configuration.ORIENTATION_LANDSCAPE
 
 
 /**是否是竖屏**/
-val Context.isPortrait: Boolean
+val isPortrait: Boolean
     get() = screenOrientation == Configuration.ORIENTATION_PORTRAIT
+
+
+/**
+ * 横竖屏切换
+ */
+fun Activity.toggleScreenOrientation() {
+    requestedOrientation = if (isLandscape) {
+        ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+    } else {
+        ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+    }
+}
+
+/**
+ * 锁定屏幕方向
+ */
+fun Activity.lockScreenOrientation() {
+    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LOCKED
+}
+
+/**
+ * 取消锁定屏幕方向
+ */
+fun Activity.unlockScreenOrientation() {
+    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+}
+
 
 /**
  * 判断和设置是否全屏，赋值为true设置成全屏
