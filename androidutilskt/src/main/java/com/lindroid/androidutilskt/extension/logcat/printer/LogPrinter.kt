@@ -181,11 +181,11 @@ class LogPrinter : Printer {
         }
     }
 
-    fun transToString(content: Any?): String {
+    private fun transToString(content: Any?): String {
         return when {
             content == null -> "null"
-            !(this.javaClass.isArray) -> {
-                this.toString()
+            !(content.javaClass.isArray) -> {
+                content.toString()
             }
             content is BooleanArray -> Arrays.toString(content)
             content is CharArray -> Arrays.toString(content)
