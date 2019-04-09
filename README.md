@@ -7,7 +7,7 @@
 本说明文档遵循如下的规则：
 
 1. 根据工具类文件名的英文字母顺序排序；
-2. 接收类不为“/”的表示该工具类为扩展成员写法，放在包“extension”中；接收类为“/”的表示该工具类并非扩展方式的写法，需要使用类名的形式调用里面的函数或属性，放在包“statics”中；
+2. 接收类不为“—”的表示该工具类为扩展成员或全局成员的写法，放在包“extension”中；接收类为“—”的表示该工具类并非扩展方式的写法，需要使用类名的形式调用里面的函数或属性，放在包“statics”中；
 3. 成员包含函数和属性，函数名称后面需要加“()”，属性则不用；
 4. 常量另外写一个表格。
 
@@ -52,12 +52,12 @@ dependencies {
 
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
-| addActivity()   | Activity入栈  |  /  |   /  |
-| removeActivity()   | Activity出栈  |  /  |  /   |
-| finishActivity()   | 关闭一个Activity  |  /  |  /  |
-| currentActivity()   |  获取当前栈顶Activity |  /  |  如果栈内元素为空，则返回null  |
-| finishAllActivity()   |  清理栈中所有的Activity | /  |    / |
-| exitApp()  |  退出应用程序 | /  |   /  |
+| addActivity()   | Activity入栈  |  —  |   /  |
+| removeActivity()   | Activity出栈  |  —  |  /   |
+| finishActivity()   | 关闭一个Activity  |  — |  /  |
+| currentActivity()   |  获取当前栈顶Activity |  — |  如果栈内元素为空，则返回null  |
+| finishAllActivity()   |  清理栈中所有的Activity | — |    / |
+| exitApp()  |  退出应用程序 | — |   /  |
 
  ------------
 
@@ -68,6 +68,14 @@ dependencies {
 | getAppVersionCode()   | 获取应用版本号，默认为本应用  | Context  |  / |
 | getAppSize()   | 获取应用大小，默认为本应用  | Context  | 返回值单位为b  |
 | getAppIcon()   |获取应用图标，默认为本应用| Context  | 失败时返回null  |
+
+ ------------
+
+### [BitmapUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/BitmapUtil.kt "BitmapUtil")：
+| 成员名称 | 作用  | 接收类  | 备注  |
+| ------------ | ------------ | :------------: | :------------: |
+| createBitmapSafely() | 获取应用版本名称，默认为本应用 | /  | / |
+| viewToBitmap() | 将View转换为Bitmap  | / |  / |
 
  ------------
 
@@ -126,13 +134,13 @@ dependencies {
 
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
-| launchSystemSetting()   | 打开系统设置界面  | /  | /  |
-| launchWifiSetting()   | 打开wifi设置界面  | /  | / |
-| launchDialPage()   | 打开拨号面板  | /  | /  |
-| callPhone()   | 直接拨打电话  | /  | 动态权限  |
-| launchBrowse()   | 调用浏览器并打开一个网页  | /  | /  |
-| launchCamera()   | 启动系统相机  | /  | 动态权限  |
-| sendSMS()   | 发送短信  | /  | 动态权限  |
+| launchSystemSetting()   | 打开系统设置界面  | — | /  |
+| launchWifiSetting()   | 打开wifi设置界面  | — | / |
+| launchDialPage()   | 打开拨号面板  | — | /  |
+| callPhone()   | 直接拨打电话  | — | 动态权限  |
+| launchBrowse()   | 调用浏览器并打开一个网页  | — | /  |
+| launchCamera()   | 启动系统相机  | — | 动态权限  |
+| sendSMS()   | 发送短信  | — | 动态权限  |
 
  ------------
 
@@ -434,10 +442,10 @@ tvSubscript.buildSpan("设置文字下标：H20") {
 ###  [VibratorUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/statics/VibratorUtil.kt "VibratorUtil")
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
-| vibrator  | 获取Vibrator实例 | Any | / |
-| hasVibrator | 检测设备是否具有振动器 | Any  | / |
-| vibrate() | 开启振动 | Any | / |
-| cancel() | 取消振动 | Any | / |
+| vibrator  | 获取Vibrator实例 | — | / |
+| hasVibrator | 检测设备是否具有振动器 | — | / |
+| vibrate() | 开启振动 | — | / |
+| cancel() | 取消振动 | — | / |
 
   ------------
 
@@ -452,7 +460,10 @@ tvSubscript.buildSpan("设置文字下标：H20") {
 | setInVisible()  | 将View设置为不可见  | View |  / |
 | setWidth()  | 设置View的宽度  | View |  / |
 | setHeight()  | 设置View的高度  | View |  / |
-| setWidthAndHeight()  | 设置View的宽度和高度  | View |  / |
+| setWidthAndHeight()  | 设置View的宽度和高度  | — |  / |
+| setPadding()  | 设置View的padding  | View |  / |
+| viewHeight()  | 获取View的高度  | View | 如果是“math_parent”属性则无法获取，值为0。 |
+| viewWidth()  | 获取View的宽度  | View | 同上 |
 
 ## 感谢
 

@@ -13,7 +13,7 @@ import android.widget.ImageView
 /**
  * @author Lin
  * @date 2019/4/9
- * @function
+ * @function Bitmap工具类
  * @Description
  */
 /**

@@ -5,7 +5,6 @@ package com.lindroid.androidutilskt.extension
 import android.graphics.Bitmap
 import android.view.View
 import android.view.ViewGroup
-import com.lindroid.androidutilskt.extension.logcat.d
 
 /**
  * @author Lin
@@ -119,7 +118,6 @@ private fun View.measureView() {
         params = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
     }
     val widthSpec = ViewGroup.getChildMeasureSpec(0, 0, params.width)
-    params.width.d()
     val heightSpec = if (params.height > 0) {
         View.MeasureSpec.makeMeasureSpec(params.height, View.MeasureSpec.EXACTLY)
     } else {
