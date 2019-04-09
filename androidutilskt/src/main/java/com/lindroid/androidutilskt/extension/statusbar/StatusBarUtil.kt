@@ -1,4 +1,4 @@
-@file:JvmName("StatusBarUtil")
+@file:JvmName("BarUtil")
 package com.lindroid.androidutilskt.extension.statusbar
 
 import android.annotation.SuppressLint

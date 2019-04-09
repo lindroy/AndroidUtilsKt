@@ -2,6 +2,7 @@ package com.lindroid.androidutilsktdemo;
 
 import android.graphics.Color;
 import android.widget.TextView;
+import com.lindroid.androidutilskt.extension.statusbar.BarUtil;
 import com.lindroid.androidutilsktdemo.base.BaseActivity;
 
 /**
