@@ -199,7 +199,7 @@ DSL:
 ```kotlin
     buildLogConfig {
         setShowThread(false)
-	}
+    }
 ```
 链式调用（主要供Java代码使用）：
 ```kotlin
@@ -267,11 +267,14 @@ DSL:
 | screenHeight | 获取屏幕高度  | Any  | /  |
 | screenDensity | 获取屏幕密度  | Any  | /  |
 | screenDPI | 获取屏幕DPI  | Any  | /  |
-| setScreenLandscape()  | 设置横屏  | Activity  | /  |
-| setScreenPortrait()  | 设置竖屏  | Activity  | /  |
-| screenOrientation  | 获取屏幕方向  | Context  | /  |
-| isLandscape  | 是否是横屏  | Context  | / |
-| isPortrait  | 是否是竖屏  | Context  | /  |
+| screenOrientation  | 获取屏幕方向  | Any  | /  |
+| isLandscape | 是否是横屏  | Any  | / |
+| isPortrait | 是否是竖屏  | Any  | /  |
+| setScreenLandscape() | 设置横屏  | Activity  | /  |
+| setScreenPortrait() | 设置竖屏  | Activity  | /  |
+| toggleScreenOrientation() | 横竖屏切换  | Activity  | /  |
+| lockScreenOrientation() | 锁定屏幕方向  | Activity  | /  |
+| unlockScreenOrientation() | 取消锁定屏幕方向  | Activity  | /  |
 | isFullScreen | 判断和设置是否全屏 | Activity | 赋值为true设置成全屏 |
 | setFullScreen() | 设置全屏 | Activity | / |
 | setNonFullScreen() | 设置非全屏 | Activity | / |
