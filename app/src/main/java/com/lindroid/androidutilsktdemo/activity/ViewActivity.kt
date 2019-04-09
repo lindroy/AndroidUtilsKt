@@ -3,6 +3,7 @@ package com.lindroid.androidutilsktdemo.activity
 import android.annotation.SuppressLint
 import android.widget.SeekBar
 import com.lindroid.androidutilskt.extension.*
+import com.lindroid.androidutilskt.extension.logcat.d
 import com.lindroid.androidutilsktdemo.R
 import com.lindroid.androidutilsktdemo.base.BaseActivity
 import com.youngfeng.snake.annotations.EnableDragToClose
@@ -25,7 +26,8 @@ class ViewActivity(override val contentViewId: Int = R.layout.activity_view) : B
         initToolBar(R.string.util_view)
         tvWidth.text = "设置View的宽度：${screenWidth}px"
         tvHeight.text = "设置View的高度：${(dp2px(150))}px"
-
+//        "llRoot.viewHeight=${px2dp(llRoot.viewHeight)},llRoot.viewWidth=${px2dp(llRoot.viewWidth)}".d()
+        "frameLayout.viewHeight=${px2dp(frameLayout.viewHeight)},frameLayout.viewWidth=${px2dp(frameLayout.viewWidth)}".d()
     }
 
     override fun initOnClick() {

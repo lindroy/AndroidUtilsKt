@@ -4,6 +4,8 @@ package com.lindroid.androidutilskt.extension
 
 import android.graphics.Bitmap
 import android.view.View
+import android.view.ViewGroup
+import com.lindroid.androidutilskt.extension.logcat.d
 
 /**
  * @author Lin
@@ -108,3 +110,40 @@ fun View.setPadding(
     setPadding(left, top, right, bottom)
 }
 
+/**
+ * 测量View
+ */
+private fun View.measureView() {
+    var params = layoutParams
+    if (params == null) {
+        params = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+    }
+    val widthSpec = ViewGroup.getChildMeasureSpec(0, 0, params.width)
+    params.width.d()
+    val heightSpec = if (params.height > 0) {
+        View.MeasureSpec.makeMeasureSpec(params.height, View.MeasureSpec.EXACTLY)
+    } else {
+        View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+    }
+    measure(widthSpec, heightSpec)
+}
+
+/**
+ * 获取View的高度
+ * 如果是“math_parent”属性则无法获取，值为0。
+ */
+val View.viewHeight: Int
+    get() {
+        measureView()
+        return measuredHeight
+    }
+
+/**
+ * 获取View的宽度
+ * 如果是“math_parent”属性则无法获取，值为0。
+ */
+val View.viewWidth: Int
+    get() {
+        measureView()
+        return measuredWidth
+    }
