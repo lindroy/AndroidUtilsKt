@@ -1,4 +1,5 @@
 @file:JvmName("SDCardUtil")
+
 package com.lindroid.androidutilskt.extension
 
 import android.os.Environment
@@ -20,27 +21,33 @@ val isSDCardMounted
 /**
  * 获取SD卡路径
  */
-fun getSDCardPath(): String = if (isSDCardMounted) Environment.getExternalStorageDirectory().absolutePath else ""
+val sdCardPath: String
+    get() = if (isSDCardMounted) Environment.getExternalStorageDirectory().absolutePath else ""
 
 /**
  * 获取SD卡的总大小
+ * 失败时返回-1
  */
-fun getSDCardTotalSize(): Long = when (isSDCardMounted) {
-    true -> {
-        val statFs = StatFs(Environment.getExternalStorageDirectory().path)
-        statFs.blockSizeLong * statFs.blockCountLong
+val sdCardTotalSize: Long
+    get() = when (isSDCardMounted) {
+        true -> {
+            val statFs = StatFs(Environment.getExternalStorageDirectory().path)
+            statFs.blockSizeLong * statFs.blockCountLong
+        }
+        false -> -1
     }
-    false -> -1
-}
 
 
 /**
  * 获取SD卡可用空间大小
+ * 失败时返回-1
  */
-fun getSDCardAvailableSize(): Long = when (isSDCardMounted) {
-    true -> {
-        val statFs = StatFs(Environment.getExternalStorageDirectory().path)
-        statFs.blockSizeLong * statFs.availableBlocksLong
+val sdCardAvailableSize: Long
+    get() = when (isSDCardMounted) {
+        true -> {
+            val statFs = StatFs(Environment.getExternalStorageDirectory().path)
+            statFs.blockSizeLong * statFs.availableBlocksLong
+        }
+        false -> -1
     }
-    false -> -1
-}
+
