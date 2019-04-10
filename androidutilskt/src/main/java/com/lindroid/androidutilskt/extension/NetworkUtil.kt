@@ -1,8 +1,10 @@
 @file:JvmName("NetworkUtil")
+
 package com.lindroid.androidutilskt.extension
 
 import android.content.Context
 import android.net.ConnectivityManager
+import com.lindroid.androidutilskt.app.AndUtil
 
 /**
  * @author Lin
@@ -25,35 +27,36 @@ const val NETWORK_UNKNOWN = -2
 /**
  * 获取当前的网络状态
  */
-fun Context.getNetworkState(): Int {
-    //得到连接管理器对象
-    val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-    val networkInfo = cm.activeNetworkInfo
+val networkState: Int
+    get() {
+        //得到连接管理器对象
+        val cm = AndUtil.appContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkInfo = cm.activeNetworkInfo
 
-    //如果网络连接，判断该网络类型
-    return when (networkInfo != null && networkInfo.isAvailable) {
-        true -> when (networkInfo.type) {
-            ConnectivityManager.TYPE_WIFI -> NETWORK_WIFI
-            ConnectivityManager.TYPE_MOBILE -> NETWORK_MOBILE
-            else -> {
-                NETWORK_UNKNOWN
+        //如果网络连接，判断该网络类型
+        return when (networkInfo != null && networkInfo.isAvailable) {
+            true -> when (networkInfo.type) {
+                ConnectivityManager.TYPE_WIFI -> NETWORK_WIFI
+                ConnectivityManager.TYPE_MOBILE -> NETWORK_MOBILE
+                else -> {
+                    NETWORK_UNKNOWN
+                }
             }
+            false -> NETWORK_NONE
         }
-        false -> NETWORK_NONE
     }
-}
 
 /**是否是wifi**/
-val Context.isWifi
-    get() = getNetworkState() == NETWORK_WIFI
+val isWifi
+    get() = networkState == NETWORK_WIFI
 
 /**是否是移动网络**/
-val Context.isMobileNet
-    get() = getNetworkState() == NETWORK_MOBILE
+val isMobileNet
+    get() = networkState == NETWORK_MOBILE
 
 /**网络是否连接**/
-val Context.isNetworkConnect
-    get() = when (getNetworkState()) {
+val isNetworkConnect
+    get() = when (networkState) {
         NETWORK_MOBILE, NETWORK_WIFI -> true
         NETWORK_NONE -> false
         else -> {

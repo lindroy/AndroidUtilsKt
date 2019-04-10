@@ -37,7 +37,6 @@ val sdCardTotalSize: Long
         false -> -1
     }
 
-
 /**
  * 获取SD卡可用空间大小
  * 失败时返回-1

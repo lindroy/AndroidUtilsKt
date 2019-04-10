@@ -1,10 +1,10 @@
 @file:JvmName("ResourceUtil")
 package com.lindroid.androidutilskt.extension
 
-import android.content.Context
 import android.support.annotation.ColorRes
 import android.support.annotation.DrawableRes
 import android.support.v4.content.ContextCompat
+import com.lindroid.androidutilskt.app.AndUtil
 
 /**
  * @author Lin
@@ -16,9 +16,9 @@ import android.support.v4.content.ContextCompat
 /**
  * 获取颜色
  */
-fun Context.getResColor(@ColorRes colorRes: Int) = ContextCompat.getColor(this, colorRes)
+fun getResColor(@ColorRes colorRes: Int) = ContextCompat.getColor(AndUtil.appContext, colorRes)
 
 /**
  * 获取图片资源
  */
-fun Context.getResDrawable(@DrawableRes drawableRes: Int) = ContextCompat.getDrawable(this, drawableRes)
+fun getResDrawable(@DrawableRes drawableRes: Int) = ContextCompat.getDrawable(AndUtil.appContext, drawableRes)

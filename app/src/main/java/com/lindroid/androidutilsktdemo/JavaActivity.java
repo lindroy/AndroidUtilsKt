@@ -2,7 +2,8 @@ package com.lindroid.androidutilsktdemo;
 
 import android.graphics.Color;
 import android.widget.TextView;
-import com.lindroid.androidutilskt.extension.statusbar.BarUtil;
+import com.lindroid.androidutilskt.extension.NetworkUtil;
+import com.lindroid.androidutilskt.extension.ToastUtil;
 import com.lindroid.androidutilsktdemo.base.BaseActivity;
 
 /**

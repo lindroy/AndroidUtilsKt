@@ -5,6 +5,7 @@ package com.lindroid.androidutilskt.extension
 import android.graphics.Bitmap
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 
 /**
  * @author Lin
@@ -145,3 +146,10 @@ val View.viewWidth: Int
         measureView()
         return measuredWidth
     }
+
+
+/**
+ * 获取EditText的内容
+ */
+val EditText.textString: CharSequence
+    get() = text.toString()

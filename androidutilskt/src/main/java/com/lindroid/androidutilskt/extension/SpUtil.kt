@@ -2,8 +2,8 @@
 package com.lindroid.androidutilskt.extension
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Context.MODE_PRIVATE
+import com.lindroid.androidutilskt.app.AndUtil
 
 /**
  * @author Lin
@@ -18,56 +18,69 @@ import android.content.Context.MODE_PRIVATE
 /**默认存储的文件名**/
 private var defFileName = "sp_util"
 
-private fun Context.getSp(fileName: String = defFileName) = getSharedPreferences(fileName, MODE_PRIVATE)
+private fun getShare(fileName: String = defFileName) = AndUtil.appContext.getSharedPreferences(fileName, MODE_PRIVATE)
 
 internal fun setSpDefaultFile(fileName: String) {
     defFileName = fileName
 }
 
-fun Context.putSpString(key: String, value: String, fileName: String = defFileName): Boolean =
-    getSp(fileName).edit().putString(key, value).commit()
+@JvmOverloads
+fun putSpString(key: String, value: String, fileName: String = defFileName): Boolean =
+    getShare(fileName).edit().putString(key, value).commit()
 
-fun Context.getSpString(key: String, defValue: String = "", fileName: String = defFileName): String =
-    getSp(fileName).getString(key, defValue) ?: ""
+@JvmOverloads
+fun getShareString(key: String, defValue: String = "", fileName: String = defFileName): String =
+    getShare(fileName).getString(key, defValue) ?: ""
 
-fun Context.putSpBoolean(key: String, value: Boolean, fileName: String = defFileName): Boolean =
-    getSp(fileName).edit().putBoolean(key, value).commit()
+@JvmOverloads
+fun putSpBoolean(key: String, value: Boolean, fileName: String = defFileName): Boolean =
+    getShare(fileName).edit().putBoolean(key, value).commit()
 
-fun Context.getSpBoolean(key: String, defValue: Boolean = false, fileName: String = defFileName): Boolean =
-    getSp(fileName).getBoolean(key, defValue)
+@JvmOverloads
+fun getSpBoolean(key: String, defValue: Boolean = false, fileName: String = defFileName): Boolean =
+    getShare(fileName).getBoolean(key, defValue)
 
-fun Context.putSpStrSet(key: String, value: Set<String>, fileName: String = defFileName): Boolean =
-    getSp(fileName).edit().putStringSet(key, value).commit()
+@JvmOverloads
+fun putSpStrSet(key: String, value: Set<String>, fileName: String = defFileName): Boolean =
+    getShare(fileName).edit().putStringSet(key, value).commit()
 
-fun Context.getSpStrSet(key: String, defValue: Set<String>, fileName: String = defFileName): Set<String> =
-    getSp(fileName).getStringSet(key, defValue) ?: setOf()
+@JvmOverloads
+fun getSpStrSet(key: String, defValue: Set<String>, fileName: String = defFileName): Set<String> =
+    getShare(fileName).getStringSet(key, defValue) ?: setOf()
 
-fun Context.putSpInt(key: String, value: Int, fileName: String = defFileName): Boolean =
-    getSp(fileName).edit().putInt(key, value).commit()
+@JvmOverloads
+fun putSpInt(key: String, value: Int, fileName: String = defFileName): Boolean =
+    getShare(fileName).edit().putInt(key, value).commit()
 
-fun Context.getSpInt(key: String, defValue: Int = 0, fileName: String = defFileName): Int =
-    getSp(fileName).getInt(key, defValue)
+@JvmOverloads
+fun getSpInt(key: String, defValue: Int = 0, fileName: String = defFileName): Int =
+    getShare(fileName).getInt(key, defValue)
 
-fun Context.putSpLong(key: String, value: Long, fileName: String = defFileName): Boolean =
-    getSp(fileName).edit().putLong(key, value).commit()
+@JvmOverloads
+fun putSpLong(key: String, value: Long, fileName: String = defFileName): Boolean =
+    getShare(fileName).edit().putLong(key, value).commit()
 
-fun Context.getSpLong(key: String, defValue: Long = 0L, fileName: String = defFileName): Long =
-    getSp(fileName).getLong(key, defValue)
+@JvmOverloads
+fun getSpLong(key: String, defValue: Long = 0L, fileName: String = defFileName): Long =
+    getShare(fileName).getLong(key, defValue)
 
-fun Context.putSpFloat(key: String, value: Float, fileName: String = defFileName): Boolean =
-    getSp(fileName).edit().putFloat(key, value).commit()
+@JvmOverloads
+fun putSpFloat(key: String, value: Float, fileName: String = defFileName): Boolean =
+    getShare(fileName).edit().putFloat(key, value).commit()
 
-fun Context.getSpFloat(key: String, defValue: Float = 0F, fileName: String = defFileName): Float =
-    getSp(fileName).getFloat(key, defValue)
+@JvmOverloads
+fun getSpFloat(key: String, defValue: Float = 0F, fileName: String = defFileName): Float =
+    getShare(fileName).getFloat(key, defValue)
 
 
 /**
  * 保存数据，数据类型由传入的值确定
  * @throws IllegalArgumentException:数据类型不属于SharedPreferences能保存的类型
  */
+@JvmOverloads
 @SuppressLint("ApplySharedPref")
-fun <T : Any> Context.putSp(key: String, value: T, fileName: String = defFileName): Boolean =
-    with(getSp(fileName).edit()) {
+fun <T : Any> putSp(key: String, value: T, fileName: String = defFileName): Boolean =
+    with(getShare(fileName).edit()) {
         when (value) {
             is Int -> putInt(key, value)
             is Float -> putFloat(key, value)
@@ -84,7 +97,7 @@ fun <T : Any> Context.putSp(key: String, value: T, fileName: String = defFileNam
  * @throws IllegalArgumentException:数据类型不属于SharedPreferences能保存的类型
  */
 @Suppress("UNCHECKED_CAST", "IMPLICIT_CAST_TO_ANY")
-fun <T : Any> Context.getSp(key: String, defValue: T, fileName: String = defFileName): T = with(getSp(fileName)) {
+fun <T : Any> getSp(key: String, defValue: T, fileName: String = defFileName): T = with(getShare(fileName)) {
     when (defValue) {
         is Int -> getInt(key, defValue)
         is Float -> getFloat(key, defValue)
@@ -99,15 +112,17 @@ fun <T : Any> Context.getSp(key: String, defValue: T, fileName: String = defFile
 /**
  * 删除某条数据
  */
-fun Context.deleteSpKey(key: String, fileName: String = defFileName): Boolean =
-    getSp(fileName).edit().remove(key).commit()
+@JvmOverloads
+fun deleteSpKey(key: String, fileName: String = defFileName): Boolean =
+    getShare(fileName).edit().remove(key).commit()
 
 /**
  * 清除SharedPreferences中的数据
  * @param fileName ：默认清除defFileName的数据，也可以输入其他的表名
  */
-fun Context.clearSp(fileName: String = defFileName): Boolean =
-    getSp(fileName).edit().clear().commit()
+@JvmOverloads
+fun clearSp(fileName: String = defFileName): Boolean =
+    getShare(fileName).edit().clear().commit()
 
 
 

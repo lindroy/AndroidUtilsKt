@@ -6,9 +6,9 @@
 
 本说明文档遵循如下的规则：
 
-1. 根据工具类文件名的英文字母顺序排序；
-2. 接收类不为“—”的表示该工具类为扩展成员或全局成员的写法，放在包“extension”中；接收类为“—”的表示该工具类并非扩展方式的写法，需要使用类名的形式调用里面的函数或属性，放在包“statics”中；
-3. 成员包含函数和属性，函数名称后面需要加“()”，属性则不用；
+1. 根据工具类文件名的英文字母顺序排序。
+2. 接收类一栏为“/”的表示该方法或属性为全局成员，可在任意地方调用；接收类有具体类名（如Any、String?等）的表示采用扩展成员的写法； 接收类一栏为“—”的表示采用静态类的写法，需要使用类名的形式调用里面的函数或属性，放在包“statics”中；
+3. 成员包含函数和属性，函数名称后面需要加“()”，属性则不用。
 4. 常量另外写一个表格。
 
 ## 配置方法
@@ -104,10 +104,10 @@ dependencies {
 
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
-| isAutoBrightness  | 是否开启了自动亮度 | Any  |  / |
-| setAutoBrightness()  | 设置是否开启自动亮度  | Any | 设置成功返回true  |
-| systemBrightness |  获取/设置系统屏幕宽度 | Any | 亮度范围为0~255 |
-| windowBrightness | 获取/设置当前窗口亮度  | Any | 亮度范围为0~1.0，1为最亮，默认为-1 |
+| isAutoBrightness  | 是否开启了自动亮度 | / | / |
+| setAutoBrightness()  | 设置是否开启自动亮度  | / | 设置成功返回true  |
+| systemBrightness |  获取/设置系统屏幕宽度 | / | 亮度范围为0~255 |
+| windowBrightness | 获取/设置当前窗口亮度  | Activity | 亮度范围为0~1.0，1为最亮，默认为-1 |
 
  ------------
 
@@ -115,7 +115,7 @@ dependencies {
 
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | ------------ | :------------: |
-| clipPlainText()   | 复制纯文本  | Context | /  |
+| clipPlainText()   | 复制纯文本  | / | /  |
 
  ------------
 
@@ -123,10 +123,10 @@ dependencies {
 
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
-| dp2px()   | dp转px  | Context  |  /  |
-| px2dp()   | px转dp  | Context  |  /  |
-| sp2px()   | sp转px  | Context  |  /  |
-| px2sp()   | px转sp  | Context  |  /  |
+| dp2px() | dp转px | / | / |
+| px2dp() | px转dp | / | / |
+| sp2px() | sp转px | / | / |
+| px2sp() | px转sp | / | / |
 
  ------------
 
@@ -233,10 +233,10 @@ DSL:
 
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
-| getNetworkState()   | 获取当前的网络状态  | Context  |  / |
-| isWifi  | 是否是wifi  | Context  | /  |
-| isMobileNet  | 是否是移动网络  | Context  | / |
-| isNetworkConnect  | 网络是否连接  | Context  | / |
+| networkState | 获取当前的网络状态  | /  |  / |
+| isWifi  | 是否是wifi  | /  | /  |
+| isMobileNet  | 是否是移动网络  | /  | / |
+| isNetworkConnect  | 网络是否连接  | /  | / |
 
  ------------
 
@@ -262,8 +262,8 @@ DSL:
 ### [ResourceUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/ResourceUtil.kt "ResourceUtil")：资源工具类
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
-| getResColor()   | 获取颜色  | Context  | /  |
-| getResDrawable()   | 获取图片资源  | Context  | 返回值可以为null  |
+| getResColor()   | 获取颜色  | /  | /  |
+| getResDrawable()   | 获取图片资源  | / | 返回值可以为null  |
 
  ------------
 
@@ -271,33 +271,44 @@ DSL:
 
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
-| screenWidth  | 获取屏幕宽度  | Any  | /  |
-| screenHeight | 获取屏幕高度  | Any  | /  |
-| screenDensity | 获取屏幕密度  | Any  | /  |
-| screenDPI | 获取屏幕DPI  | Any  | /  |
-| screenOrientation  | 获取屏幕方向  | Any  | /  |
-| isLandscape | 是否是横屏  | Any  | / |
-| isPortrait | 是否是竖屏  | Any  | /  |
+| screenWidth  | 获取屏幕宽度  | / | /  |
+| screenHeight | 获取屏幕高度  | / | /  |
+| screenDensity | 获取屏幕密度  | / | /  |
+| screenDPI | 获取屏幕DPI  | Any  | / |
+| screenOrientation  | 获取屏幕方向  | / | /  |
+| isLandscape | 是否是横屏  | / | / |
+| isPortrait | 是否是竖屏  | / | /  |
 | setScreenLandscape() | 设置横屏  | Activity  | /  |
 | setScreenPortrait() | 设置竖屏  | Activity  | /  |
 | toggleScreenOrientation() | 横竖屏切换  | Activity  | /  |
 | lockScreenOrientation() | 锁定屏幕方向  | Activity  | /  |
-| unlockScreenOrientation() | 取消锁定屏幕方向  | Activity  | /  |
+| unlockScreenOrientation() | 取消锁定屏幕方向  | Activity | /  |
 | isFullScreen | 判断和设置是否全屏 | Activity | 赋值为true设置成全屏 |
 | setFullScreen() | 设置全屏 | Activity | / |
 | setNonFullScreen() | 设置非全屏 | Activity | / |
-| isScreenOn | 屏幕是否亮屏 | Any | / |
-| isScreenOff | 屏幕是否熄灭 | Any | / |
-| isScreenLocked | 屏幕是否锁屏 | Any | / |
-| isScreenUnlocked | 屏幕是否解锁 | Any | / |
+| isScreenOn | 屏幕是否亮屏 | / | / |
+| isScreenOff | 屏幕是否熄灭 | / | / |
+| isScreenLocked | 屏幕是否锁屏 | / | / |
+| isScreenUnlocked | 屏幕是否解锁 | / | / |
 | isKeepScreenOn | 判断和设置是否保持屏幕常亮 | Activity | 只作用于当前窗口 |
 | setKeepScreenOn() | 保持屏幕常亮 | Activity | 只作用于当前窗口 |
 | setNonKeepScreenOn | 取消保持屏幕常亮 | Activity | 只作用于当前窗口 |
-| getScreenAutoLockTime() | 获取自动锁屏时间 | Any | 需要WRITE_SETTINGS权限 |
-| setScreenAutoLockTime() | 设置自动锁屏时间 | Any | 需要WRITE_SETTINGS权限 |
-| setScreenAutoLockNever() | 设置永不自动锁屏 | Any | 需要WRITE_SETTINGS权限 |
+| getScreenAutoLockTime() | 获取自动锁屏时间 | / | 需要WRITE_SETTINGS权限 |
+| setScreenAutoLockTime() | 设置自动锁屏时间 | / | 需要WRITE_SETTINGS权限 |
+| setScreenAutoLockNever() | 设置永不自动锁屏 | / | 需要WRITE_SETTINGS权限 |
 
  ------------
+### [SDCardUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/SDCardUtil.kt "SDCardUtil")：SD卡工具类
+| 成员名称 | 作用  | 接收类  | 备注  |
+| ------------ | ------------ | :------------: | :------------: |
+| isSDCardMounted | 判断SD卡是否已挂载 | / | / |
+| sdCardPath | 获取SD卡路径 | / | 失败时返回空字符 |
+| sdCardTotalSize | 获取SD卡的总大小 | / | 失败时返回-1 |
+| sdCardAvailableSize | 获取SD卡可用空间大小 | / | 失败时返回-1 |
+
+
+ ------------
+
 ### [SpanUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/SpanUtil.kt "SpanUtil")
 
 #### 单一特效文字
@@ -375,22 +386,22 @@ tvSubscript.buildSpan("设置文字下标：H20") {
 
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
-| setSpDefaultFile()  |  设置默认的表名 | /  | internal  |
-| putSpString()  |  存储字符串 | Context  | /  |
-| getSpString()  | 取出存储的字符串 | Context | /  |
-| putSpBoolean() | 存储布尔值 | Context | /  |
-| getSpBoolean() | 取出存储的布尔值 | Context |  / |
-| putSpInt() | 存储Int值 | Context | /  |
-| getSpInt() | 取出存储的Int值 | Context | / |
-| putSpLong() | 存储Long值 | Context | /  |
-| getSpLong() | 取出存储的Long值 | Context | / |
-| putSpFloat() | 存储Float值 | Context | /  |
-| getSpFloat() | 取出存储的Float值 | Context | / |
-| putSpStrSet() | 存储StringSet | Context | / |
-| getSpStrSet() | 取出存储的StringSet | Context |  /  |
-| putSp() | 保存数据 | Context | 数据类型由传入的值确定  |
-| getSp() |取出数据 | Context | 数据类型由传入的默认值确定  |
-| deleteSpKey() | 删除某条数据 | Context | /  |
+| setSpDefaultFile()  |  设置默认的表名 | / | internal  |
+| putSpString()  |  存储字符串 | /  | /  |
+| getSpString()  | 取出存储的字符串 | / | /  |
+| putSpBoolean() | 存储布尔值 | / | /  |
+| getSpBoolean() | 取出存储的布尔值 | / |  / |
+| putSpInt() | 存储Int值 | / | /  |
+| getSpInt() | 取出存储的Int值 | / | / |
+| putSpLong() | 存储Long值 | / | /  |
+| getSpLong() | 取出存储的Long值 | / | / |
+| putSpFloat() | 存储Float值 | / | /  |
+| getSpFloat() | 取出存储的Float值 | / | / |
+| putSpStrSet() | 存储StringSet | / | / |
+| getSpStrSet() | 取出存储的StringSet | / |  /  |
+| putSp() | 保存数据 | / | 数据类型由传入的值确定  |
+| getSp() |取出数据 | / | 数据类型由传入的默认值确定  |
+| deleteSpKey() | 删除某条数据 | / | /  |
 | clearSp() | 清除SharedPreferences的数据 | 不输入表名则清除默认表中的数据 | /  |
 
  ------------
@@ -434,8 +445,8 @@ tvSubscript.buildSpan("设置文字下标：H20") {
 
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
-| shortToast()  | 显示短Toast  | Context  | /  |
-| longToast()  | 显示长Toast  | Context  |  / |
+| shortToast()  | 显示短Toast  | / | /  |
+| longToast()  | 显示长Toast  | / |  / |
 
  ------------
 
@@ -461,9 +472,10 @@ tvSubscript.buildSpan("设置文字下标：H20") {
 | setWidth()  | 设置View的宽度  | View |  / |
 | setHeight()  | 设置View的高度  | View |  / |
 | setWidthAndHeight()  | 设置View的宽度和高度  | — |  / |
-| setPadding()  | 设置View的padding  | View |  / |
-| viewHeight()  | 获取View的高度  | View | 如果是“math_parent”属性则无法获取，值为0。 |
-| viewWidth()  | 获取View的宽度  | View | 同上 |
+| setPadding() | 设置View的padding  | View |  / |
+| viewHeight  | 获取View的高度  | View | 如果是“math_parent”属性则无法获取，值为0。 |
+| viewWidth  | 获取View的宽度  | View | 同上 |
+| textString | 获取View的宽度  | View | 同上 |
 
 ## 感谢
 

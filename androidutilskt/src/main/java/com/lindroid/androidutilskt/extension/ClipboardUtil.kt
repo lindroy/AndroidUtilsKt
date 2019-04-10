@@ -4,6 +4,7 @@ package com.lindroid.androidutilskt.extension
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import com.lindroid.androidutilskt.app.AndUtil
 
 /**
  * @author Lin
@@ -19,8 +20,8 @@ import android.content.Context
  * @return 是否复制成功
  */
 @JvmOverloads
-fun Context.clipPlainText(text: CharSequence, label: CharSequence = ""): Boolean {
-    val cm = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+fun clipPlainText(text: CharSequence, label: CharSequence = ""): Boolean {
+    val cm = AndUtil.appContext.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     val clipData = ClipData.newPlainText(label, text)
     cm.primaryClip = clipData
     return cm.hasPrimaryClip()

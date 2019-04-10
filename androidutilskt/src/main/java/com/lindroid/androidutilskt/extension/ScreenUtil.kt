@@ -64,6 +64,13 @@ val screenDensity
 val screenDPI
     get() = Resources.getSystem().displayMetrics.densityDpi
 
+
+/**
+ * 获取屏幕方向
+ **/
+val screenOrientation
+    get() = AndUtil.appContext.resources.configuration.orientation
+
 /**
  * 设置横屏
  * 横屏有两个方向，在某个横屏方向下再次设置横屏会选择180°，故需要先判断当前是否已经横屏。
@@ -80,12 +87,6 @@ fun Activity.setScreenLandscape() {
 fun Activity.setScreenPortrait() {
     requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 }
-
-/**
- * 获取屏幕方向
- **/
-val screenOrientation
-    get() = AndUtil.appContext.resources.configuration.orientation
 
 /**
  * 是否是横屏

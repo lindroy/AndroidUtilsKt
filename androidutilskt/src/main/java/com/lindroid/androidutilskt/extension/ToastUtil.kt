@@ -1,11 +1,11 @@
 @file:JvmName("ToastUtil")
 package com.lindroid.androidutilskt.extension
 
-import android.content.Context
 import android.os.Handler
 import android.os.Looper
 import android.support.annotation.StringRes
 import android.widget.Toast
+import com.lindroid.androidutilskt.app.AndUtil
 
 /**
  * @author Lin
@@ -17,12 +17,12 @@ private var toast: Toast? = null
 private var firstShowTime = 0L
 private var nextShowTime = 0L
 
-private fun Context.showToast(message: CharSequence, duration: Int): Toast {
+private fun showToast(message: CharSequence, duration: Int): Toast {
     fun durationTime() = if (duration == Toast.LENGTH_SHORT) 2000L else 3500L
     return when (toast == null) {
         true -> {
             firstShowTime = System.currentTimeMillis()
-            toast = Toast.makeText(this, null, duration)
+            toast = Toast.makeText(AndUtil.appContext, null, duration)
             toast!!.apply {
                 //这里调用setText
                 setText(message)
@@ -43,8 +43,8 @@ private fun Context.showToast(message: CharSequence, duration: Int): Toast {
     }
 }
 
-private fun Context.showToast(@StringRes messageId: Int, duration: Int): Toast {
-    return showToast(getString(messageId), duration)
+private fun showToast(@StringRes messageId: Int, duration: Int): Toast {
+    return showToast(AndUtil.getString(messageId), duration)
 }
 
 /**
@@ -57,11 +57,11 @@ private fun cancelToast() {
     nextShowTime = 0L
 }
 
-fun Context.shortToast(message: CharSequence) = showToast(message, Toast.LENGTH_SHORT)
+fun shortToast(message: CharSequence) = showToast(message, Toast.LENGTH_SHORT)
 
-fun Context.shortToast(@StringRes messageId: Int) = showToast(messageId, Toast.LENGTH_SHORT)
+fun shortToast(@StringRes messageId: Int) = showToast(messageId, Toast.LENGTH_SHORT)
 
-fun Context.longToast(message: CharSequence) = showToast(message, Toast.LENGTH_LONG)
+fun longToast(message: CharSequence) = showToast(message, Toast.LENGTH_LONG)
 
-fun Context.longToast(@StringRes messageId: Int) = showToast(messageId, Toast.LENGTH_LONG)
+fun longToast(@StringRes messageId: Int) = showToast(messageId, Toast.LENGTH_LONG)
 
