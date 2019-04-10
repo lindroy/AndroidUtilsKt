@@ -423,14 +423,14 @@ tvSubscript.buildSpan("设置文字下标：H20") {
 ### [TimeUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/TimeUtil.kt "TimeUtil")：时间工具类
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
-| serverFormat  | 服务器返回的时间格式  | Any  | internal，仅用于全局配置  |
-| currentYear | 获取当前年份  | Any  | / |
-| currentMonth | 获取当前年份 | Any  | / |
-| currentDay | 获取当前日 | Any | / |
-| currentTimeMillis | 获取当前时间戳 | Any | / |
-| formatCurrentDate  | 获取当前日期 | Any  | 默认格式为"yyyy-MM-dd"  |
-| formatCurrentDateTime  | 获取当前时间  | Any | 默认格式为"yyyy-MM-dd HH:mm" |
-| formatCurrentTime | 获取当前时间 | Any | "HH:mm" |
+| serverFormat  | 服务器返回的时间格式  | / | internal，仅用于全局配置  |
+| currentYear | 获取当前年份  | /  | / |
+| currentMonth | 获取当前年份 | /  | / |
+| currentDay | 获取当前日 | / | / |
+| currentTimeMillis | 获取当前时间戳 | / | / |
+| formatCurrentDate  | 获取当前日期 | /  | 默认格式为"yyyy-MM-dd"  |
+| formatCurrentDateTime  | 获取当前时间  | / | 默认格式为"yyyy-MM-dd HH:mm" |
+| formatCurrentTime | 获取当前时间 | / | "HH:mm" |
 | formatTimeYMD | 将服务器时间格式转换为年月日 | String | / |
 | formatTimeYMDChinese | 将服务器时间格式转换为年月日（带汉字）  | String | / |
 | formatTimeHM | 将服务器时间格式转换为时分 | String | / |
