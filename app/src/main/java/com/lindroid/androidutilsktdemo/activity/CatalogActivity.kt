@@ -2,7 +2,6 @@ package com.lindroid.androidutilsktdemo.activity
 
 import android.content.Intent
 import android.widget.ArrayAdapter
-import com.lindroid.androidutilskt.extension.putSp
 import com.lindroid.androidutilsktdemo.R
 import com.lindroid.androidutilsktdemo.activity.statusbar.StatusBarActivity
 import com.lindroid.androidutilsktdemo.base.BaseActivity
