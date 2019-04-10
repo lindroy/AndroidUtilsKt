@@ -53,7 +53,7 @@ fun View.setVisible() {
 /**
  * 将View设置为不可见
  */
-fun View.setInVisible() {
+fun View.setInvisible() {
     if (visibility != View.INVISIBLE) {
         visibility = View.INVISIBLE
     }

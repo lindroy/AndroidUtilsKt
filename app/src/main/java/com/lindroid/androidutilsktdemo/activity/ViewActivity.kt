@@ -33,7 +33,7 @@ class ViewActivity(override val contentViewId: Int = R.layout.activity_view) : B
     override fun initOnClick() {
         super.initOnClick()
         btnVisible.setOnClickListener { frameLayout.setVisible() }
-        btnInvisible.setOnClickListener { frameLayout.setInVisible() }
+        btnInvisible.setOnClickListener { frameLayout.setInvisible() }
         btnGone.setOnClickListener { frameLayout.setGone() }
         btnToBitmap.setOnClickListener {
             ivBitmap.setImageBitmap(frameLayout.toBitmap())

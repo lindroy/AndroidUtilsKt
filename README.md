@@ -468,7 +468,7 @@ tvSubscript.buildSpan("设置文字下标：H20") {
 | isGone | 当前View是否隐藏  | View | /  |
 | setGone()  | 将View设置为隐藏  | View | /  |
 | setVisible()  | 将View设置为可见  | View |  / |
-| setInVisible()  | 将View设置为不可见  | View |  / |
+| setInvisible()  | 将View设置为不可见  | View |  / |
 | setWidth()  | 设置View的宽度  | View |  / |
 | setHeight()  | 设置View的高度  | View |  / |
 | setWidthAndHeight()  | 设置View的宽度和高度  | — |  / |
