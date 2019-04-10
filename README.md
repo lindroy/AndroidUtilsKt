@@ -170,7 +170,7 @@ dependencies {
 | :------------: | :------------: | :------------: | :------------: |
 | setLogEnable() | 设置是否显示日志 | true  | / |
 | setMethodCount() | 设置显示的方法数 | 1  | / |
-| setMethodOffset() | 设置栈偏移量 | 0 / |
+| setMethodOffset() | 设置栈偏移量 | 0 | / |
 | setShowThread() | 设置是否显示线程 | true | / |
 | setShowGlobalTag() | 设置是否在临时Tag前面显示全局Tag | false  | / |
 | setLogStrategy()  | 自定义日志打印策略 | / | / |
