@@ -19,6 +19,10 @@ private fun RxPermissions.checkPermission(listener: (granted: Boolean) -> Unit, 
         .subscribe {
             listener.invoke(it)
         }
+    this.requestEach()
+        .subscribe {
+
+        }
 }
 
 /**

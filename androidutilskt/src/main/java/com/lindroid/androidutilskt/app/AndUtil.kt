@@ -24,14 +24,14 @@ object AndUtil {
     }
 
     @JvmStatic
-    val appContext: Context
+    internal val appContext: Context
         get() = application.applicationContext
 
     @JvmStatic
-    fun getString(@StringRes strId: Int): String = appContext.getString(strId)
+    internal fun getString(@StringRes strId: Int): String = appContext.getString(strId)
 
     @JvmStatic
-    fun getColor(@ColorRes colorId: Int): Int = ContextCompat.getColor(appContext, colorId)
+    internal fun getColor(@ColorRes colorId: Int): Int = ContextCompat.getColor(appContext, colorId)
 
     class Config {
         companion object {

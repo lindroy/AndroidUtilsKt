@@ -6,17 +6,4 @@
   <component name="ProjectType">
     <option name="id" value="Android" />
   </component>
-  <component name="SvnBranchConfigurationManager">
-    <option name="myConfigurationMap">
-      <map>
-        <entry key="$PROJECT_DIR$">
-          <value>
-            <SvnBranchConfiguration>
-              <option name="trunkUrl" value="https://192.168.254.12:8443/svn/AndroidGroup/Libs/AndroidUtilsKtDemo" />
-            </SvnBranchConfiguration>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
 </project>

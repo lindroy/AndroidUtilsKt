@@ -475,7 +475,7 @@ tvSubscript.buildSpan("设置文字下标：H20") {
 | setPadding() | 设置View的padding  | View |  / |
 | viewHeight  | 获取View的高度  | View | 如果是“math_parent”属性则无法获取，值为0。 |
 | viewWidth  | 获取View的宽度  | View | 同上 |
-| textString | 获取View的宽度  | EditText | 同上 |
+| textString | 获取EditText的字符内容  | EditText | 同上 |
 
 ## 感谢
 

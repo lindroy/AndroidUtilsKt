@@ -69,7 +69,7 @@
       <bodyTop />
       <bodyBottom />
     </HtmlSettings>
-    <CssSettings previewScheme="UI_SCHEME" cssUri="" isCssUriEnabled="false" isCssUriSerial="false" isCssTextEnabled="false" isDynamicPageWidth="true">
+    <CssSettings previewScheme="UI_SCHEME" cssUri="" isCssUriEnabled="false" isCssUriSerial="true" isCssTextEnabled="false" isDynamicPageWidth="true">
       <StylesheetProvider>
         <provider providerId="com.vladsch.idea.multimarkdown.editor.swing.html.css" providerName="Default Swing Stylesheet" />
       </StylesheetProvider>
@@ -77,7 +77,8 @@
       <cssText />
       <cssUriHistory />
     </CssSettings>
-    <HtmlExportSettings updateOnSave="false" parentDir="" targetDir="" cssDir="" scriptDir="" plainHtml="false" imageDir="" copyLinkedImages="false" imageUniquifyType="0" targetPathType="2" targetExt="" useTargetExt="false" noCssNoScripts="false" useElementStyleAttribute="false" linkToExportedHtml="true" exportOnSettingsChange="true" regenerateOnProjectOpen="false" linkFormatType="HTTP_ABSOLUTE" />
+    <AnnotatorSettings targetHasSpaces="true" linkCaseMismatch="true" wikiCaseMismatch="true" wikiLinkHasDashes="true" notUnderWikiHome="true" targetNotWikiPageExt="true" notUnderSourceWikiHome="true" targetNameHasAnchor="true" targetPathHasAnchor="true" wikiLinkHasSlash="true" wikiLinkHasSubdir="true" wikiLinkHasOnlyAnchor="true" linkTargetsWikiHasExt="true" linkTargetsWikiHasBadExt="true" notUnderSameRepo="true" targetNotUnderVcs="false" linkNeedsExt="true" linkHasBadExt="true" linkTargetNeedsExt="true" linkTargetHasBadExt="true" wikiLinkNotInWiki="true" imageTargetNotInRaw="true" repoRelativeAcrossVcsRoots="true" multipleWikiTargetsMatch="true" unresolvedLinkReference="true" linkIsIgnored="true" anchorIsIgnored="true" anchorIsUnresolved="true" anchorLineReferenceIsUnresolved="true" anchorLineReferenceFormat="true" anchorHasDuplicates="true" abbreviationDuplicates="true" abbreviationNotUsed="true" attributeIdDuplicateDefinition="true" attributeIdNotUsed="true" footnoteDuplicateDefinition="true" footnoteUnresolved="true" footnoteDuplicates="true" footnoteNotUsed="true" macroDuplicateDefinition="true" macroUnresolved="true" macroDuplicates="true" macroNotUsed="true" referenceDuplicateDefinition="true" referenceUnresolved="true" referenceDuplicates="true" referenceNotUsed="true" referenceUnresolvedNumericId="true" enumRefDuplicateDefinition="true" enumRefUnresolved="true" enumRefDuplicates="true" enumRefNotUsed="true" enumRefLinkUnresolved="true" enumRefLinkDuplicates="true" simTocUpdateNeeded="true" simTocTitleSpaceNeeded="true" />
+    <HtmlExportSettings updateOnSave="false" parentDir="" targetDir="" cssDir="css" scriptDir="js" plainHtml="false" imageDir="" copyLinkedImages="false" imageUniquifyType="0" targetPathType="2" targetExt="" useTargetExt="false" noCssNoScripts="false" useElementStyleAttribute="false" linkToExportedHtml="true" exportOnSettingsChange="true" regenerateOnProjectOpen="false" linkFormatType="HTTP_ABSOLUTE" />
     <LinkMapSettings>
       <textMaps />
     </LinkMapSettings>
