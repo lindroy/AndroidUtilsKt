@@ -5,7 +5,7 @@ package com.lindroid.androidutilskt.extension
 import android.graphics.Bitmap
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
+import android.widget.TextView
 
 /**
  * @author Lin
@@ -101,7 +101,7 @@ fun View.toBitmap(scale: Float = 1.0F): Bitmap? = viewToBitmap(this, scale)
 /**
  * 设置View的padding
  */
-fun View.setPadding(
+fun View.setNewPadding(
     left: Int = paddingLeft,
     top: Int = paddingTop,
     right: Int = paddingRight,
@@ -147,9 +147,50 @@ val View.viewWidth: Int
         return measuredWidth
     }
 
+/**
+ * 获取TextView的String内容
+ */
+val TextView.textString: String
+    get() = text.toString()
 
 /**
- * 获取EditText的内容
+ * 获取TextView的String内容长度
  */
-val EditText.textString: CharSequence
-    get() = text.toString()
+val TextView.textLength: Int
+    get() = text.length
+
+/**
+ * 判断TextView的内容是否为空
+ */
+val TextView.isTextEmpty: Boolean
+    get() = text.isEmpty()
+
+/**
+ * 判断TextView的内容是否为null或空
+ */
+val TextView.isTextNullOrEmpty: Boolean
+    get() = text.isNullOrEmpty()
+
+/**
+ * 判断TextView的内容是否为非空
+ */
+val TextView.isTextNotEmpty: Boolean
+    get() = !isTextEmpty
+
+/**
+ * 判断TextView的内容是否为空白
+ */
+val TextView.isTextBlank: Boolean
+    get() = text.isBlank()
+
+/**
+ * 判断TextView的内容是否为null或空白
+ */
+val TextView.isTextNullOrBlank:Boolean
+    get() = text.isNullOrBlank()
+
+/**
+ * 判断TextView的内容是否为非空白
+ */
+val TextView.isTextNotBlank: Boolean
+    get() = text.isNotBlank()
