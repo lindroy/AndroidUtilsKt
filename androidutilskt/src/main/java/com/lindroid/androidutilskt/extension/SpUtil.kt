@@ -29,7 +29,7 @@ fun putSpString(key: String, value: String, fileName: String = defFileName): Boo
     getShare(fileName).edit().putString(key, value).commit()
 
 @JvmOverloads
-fun getShareString(key: String, defValue: String = "", fileName: String = defFileName): String =
+fun getSpString(key: String, defValue: String = "", fileName: String = defFileName): String =
     getShare(fileName).getString(key, defValue) ?: ""
 
 @JvmOverloads
