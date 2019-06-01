@@ -35,3 +35,13 @@ fun getResString(@StringRes stringId:Int) = AndUtil.getString(stringId)
  * 单位为px
  */
 fun getResDeminPx(@DimenRes dimenRes: Int) = AndUtil.appContext.resources.getDimensionPixelSize(dimenRes)
+
+/**
+ * 获取dimens中单位为dp的资源
+ */
+fun getResDeminDp(@DimenRes dimenRes: Int) = px2dp(AndUtil.appContext.resources.getDimensionPixelSize(dimenRes))
+
+/**
+ * 获取dimens中单位为Sp的资源
+ */
+fun getResDeminSp(@DimenRes dimenRes: Int) = px2sp(AndUtil.appContext.resources.getDimensionPixelSize(dimenRes))

@@ -1,5 +1,6 @@
 # AndroidUtilsKt
 
+
 [![](https://jitpack.io/v/Lindroy/AndroidUtilsKt.svg)](https://jitpack.io/#Lindroy/AndroidUtilsKt)
 
 使用kotlin编写的Android工具类，主要采用扩展函数的方式。目前还在不断补充中。
@@ -170,7 +171,7 @@ dependencies {
 | :------------: | :------------: | :------------: | :------------: |
 | setLogEnable() | 设置是否显示日志 | true  | / |
 | setMethodCount() | 设置显示的方法数 | 1  | / |
-| setMethodOffset() | 设置栈偏移量 | 0 | / |
+| setMethodOffset() | 设置栈偏移量 | 0 / |
 | setShowThread() | 设置是否显示线程 | true | / |
 | setShowGlobalTag() | 设置是否在临时Tag前面显示全局Tag | false  | / |
 | setLogStrategy()  | 自定义日志打印策略 | / | / |
@@ -264,6 +265,10 @@ DSL:
 | ------------ | ------------ | :------------: | :------------: |
 | getResColor()   | 获取颜色  | /  | /  |
 | getResDrawable()   | 获取图片资源  | / | 返回值可以为null  |
+| getResString() | 获取字符资源 | / | / |
+| getResDeminPx() | 获取dimens资源 | / | / |
+| getResDeminDp() | 获取dimens中单位为dp的资源 | / | / |
+| getResDeminSp() | 获取dimens中单位为Sp的资源 | /  | / |
 
  ------------
 
@@ -423,14 +428,14 @@ tvSubscript.buildSpan("设置文字下标：H20") {
 ### [TimeUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/TimeUtil.kt "TimeUtil")：时间工具类
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
-| serverFormat  | 服务器返回的时间格式  | / | internal，仅用于全局配置  |
-| currentYear | 获取当前年份  | /  | / |
-| currentMonth | 获取当前年份 | /  | / |
-| currentDay | 获取当前日 | / | / |
-| currentTimeMillis | 获取当前时间戳 | / | / |
-| formatCurrentDate  | 获取当前日期 | /  | 默认格式为"yyyy-MM-dd"  |
-| formatCurrentDateTime  | 获取当前时间  | / | 默认格式为"yyyy-MM-dd HH:mm" |
-| formatCurrentTime | 获取当前时间 | / | "HH:mm" |
+| serverFormat  | 服务器返回的时间格式  | Any  | internal，仅用于全局配置  |
+| currentYear | 获取当前年份  | Any  | / |
+| currentMonth | 获取当前年份 | Any  | / |
+| currentDay | 获取当前日 | Any | / |
+| currentTimeMillis | 获取当前时间戳 | Any | / |
+| formatCurrentDate  | 获取当前日期 | Any  | 默认格式为"yyyy-MM-dd"  |
+| formatCurrentDateTime  | 获取当前时间  | Any | 默认格式为"yyyy-MM-dd HH:mm" |
+| formatCurrentTime | 获取当前时间 | Any | "HH:mm" |
 | formatTimeYMD | 将服务器时间格式转换为年月日 | String | / |
 | formatTimeYMDChinese | 将服务器时间格式转换为年月日（带汉字）  | String | / |
 | formatTimeHM | 将服务器时间格式转换为时分 | String | / |
@@ -468,18 +473,25 @@ tvSubscript.buildSpan("设置文字下标：H20") {
 | isGone | 当前View是否隐藏  | View | /  |
 | setGone()  | 将View设置为隐藏  | View | /  |
 | setVisible()  | 将View设置为可见  | View |  / |
-| setInvisible()  | 将View设置为不可见  | View |  / |
+| setInVisible()  | 将View设置为不可见  | View |  / |
 | setWidth()  | 设置View的宽度  | View |  / |
 | setHeight()  | 设置View的高度  | View |  / |
 | setWidthAndHeight()  | 设置View的宽度和高度  | — |  / |
-| setPadding() | 设置View的padding  | View |  / |
+| setNewPadding() | 设置View的padding  | View |  / |
 | viewHeight  | 获取View的高度  | View | 如果是“math_parent”属性则无法获取，值为0。 |
 | viewWidth  | 获取View的宽度  | View | 同上 |
-| textString | 获取EditText的字符内容  | EditText | 同上 |
+| textString | 获取TextView的String内容  | TextView | / |
+| textLength | 获取TextView的String内容长度 | TextView | /  |
+| isTextEmpty | 判断TextView的内容是否为空 | TextView |  / |
+| isTextNullOrEmpty | 判断TextView的内容是否为null或空 | TextView | / |
+| isTextNotEmpty | 判断TextView的内容是否为非空 | TextView | / |
+| isTextBlank | 判断TextView的内容是否为空白 | TextView | / |
+| isTextNullOrBlank | 判断TextView的内容是否为null或空白 | TextView | / |
+| isTextNotBlank | 判断TextView的内容是否为非空白 | TextView | / |
 
 ## 感谢
 
-[Anko](https://github.com/Kotlin/anko "Anko")      
-[AndroidUtilCode](https://github.com/Blankj/AndroidUtilCode "AndroidUtilCode")      
-[Qmui](https://qmuiteam.com/android "Qmui")     
+[Anko](https://github.com/Kotlin/anko "Anko")
+[AndroidUtilCode](https://github.com/Blankj/AndroidUtilCode "AndroidUtilCode")
+[Qmui](https://qmuiteam.com/android "Qmui")
 [Logger](https://github.com/orhanobut/logger "Logger")
