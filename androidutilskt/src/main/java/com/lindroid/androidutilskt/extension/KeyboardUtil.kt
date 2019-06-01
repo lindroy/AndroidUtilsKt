@@ -39,3 +39,7 @@ fun View.toggleKeyboard() {
         .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.RESULT_UNCHANGED_SHOWN)
 }
+
+fun View.addOnKeyboardStateWatcher(callback: ((hasShow: Boolean, keyboardHeight: Int) -> Unit)){45
+    KeyboarStateWatcher(this)
+}
