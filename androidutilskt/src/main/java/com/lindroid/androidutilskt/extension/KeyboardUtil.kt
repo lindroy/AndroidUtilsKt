@@ -1,4 +1,5 @@
 @file:JvmName("KeyboardUtil")
+
 package com.lindroid.androidutilskt.extension
 
 import android.content.Context
@@ -40,6 +41,17 @@ fun View.toggleKeyboard() {
     imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.RESULT_UNCHANGED_SHOWN)
 }
 
-fun View.addOnKeyboardStateWatcher(callback: ((hasShow: Boolean, keyboardHeight: Int) -> Unit)){45
-    KeyboarStateWatcher(this)
-}
+/**
+ * 设置软键盘的显示和隐藏监听事件
+ */
+fun View.addOnKeyboardStatusWatcher(callback: ((isShowed: Boolean, keyboardHeight: Int) -> Unit)) =
+    with(KeyboardStatusWatcher(this)) {
+        addKeyboardStatusWatcher(callback)
+    }
+
+val View.isKeyboardShowed
+    get() = KeyboardStatusWatcher(this).isKeyboardShowed
+
+val View.isKeyboarHidden
+    get() = !isKeyboardShowed
+
