@@ -47,6 +47,7 @@ fun View.toggleKeyboard() {
 fun View.addOnKeyboardStatusWatcher(callback: ((isShowed: Boolean, keyboardHeight: Int) -> Unit)) =
     with(KeyboardStatusWatcher(this)) {
         addKeyboardStatusWatcher(callback)
+        this
     }
 
 val View.isKeyboardShowed

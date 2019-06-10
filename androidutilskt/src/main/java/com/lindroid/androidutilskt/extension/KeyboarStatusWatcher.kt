@@ -8,11 +8,11 @@ import android.view.ViewTreeObserver
 /**
  * @author Lin
  * @date 2019/6/1
- * @function 软键盘显示和隐藏
+ * @function 监听软键盘显示和隐藏，并获取其高度
  * @Description
  */
 
-internal class KeyboardStatusWatcher(val view: View) : ViewTreeObserver.OnGlobalLayoutListener {
+class KeyboardStatusWatcher(val view: View) : ViewTreeObserver.OnGlobalLayoutListener {
 
     private val mContext = view.rootView.context
 
@@ -20,8 +20,23 @@ internal class KeyboardStatusWatcher(val view: View) : ViewTreeObserver.OnGlobal
 
     private val watchers: HashMap<View, ((isShowed: Boolean, keyboardHeight: Int) -> Unit)> = HashMap()
 
+    /**
+     * 软键盘是否显示
+     */
     var isKeyboardShowed = false
+        private set(value) {
+            field = value
+        }
 
+    /**
+     * 软键盘是否隐藏
+     */
+    val isKeyboardHidden
+        get() = !isKeyboardShowed
+
+    /**
+     * 最近一次弹出的软键盘高度
+     */
     var keyboardHeight = 0
 
     init {
@@ -59,11 +74,16 @@ internal class KeyboardStatusWatcher(val view: View) : ViewTreeObserver.OnGlobal
         }
     }
 
+    /**
+     * 监听软键盘状态
+     */
     fun addKeyboardStatusWatcher(watcher: ((isShowed: Boolean, keyboardHeight: Int) -> Unit)) {
         watchers[view] = watcher
     }
 
+    /**
+     * 移除软键盘状态监听事件
+     */
     fun removeKeyboardStatusWatcher(view: View): Boolean = watchers.remove(view) != null
-
 
 }
