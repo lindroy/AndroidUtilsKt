@@ -44,15 +44,14 @@ fun View.toggleKeyboard() {
 /**
  * 设置软键盘的显示和隐藏监听事件
  */
-fun View.addOnKeyboardStatusWatcher(callback: ((isShowed: Boolean, keyboardHeight: Int) -> Unit)) =
+/*
+fun View.addKeyboardStatusWatcher(callback: ((isShowed: Boolean, keyboardHeight: Int) -> Unit)) =
     with(KeyboardStatusWatcher(this)) {
         addKeyboardStatusWatcher(callback)
         this
     }
 
-val View.isKeyboardShowed
-    get() = KeyboardStatusWatcher(this).isKeyboardShowed
-
-val View.isKeyboarHidden
-    get() = !isKeyboardShowed
+fun View.removeKeyboardStatusWatcher(){
+    KeyboardStatusWatcher(this).removeKeyboardStatusWatcher(this)
+}*/
 

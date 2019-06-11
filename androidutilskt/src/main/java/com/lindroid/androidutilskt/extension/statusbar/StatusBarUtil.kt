@@ -1,10 +1,10 @@
 @file:JvmName("BarUtil")
+
 package com.lindroid.androidutilskt.extension.statusbar
 
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.app.Activity
-import android.content.Context
 import android.content.res.Resources
 import android.graphics.drawable.Drawable
 import android.os.Build
@@ -19,6 +19,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
+import com.lindroid.androidutilskt.app.AndUtil
 
 /**
  * @author Lin
@@ -39,18 +40,18 @@ private var statusBarType = STATUSBAR_TYPE_DEFAULT
 /**
  * 获取状态栏高度，返回值单位为px
  */
-fun Context.getStatusBarHeight(): Int {
-    val height = STATUSBAR_DEFAULT_HEIGHT
-    val resId = resources.getIdentifier("status_bar_height", "dimen", "android")
-    return if (resId > 0) {
-        resources.getDimensionPixelSize(resId)
-    } else {
-        TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            height.toFloat(), Resources.getSystem().displayMetrics
-        ).toInt()
+val statusBarHeight: Int
+    get() {
+        val resId = AndUtil.appContext.resources.getIdentifier("status_bar_height", "dimen", "android")
+        return if (resId > 0) {
+            AndUtil.appContext.resources.getDimensionPixelSize(resId)
+        } else {
+            TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                STATUSBAR_DEFAULT_HEIGHT.toFloat(), Resources.getSystem().displayMetrics
+            ).toInt()
+        }
     }
-}
 
 /**
  * 设置纯颜色状态栏
@@ -114,9 +115,7 @@ private fun setStatusBarView(
             barView = View(container.context)
             barView.id = android.R.id.custom
             barView.setStatusBackground()
-            val lp = ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, container.context.getStatusBarHeight()
-            )
+            val lp = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, statusBarHeight)
             container.addView(barView, lp)
         }
         false -> barView.setStatusBackground()

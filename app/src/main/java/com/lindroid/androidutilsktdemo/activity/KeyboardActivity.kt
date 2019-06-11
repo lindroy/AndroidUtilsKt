@@ -1,7 +1,6 @@
 package com.lindroid.androidutilsktdemo.activity
 
 import com.lindroid.androidutilskt.extension.*
-import com.lindroid.androidutilskt.extension.logcat.d
 import com.lindroid.androidutilsktdemo.R
 import com.lindroid.androidutilsktdemo.base.BaseActivity
 import com.youngfeng.snake.annotations.EnableDragToClose
@@ -32,9 +31,6 @@ class KeyboardActivity(override val contentViewId: Int = R.layout.activity_keybo
             "软键盘是否打开：${llRoot.isKeyboardShowed}".d()
         }*/
 
-        btnHide.addOnKeyboardStatusWatcher { hasShow, keyboardHeight ->
-            "软键盘状态2：${hasShow}，键盘高度2：$keyboardHeight".d()
-        }
 
         val keyboardStatus = KeyboardStatusWatcher(llRoot)
         //监听软键盘状态

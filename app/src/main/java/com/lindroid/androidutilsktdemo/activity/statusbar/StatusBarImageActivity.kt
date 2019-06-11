@@ -1,7 +1,7 @@
 package com.lindroid.androidutilsktdemo.activity.statusbar
 
-import com.lindroid.androidutilskt.extension.statusbar.getStatusBarHeight
 import com.lindroid.androidutilskt.extension.statusbar.setTransParentStatusBar
+import com.lindroid.androidutilskt.extension.statusbar.statusBarHeight
 import com.lindroid.androidutilsktdemo.R
 import com.lindroid.androidutilsktdemo.base.BaseActivity
 import com.youngfeng.snake.annotations.EnableDragToClose
@@ -27,7 +27,7 @@ class StatusBarImageActivity(override val contentViewId: Int = R.layout.activity
          lp.setMargins(0,getStatusBarHeight(),0,0)
          toolBar.layoutParams = lp*/
 
-        toolBar.setPadding(0, getStatusBarHeight(), 0, 0)
+        toolBar.setPadding(0, statusBarHeight, 0, 0)
         tvDesc.text = """
 顶部为图片的沉浸式状态栏的设置步骤：
 1、设置透明状态栏；
