@@ -2,46 +2,55 @@
 
 package com.lindroid.androidutilskt.extension
 
-import android.content.Context
-import android.graphics.Point
+import android.app.Activity
 import android.os.Build
-import android.view.KeyCharacterMap
-import android.view.KeyEvent
-import android.view.ViewConfiguration
-import android.view.WindowManager
+import android.support.annotation.RequiresApi
 import com.lindroid.androidutilskt.app.AndUtil
-import com.lindroid.androidutilskt.extension.logcat.dt
 
 /**
  * @author Lin
  * @date 2019/6/11
  * @function 虚拟导航栏工具类
- * @Description
+ * @Description https://juejin.im/post/5bb5c4e75188255c72285b54
  */
 
 /**
  * 判断手机系统是否有虚拟导航栏
  */
 val hasNavigationBar
-    get() = when (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+    get() = navBarResId != 0
+
+val Activity.isNavExist: Boolean
+    @RequiresApi(Build.VERSION_CODES.KITKAT_WATCH)
+    get() = when (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT_WATCH) {
         true -> {
-            val wm = AndUtil.appContext.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-            val display = wm.defaultDisplay
-            val size = Point()
-            val realSize = Point()
-            display.getSize(size)
-            display.getRealSize(realSize)
-            " realSize.x=${realSize.x}".dt("Tag")
-            " size.x=${size.x}".dt("Tag")
-            " realSize.y=${realSize.y}".dt("Tag")
-            " size.y=${size.y}".dt("Tag")
-            realSize.x != size.x || realSize.y != size.y
+            var isExist = false
+            window.decorView.setOnApplyWindowInsetsListener { v, insets ->
+                if (insets != null) {
+                    isExist = insets.systemWindowInsetBottom == navigationBarHeight
+                }
+                insets
+            }
+            isExist
         }
-        false -> {
-            //是否有物理菜单键
-            val hasMenuKey = ViewConfiguration.get(AndUtil.appContext).hasPermanentMenuKey()
-            //是否有物理返回键
-            val hasBackKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK)
-            !hasMenuKey && !hasBackKey
-        }
+        false -> false
     }
+
+
+/**
+ * 获取虚拟导航栏的高度
+ * 单位为px
+ */
+val navigationBarHeight: Int
+    get() {
+        val resourceId = navBarResId
+        return if (resourceId != 0) {
+            getResDeminPx(resourceId)
+        } else 0
+    }
+
+private val navBarResId
+    get() = AndUtil.appContext.resources.getIdentifier(
+        "navigation_bar_height",
+        "dimen", "android"
+    )

@@ -1,6 +1,7 @@
 package com.lindroid.androidutilsktdemo.activity
 
 import com.lindroid.androidutilskt.extension.hasNavigationBar
+import com.lindroid.androidutilskt.extension.navigationBarHeight
 import com.lindroid.androidutilsktdemo.R
 import com.lindroid.androidutilsktdemo.base.BaseActivity
 import com.youngfeng.snake.annotations.EnableDragToClose
@@ -19,5 +20,6 @@ class NavigationBarActivity(override val contentViewId: Int = R.layout.activity_
         super.initView()
         initToolBar(R.string.util_navigation)
         tvHasNav.text = "是否有虚拟导航栏：$hasNavigationBar"
+        tvNavHeight.text = "虚拟导航栏高度：${navigationBarHeight}px"
     }
 }
