@@ -5,6 +5,8 @@ package com.lindroid.androidutilskt.extension
 import android.app.Activity
 import android.os.Build
 import android.support.annotation.RequiresApi
+import android.view.View
+import android.view.ViewGroup
 import com.lindroid.androidutilskt.app.AndUtil
 
 /**
@@ -34,6 +36,19 @@ val Activity.isNavExist: Boolean
             isExist
         }
         false -> false
+    }
+
+/**
+ * 当前是否显示虚拟导航栏
+ */
+val Activity.isNavigationBarShowed: Boolean
+    get() {
+        val viewGroup = window.decorView as ViewGroup? ?: return false
+        return (0 until viewGroup.childCount).firstOrNull {
+            viewGroup.getChildAt(it).id != View.NO_ID
+                    && resources.getResourceEntryName(viewGroup.getChildAt(it).id) == "navigationBarBackground"
+        } != null
+
     }
 
 
