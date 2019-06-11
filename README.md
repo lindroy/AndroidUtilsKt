@@ -510,7 +510,7 @@ tvSubscript.buildSpan("设置文字下标：H20") {
 
 ## 感谢
 
-[Anko](https://github.com/Kotlin/anko "Anko") 
-[AndroidUtilCode](https://github.com/Blankj/AndroidUtilCode "AndroidUtilCode") 
-[Qmui](https://qmuiteam.com/android "Qmui") 
-[Logger](https://github.com/orhanobut/logger "Logger") 
+1. [Anko](https://github.com/Kotlin/anko "Anko")
+2. [AndroidUtilCode](https://github.com/Blankj/AndroidUtilCode "AndroidUtilCode")
+3. [Qmui](https://qmuiteam.com/android "Qmui")
+4. [Logger](https://github.com/orhanobut/logger "Logger")
