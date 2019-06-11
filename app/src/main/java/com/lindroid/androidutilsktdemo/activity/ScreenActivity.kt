@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.activity_screen.*
 private const val RQ_WRITE_SETTINGS = 100
 
 //@EnableDragToClose
-class ScreenActivity(override val contentViewId: Int = com.lindroid.androidutilsktdemo.R.layout.activity_screen) :
+class ScreenActivity(override val contentViewId: Int =R.layout.activity_screen) :
     BaseActivity() {
     private lateinit var screenReceiver: ScreenActionReceiver
     private lateinit var lockTimeMap: LinkedHashMap<Int, String>

@@ -111,6 +111,6 @@ fun getOsVersionName(key: String): String {
         }
     }
 //    name = name?.toLowerCase() ?: ""
-    name = if (name == null) "" else name
+    name = name ?: ""
     return name
 }

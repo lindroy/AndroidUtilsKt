@@ -5,6 +5,7 @@
     <string name="util_intent">Intent工具类(IntentUtil)</string>
     <string name="util_keyboard">软键盘工具类(KeyboardUtil)</string>
     <string name="util_log">日志工具类(LogUtil)</string>
+    <string name="util_navigation">虚拟导航栏工具类(NavigationBarUtil)</string>
     <string name="util_regex">正则表达式工具类(RegexUtil)</string>
     <string name="util_screen">屏幕相关工具类(ScreenUtil)</string>
     <string name="util_sdcard">SDCard工具类(SDCardUtil)</string>
