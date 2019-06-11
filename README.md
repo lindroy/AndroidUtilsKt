@@ -1,6 +1,7 @@
 # AndroidUtilsKt
 
 
+
 [![](https://jitpack.io/v/Lindroy/AndroidUtilsKt.svg)](https://jitpack.io/#Lindroy/AndroidUtilsKt)
 
 使用kotlin编写的Android工具类，主要采用扩展函数的方式。目前还在不断补充中。
@@ -70,6 +71,20 @@ dependencies {
 | getAppVersionCode()   | 获取应用版本号，默认为本应用  | Context  |  / |
 | getAppSize()   | 获取应用大小，默认为本应用  | Context  | 返回值单位为b  |
 | getAppIcon()   |获取应用图标，默认为本应用| Context  | 失败时返回null  |
+
+ ------------
+
+### [BarUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/statusbar/StatusBarUtil.kt "StatusBarUtil")：状态栏工具类
+
+| 成员名称 | 作用  | 接收类  | 备注  |
+| ------------ | ------------ | :------------: | :------------: |
+| statusBarHeight  | 获取状态栏高度  | / | 单位为px |
+| setStatusBarColor | 设置纯颜色状态栏  | Activity  | 参数为ColorInt |
+| setStatusBarColorRes()  | 设置纯颜色状态栏 | Activity | 参数为ColorRes  |
+| setTransParentStatusBar() | 设置透明状态栏 | Activity | 在界面创建时调用才能生效 |
+| setGradientStatusBar() | 设置渐变色状态栏 | Activity | 参数为Drawable或DrawableRes |
+| setStatusBarDarkMode() | 设置状态栏白色字体图标(深色模式) | Activity | / |
+| setStatusBarLightMode() | 设置状态栏黑色字体图标(浅色模式) | Activity | / |
 
  ------------
 
@@ -153,6 +168,23 @@ dependencies {
 | showKeyboard()  | 打开软键盘  | View  | /  |
 | hideKeyboard()  | 关闭软键盘  | View  | /  |
 | toggleKeyboard()  | 根据当前软键盘的状态做取反操作  | View  | /  |
+
+#### 监听软键盘的状态
+监听软键盘的显示和隐藏可以使用`KeyboardStatusWatcher`类，使用方法见下面代码。但要注意：软键盘的状态和高度必须在设置了监听事件之后才能获取，且
+```kotlin
+        val keyboardStatus = KeyboardStatusWatcher(llRoot)
+        //监听软键盘状态
+        keyboardStatus.addKeyboardStatusWatcher { isShowed, keyboardHeight ->
+            val status = if (isShowed) "软键盘显示，高度为${px2dp(keyboardStatus.keyboardHeight)}" else "软键盘收起"
+            shortToast(status)
+        }
+        //软键盘高度
+        keyboardStatus.keyboardHeight
+        //软键盘是否显示
+        keyboardStatus.isKeyboardShowed
+        //软键盘是否隐藏
+        keyboardStatus.isKeyboardHidden
+```
 
  ------------
 
@@ -412,20 +444,6 @@ tvSubscript.buildSpan("设置文字下标：H20") {
 
  ------------
 
-### [StatusBarUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/statusbar/StatusBarUtil.kt "StatusBarUtil")：状态栏工具类
-
-| 成员名称 | 作用  | 接收类  | 备注  |
-| ------------ | ------------ | :------------: | :------------: |
-| getStatusBarHeight()  | 获取状态栏高度  | Context | 返回值单位为px |
-| setStatusBarColor | 设置纯颜色状态栏  | Activity  | 参数为ColorInt |
-| setStatusBarColorRes()  | 设置纯颜色状态栏 | Activity | 参数为ColorRes  |
-| setTransParentStatusBar() | 设置透明状态栏 | Activity | 在界面创建时调用才能生效 |
-| setGradientStatusBar() | 设置渐变色状态栏 | Activity | 参数为Drawable或DrawableRes |
-| setStatusBarDarkMode() | 设置状态栏白色字体图标(深色模式) | Activity | / |
-| setStatusBarLightMode() | 设置状态栏黑色字体图标(浅色模式) | Activity | / |
-
- ------------
-
 ### [TimeUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/TimeUtil.kt "TimeUtil")：时间工具类
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
@@ -492,7 +510,7 @@ tvSubscript.buildSpan("设置文字下标：H20") {
 
 ## 感谢
 
-[Anko](https://github.com/Kotlin/anko "Anko")
-[AndroidUtilCode](https://github.com/Blankj/AndroidUtilCode "AndroidUtilCode")
-[Qmui](https://qmuiteam.com/android "Qmui")
-[Logger](https://github.com/orhanobut/logger "Logger")
+[Anko](https://github.com/Kotlin/anko "Anko") 
+[AndroidUtilCode](https://github.com/Blankj/AndroidUtilCode "AndroidUtilCode") 
+[Qmui](https://qmuiteam.com/android "Qmui") 
+[Logger](https://github.com/orhanobut/logger "Logger") 
