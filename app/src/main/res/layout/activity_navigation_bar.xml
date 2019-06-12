@@ -1,29 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/llRoot"
+    tools:context=".activity.NavigationBarActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <TextView
+        android:id="@+id/tvHasNav"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".activity.NavigationBarActivity">
-    <include layout="@layout/toolbar"/>
+        android:layout_height="wrap_content"
+        android:textSize="16sp" />
 
     <TextView
-            android:textSize="16sp"
-            android:id="@+id/tvHasNav"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+        android:id="@+id/tvNavHeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp" />
 
     <TextView
-            android:textSize="16sp"
-            android:id="@+id/tvNavHeight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+        android:id="@+id/tvNavShow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="start|center_vertical"
+            android:text="显示或隐藏导航栏"
+            android:textSize="16sp" />
+
+        <Switch
+            android:id="@+id/swNav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
 
     <TextView
-            android:textSize="16sp"
-            android:id="@+id/tvNavShow"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+        android:text="检测整体布局是否上移"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:background="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
 
 </LinearLayout>
