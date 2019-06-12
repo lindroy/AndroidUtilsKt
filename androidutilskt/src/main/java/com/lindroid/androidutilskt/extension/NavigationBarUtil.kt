@@ -4,6 +4,9 @@ package com.lindroid.androidutilskt.extension
 
 import android.app.Activity
 import android.os.Build
+import android.support.annotation.ColorInt
+import android.support.annotation.ColorRes
+import android.support.annotation.RequiresApi
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
@@ -20,7 +23,9 @@ import com.lindroid.androidutilskt.app.AndUtil
 /**
  * 判断手机系统是否有虚拟导航栏
  */
+
 val hasNavBar
+    @JvmName("hasNavBar")
     get() = navBarResId != 0
 
 /*val Activity.isNavExist: Boolean
@@ -83,7 +88,7 @@ fun Window.hideNavBar() {
          }
      }*/
     val uiOptions =
-        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+            View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
 }
 
 fun Window.setShowNavBar(isShow: Boolean) {
@@ -91,19 +96,19 @@ fun Window.setShowNavBar(isShow: Boolean) {
         return
     }
     val viewGroup = decorView as ViewGroup? ?: return
-    for (i in (0 until viewGroup.childCount)){
+    for (i in (0 until viewGroup.childCount)) {
         val childId = viewGroup.getChildAt(i).id
-        if (childId != View.NO_ID){
+        if (childId != View.NO_ID) {
             val resourceEntryName = AndUtil.appContext.resources.getResourceEntryName(childId)
-            if (RES_NAME_NAV_BAR == resourceEntryName){
+            if (RES_NAME_NAV_BAR == resourceEntryName) {
                 viewGroup.getChildAt(i).visibility = if (isShow) View.VISIBLE else View.INVISIBLE
             }
-        }else{
+        } else {
             break
         }
     }
     val uiOptions =
-        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION  or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+            View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
     if (isShow) {
         decorView.systemUiVisibility = decorView.systemUiVisibility and uiOptions.inv()
     } else {
@@ -124,10 +129,44 @@ val navBarHeight: Int
         } else 0
     }
 
+/**
+ * 设置导航栏颜色
+ */
+var Window.navBarColor: Int
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    get() = navigationBarColor
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    set(@ColorInt value) {
+        navigationBarColor = value
+    }
+
+/**
+ * 设置导航栏颜色
+ */
+var Activity.navBarColor: Int
+    get() = window.navBarColor
+    set(@ColorInt value) {
+        window.navBarColor = value
+    }
+
+/**
+ * 设置导航栏颜色
+ */
+fun Window.setNavBarColorRes(@ColorRes colorId:Int){
+    navBarColor = getResColor(colorId)
+}
+
+/**
+ * 设置导航栏颜色
+ */
+fun Activity.setNavBarColorRes(@ColorRes colorId:Int){
+    navBarColor = getResColor(colorId)
+}
+
 private const val RES_NAME_NAV_BAR = "navigationBarBackground"
 
 private val navBarResId
     get() = AndUtil.appContext.resources.getIdentifier(
-        "navigation_bar_height",
-        "dimen", "android"
+            "navigation_bar_height",
+            "dimen", "android"
     )
