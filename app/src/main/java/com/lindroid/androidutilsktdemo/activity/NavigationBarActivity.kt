@@ -1,8 +1,8 @@
 package com.lindroid.androidutilsktdemo.activity
 
-import com.lindroid.androidutilskt.extension.hasNavigationBar
-import com.lindroid.androidutilskt.extension.isNavigationBarShowed
-import com.lindroid.androidutilskt.extension.navigationBarHeight
+import com.lindroid.androidutilskt.extension.hasNavBar
+import com.lindroid.androidutilskt.extension.isNavBarShowed
+import com.lindroid.androidutilskt.extension.navBarHeight
 import com.lindroid.androidutilsktdemo.R
 import com.lindroid.androidutilsktdemo.base.BaseActivity
 import com.youngfeng.snake.annotations.EnableDragToClose
@@ -20,13 +20,13 @@ class NavigationBarActivity(override val contentViewId: Int = R.layout.activity_
     override fun initView() {
         super.initView()
         initToolBar(R.string.util_navigation)
-        tvHasNav.text = "是否有虚拟导航栏：$hasNavigationBar"
-        tvNavHeight.text = "虚拟导航栏高度：${navigationBarHeight}px"
+        tvHasNav.text = "是否有虚拟导航栏：$hasNavBar"
+        tvNavHeight.text = "虚拟导航栏高度：${navBarHeight}px"
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
-        tvNavShow.text = "虚拟导航栏是否显示：$isNavigationBarShowed"
+        tvNavShow.text = "虚拟导航栏是否显示：$isNavBarShowed"
 
     }
 }
