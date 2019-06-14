@@ -1,6 +1,7 @@
 package com.lindroid.androidutilsktdemo.activity
 
 import com.lindroid.androidutilskt.extension.*
+import com.lindroid.androidutilskt.extension.logcat.d
 import com.lindroid.androidutilsktdemo.R
 import com.lindroid.androidutilsktdemo.base.BaseActivity
 import com.youngfeng.snake.annotations.EnableDragToClose
@@ -22,6 +23,14 @@ class NavigationBarActivity(override val contentViewId: Int = R.layout.activity_
         tvNavHeight.text = "虚拟导航栏高度：${navBarHeight}px"
     }
 
+    override fun initOnListener() {
+        super.initOnListener()
+        setOnNavBarStatusWatcher {
+            "导航栏是否显示：$it".d()
+        }
+//        setStatusBarColorRes(R.color.colorPrimary)
+    }
+
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         tvNavShow.text = "虚拟导航栏是否显示：$isNavBarShowed"
@@ -35,5 +44,6 @@ class NavigationBarActivity(override val contentViewId: Int = R.layout.activity_
 
             }*/
         }
+
     }
 }

@@ -44,6 +44,22 @@ val hasNavBar
         false -> false
     }*/
 
+fun Window.setOnNavBarStatusWatcher(callback: (isShowed: Boolean) -> Unit) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT_WATCH && hasNavBar) {
+        val navigationBarHeight = navBarHeight
+        decorView.setOnApplyWindowInsetsListener { v, insets ->
+            if (insets != null) {
+                callback.invoke(insets.systemWindowInsetBottom == navigationBarHeight)
+            }
+            insets
+        }
+    }
+}
+
+fun Activity.setOnNavBarStatusWatcher(callback: (isShowed: Boolean) -> Unit) {
+    window.setOnNavBarStatusWatcher(callback)
+}
+
 /**
  * 当前虚拟导航栏是否显示
  */
@@ -88,11 +104,11 @@ fun Window.hideNavBar() {
          }
      }*/
     val uiOptions =
-            View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
 }
 
 fun Window.setShowNavBar(isShow: Boolean) {
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT || !hasNavBar) {
         return
     }
     val viewGroup = decorView as ViewGroup? ?: return
@@ -108,7 +124,7 @@ fun Window.setShowNavBar(isShow: Boolean) {
         }
     }
     val uiOptions =
-            View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
     if (isShow) {
         decorView.systemUiVisibility = decorView.systemUiVisibility and uiOptions.inv()
     } else {
@@ -125,7 +141,7 @@ val navBarHeight: Int
     get() {
         val resourceId = navBarResId
         return if (resourceId != 0) {
-            getResDeminPx(resourceId)
+            getResDimenPx(resourceId)
         } else 0
     }
 
@@ -152,14 +168,14 @@ var Activity.navBarColor: Int
 /**
  * 设置导航栏颜色
  */
-fun Window.setNavBarColorRes(@ColorRes colorId:Int){
+fun Window.setNavBarColorRes(@ColorRes colorId: Int) {
     navBarColor = getResColor(colorId)
 }
 
 /**
  * 设置导航栏颜色
  */
-fun Activity.setNavBarColorRes(@ColorRes colorId:Int){
+fun Activity.setNavBarColorRes(@ColorRes colorId: Int) {
     navBarColor = getResColor(colorId)
 }
 
@@ -167,6 +183,6 @@ private const val RES_NAME_NAV_BAR = "navigationBarBackground"
 
 private val navBarResId
     get() = AndUtil.appContext.resources.getIdentifier(
-            "navigation_bar_height",
-            "dimen", "android"
+        "navigation_bar_height",
+        "dimen", "android"
     )
