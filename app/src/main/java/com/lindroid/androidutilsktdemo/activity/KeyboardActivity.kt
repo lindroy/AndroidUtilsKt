@@ -35,8 +35,9 @@ class KeyboardActivity(override val contentViewId: Int = R.layout.activity_keybo
         val keyboardStatus = KeyboardStatusWatcher(llRoot)
         //监听软键盘状态
         keyboardStatus.addKeyboardStatusWatcher { isShowed, keyboardHeight ->
-            val status = if (isShowed) "软键盘显示，高度为${px2dp(keyboardStatus.keyboardHeight)}" else "软键盘收起"
+            val status = if (isShowed) "软键盘显示，高度为${keyboardStatus.keyboardHeight}px" else "软键盘收起"
             shortToast(status)
+            flKeyboard.setHeight(keyboardHeight)
         }
         //软键盘高度
         keyboardStatus.keyboardHeight

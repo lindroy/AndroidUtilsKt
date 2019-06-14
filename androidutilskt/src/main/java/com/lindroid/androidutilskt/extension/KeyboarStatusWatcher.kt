@@ -2,8 +2,11 @@ package com.lindroid.androidutilskt.extension
 
 import android.app.Activity
 import android.graphics.Rect
+import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver
+import com.lindroid.androidutilskt.extension.logcat.d
+import com.lindroid.androidutilskt.extension.statusbar.statusBarHeight
 
 /**
  * @author Lin
@@ -14,11 +17,13 @@ import android.view.ViewTreeObserver
 
 class KeyboardStatusWatcher(val view: View) : ViewTreeObserver.OnGlobalLayoutListener {
 
-    private val mContext = view.rootView.context
+    private val mContext = view.context
 
     private val rootView = view.rootView
 
     private val watchers: HashMap<View, ((isShowed: Boolean, keyboardHeight: Int) -> Unit)> = HashMap()
+
+    private var visibleHeight = 0
 
     /**
      * 软键盘是否显示
@@ -41,7 +46,8 @@ class KeyboardStatusWatcher(val view: View) : ViewTreeObserver.OnGlobalLayoutLis
 
     init {
         if (!watchers.containsKey(view)) {
-            rootView.viewTreeObserver.addOnGlobalLayoutListener(this)
+            "注册监听".d()
+            view.viewTreeObserver.addOnGlobalLayoutListener(this)
         }
     }
 
@@ -50,18 +56,33 @@ class KeyboardStatusWatcher(val view: View) : ViewTreeObserver.OnGlobalLayoutLis
      * within the view tree changes
      */
     override fun onGlobalLayout() {
+        "监听软键盘".d()
         val rect = Rect()
         rootView.getWindowVisibleDisplayFrame(rect)
+        if (visibleHeight == (rect.bottom - rect.top)) {
+            return
+        } else {
+            visibleHeight = (rect.bottom - rect.top)
+        }
         val heightDiff = rootView.height - (rect.bottom - rect.top)
         if (heightDiff > screenHeight / 3) {
             isKeyboardShowed = true
             //计算软键盘高度
-            keyboardHeight = when (mContext) {
+            when (mContext) {
                 is Activity -> {
-                    //全屏时减去状态栏高度
-                    if (mContext.isFullScreen) heightDiff - screenHeight else heightDiff
+                    //非全屏时减去状态栏高度
+                    keyboardHeight = if (mContext.isFullScreen) heightDiff else heightDiff - statusBarHeight
+                    //导航栏显示时减去其高度
+                    if (hasNavBar && mContext.isNavBarShowed) {
+                        keyboardHeight -= navBarHeight
+                    }
+                    Log.e("Tag","hasNavBar=$hasNavBar")
+                    Log.e("Tag","mContext.isNavBarShowed=${mContext.isNavBarShowed}")
+                    Log.e("Tag","statusBarHeight=$statusBarHeight")
+                    Log.e("Tag","navBarHeight=$navBarHeight")
+                    Log.e("Tag","keyboardHeight=$keyboardHeight")
                 }
-                else -> heightDiff
+                else -> keyboardHeight = heightDiff
             }
         } else {
             //软键盘隐藏时键盘高度为0
