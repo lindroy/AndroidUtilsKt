@@ -21,7 +21,7 @@ import com.lindroid.androidutilskt.app.AndUtil
  */
 
 /**
- * 判断手机系统是否有虚拟导航栏
+ * 手机是否有虚拟导航栏
  */
 val hasNavBar
     @JvmName("hasNavBar")
@@ -90,7 +90,7 @@ val Activity.isNavBarHidden: Boolean
         View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
 }*/
 
-fun Window.setShowNavBar(isShow: Boolean) {
+/*fun Window.setShowNavBar(isShow: Boolean) {
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT || !hasNavBar) {
         return
     }
@@ -113,11 +113,11 @@ fun Window.setShowNavBar(isShow: Boolean) {
     } else {
         decorView.systemUiVisibility = decorView.systemUiVisibility or uiOptions
     }
-}
+}*/
 
 
 /**
- * 获取虚拟导航栏的高度，必须在布局绘制完成之后才能获取到正确的值（可以在onWindowFocusChanged()中调用）
+ * 获取虚拟导航栏的高度，必须在布局绘制完成之后调用才能获取到正确的值（可以在onWindowFocusChanged()中调用）
  * 单位为px
  */
 val navBarHeight: Int

@@ -75,7 +75,10 @@ dependencies {
 
  ------------
 
-### [BarUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/statusbar/StatusBarUtil.kt "StatusBarUtil")：状态栏工具类
+### [BarUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/statusbar/StatusBarUtil.kt "StatusBarUtil")：栏工具类
+
+#### 状态栏（StatusBar）
+文件名为`StatusBarUtil`，在Java中调用时使用`BarUtil`即可。
 
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
@@ -86,6 +89,19 @@ dependencies {
 | setGradientStatusBar() | 设置渐变色状态栏 | Activity | 参数为Drawable或DrawableRes |
 | setStatusBarDarkMode() | 设置状态栏白色字体图标(深色模式) | Activity | / |
 | setStatusBarLightMode() | 设置状态栏黑色字体图标(浅色模式) | Activity | / |
+
+#### 导航栏（NavigationBar）
+文件名为`NavigationBarUtil`，在Java中调用时使用`BarUtil`即可。
+
+| 成员名称 | 作用  | 接收类  | 备注  |
+| ------------ | ------------ | :------------: | :------------: |
+| hasNavBar | 手机是否有虚拟导航栏 | / | / |
+| isNavBarShowed | 当前虚拟导航栏是否显示 | Activity/Window | / |
+| isNavBarHidden | 当前虚拟导航栏是否隐藏 | Activity/Window | / |
+| navBarHeight | 获取虚拟导航栏的高度 | / | 必须在布局绘制完成之后调用 |
+| navBarColor | 获取/设置虚拟导航栏颜色 | Activity/Window | 颜色值为ColorInt |
+| setNavBarColorRes() | 获取/设置导航栏颜色 | Activity/Window | 参数为资源ID  |
+
 
  ------------
 
