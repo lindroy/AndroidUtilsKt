@@ -17,34 +17,17 @@ import com.lindroid.androidutilskt.app.AndUtil
  * @author Lin
  * @date 2019/6/11
  * @function 虚拟导航栏工具类
- * @Description https://juejin.im/post/5bb5c4e75188255c72285b54
+ * @Description
  */
 
 /**
  * 判断手机系统是否有虚拟导航栏
  */
-
 val hasNavBar
     @JvmName("hasNavBar")
     get() = navBarResId != 0
 
-/*val Activity.isNavExist: Boolean
-    @RequiresApi(Build.VERSION_CODES.KITKAT_WATCH)
-    get() = when (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT_WATCH) {
-        true -> {
-            var isExist = false
-            window.decorView.setOnApplyWindowInsetsListener { v, insets ->
-                if (insets != null) {
-                    isExist = insets.systemWindowInsetBottom == navBarHeight
-                }
-                insets
-            }
-            isExist
-        }
-        false -> false
-    }*/
-
-fun Window.setOnNavBarStatusWatcher(callback: (isShowed: Boolean) -> Unit) {
+/*fun Window.setOnNavBarStatusWatcher(callback: (isShowed: Boolean) -> Unit) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT_WATCH && hasNavBar) {
         val navigationBarHeight = navBarHeight
         decorView.setOnApplyWindowInsetsListener { v, insets ->
@@ -58,7 +41,7 @@ fun Window.setOnNavBarStatusWatcher(callback: (isShowed: Boolean) -> Unit) {
 
 fun Activity.setOnNavBarStatusWatcher(callback: (isShowed: Boolean) -> Unit) {
     window.setOnNavBarStatusWatcher(callback)
-}
+}*/
 
 /**
  * 当前虚拟导航栏是否显示
@@ -87,14 +70,15 @@ val Window.isNavBarHidden: Boolean
 /**
  * 当前虚拟导航栏是否隐藏
  */
-val Activity.isNavBarHidden: Boolean
-    get() = window.isNavBarHidden
 
-fun Window.hideNavBar() {
+/*val Activity.isNavBarHidden: Boolean
+    get() = window.isNavBarHidden*/
+
+/*fun Window.hideNavBar() {
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
         return
     }
-    /* val viewGroup = decorView as ViewGroup? ?: return false
+    *//* val viewGroup = decorView as ViewGroup? ?: return false
      (0 until viewGroup.childCount).forEach {
          val childId = viewGroup.getChildAt(it).id
          if (childId != View.NO_ID){
@@ -102,10 +86,10 @@ fun Window.hideNavBar() {
          }else{
              return
          }
-     }*/
+     }*//*
     val uiOptions =
         View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-}
+}*/
 
 fun Window.setShowNavBar(isShow: Boolean) {
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT || !hasNavBar) {

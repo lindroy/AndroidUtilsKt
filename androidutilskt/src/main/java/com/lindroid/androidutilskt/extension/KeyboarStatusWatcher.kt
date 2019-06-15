@@ -2,10 +2,8 @@ package com.lindroid.androidutilskt.extension
 
 import android.app.Activity
 import android.graphics.Rect
-import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver
-import com.lindroid.androidutilskt.extension.logcat.d
 import com.lindroid.androidutilskt.extension.statusbar.statusBarHeight
 
 /**
@@ -23,6 +21,9 @@ class KeyboardStatusWatcher(val view: View) : ViewTreeObserver.OnGlobalLayoutLis
 
     private val watchers: HashMap<View, ((isShowed: Boolean, keyboardHeight: Int) -> Unit)> = HashMap()
 
+    /**
+     * 可见区域高度
+     */
     private var visibleHeight = 0
 
     /**
@@ -46,7 +47,6 @@ class KeyboardStatusWatcher(val view: View) : ViewTreeObserver.OnGlobalLayoutLis
 
     init {
         if (!watchers.containsKey(view)) {
-            "注册监听".d()
             view.viewTreeObserver.addOnGlobalLayoutListener(this)
         }
     }
@@ -56,15 +56,15 @@ class KeyboardStatusWatcher(val view: View) : ViewTreeObserver.OnGlobalLayoutLis
      * within the view tree changes
      */
     override fun onGlobalLayout() {
-        "监听软键盘".d()
         val rect = Rect()
         rootView.getWindowVisibleDisplayFrame(rect)
         if (visibleHeight == (rect.bottom - rect.top)) {
+            //可见区域高度不变时不必执行下面代码，避免重复监听
             return
         } else {
             visibleHeight = (rect.bottom - rect.top)
         }
-        val heightDiff = rootView.height - (rect.bottom - rect.top)
+        val heightDiff = rootView.height - visibleHeight
         if (heightDiff > screenHeight / 3) {
             isKeyboardShowed = true
             //计算软键盘高度
@@ -76,11 +76,6 @@ class KeyboardStatusWatcher(val view: View) : ViewTreeObserver.OnGlobalLayoutLis
                     if (hasNavBar && mContext.isNavBarShowed) {
                         keyboardHeight -= navBarHeight
                     }
-                    Log.e("Tag","hasNavBar=$hasNavBar")
-                    Log.e("Tag","mContext.isNavBarShowed=${mContext.isNavBarShowed}")
-                    Log.e("Tag","statusBarHeight=$statusBarHeight")
-                    Log.e("Tag","navBarHeight=$navBarHeight")
-                    Log.e("Tag","keyboardHeight=$keyboardHeight")
                 }
                 else -> keyboardHeight = heightDiff
             }
