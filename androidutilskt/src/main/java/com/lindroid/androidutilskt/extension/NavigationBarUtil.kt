@@ -70,9 +70,8 @@ val Window.isNavBarHidden: Boolean
 /**
  * 当前虚拟导航栏是否隐藏
  */
-
-/*val Activity.isNavBarHidden: Boolean
-    get() = window.isNavBarHidden*/
+val Activity.isNavBarHidden: Boolean
+    get() = window.isNavBarHidden
 
 /*fun Window.hideNavBar() {
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {

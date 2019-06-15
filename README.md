@@ -2,6 +2,7 @@
 
 
 
+
 [![](https://jitpack.io/v/Lindroy/AndroidUtilsKt.svg)](https://jitpack.io/#Lindroy/AndroidUtilsKt)
 
 使用kotlin编写的Android工具类，主要采用扩展函数的方式。目前还在不断补充中。
@@ -299,9 +300,9 @@ DSL:
 | getResColor()   | 获取颜色  | /  | /  |
 | getResDrawable()   | 获取图片资源  | / | 返回值可以为null  |
 | getResString() | 获取字符资源 | / | / |
-| getResDeminPx() | 获取dimens资源 | / | / |
-| getResDeminDp() | 获取dimens中单位为dp的资源 | / | / |
-| getResDeminSp() | 获取dimens中单位为Sp的资源 | /  | / |
+| getResDimenPx() | 获取dimens资源 | / | / |
+| getResDimenDp() | 获取dimens中单位为dp的资源 | / | / |
+| getResDimenSp() | 获取dimens中单位为Sp的资源 | /  | / |
 
  ------------
 
@@ -509,8 +510,11 @@ tvSubscript.buildSpan("设置文字下标：H20") {
 | isTextNotBlank | 判断TextView的内容是否为非空白 | TextView | / |
 
 ## 感谢
-
 1. [Anko](https://github.com/Kotlin/anko "Anko")
 2. [AndroidUtilCode](https://github.com/Blankj/AndroidUtilCode "AndroidUtilCode")
 3. [Qmui](https://qmuiteam.com/android "Qmui")
 4. [Logger](https://github.com/orhanobut/logger "Logger")
+
+
+
+
