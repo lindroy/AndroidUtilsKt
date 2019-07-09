@@ -35,7 +35,7 @@ class NavigationBarActivity(override val contentViewId: Int = R.layout.activity_
         tvNavShow.text = "虚拟导航栏是否显示：$isNavBarShowed"
         setNavBarColorRes(android.R.color.holo_red_light)
         swNav.setOnCheckedChangeListener { buttonView, isChecked ->
-            window.setShowNavBar(isChecked)
+//            window.setShowNavBar(isChecked)
            /* if (isChecked){
                 llRoot.setNewPadding(top = 0)
             }else{
