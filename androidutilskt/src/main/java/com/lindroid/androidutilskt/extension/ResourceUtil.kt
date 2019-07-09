@@ -28,7 +28,7 @@ fun getResDrawable(@DrawableRes drawableRes: Int) = ContextCompat.getDrawable(An
 /**
  * 获取字符资源
  */
-fun getResString(@StringRes stringId:Int) = AndUtil.getString(stringId)
+fun getResString(@StringRes stringId:Int,vararg formatArgs:Any) =AndUtil.appContext.getString(stringId,*formatArgs)
 
 /**
  * 获取dimens资源
