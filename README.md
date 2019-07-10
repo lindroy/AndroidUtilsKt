@@ -1,8 +1,5 @@
 # AndroidUtilsKt
 
-
-
-
 [![](https://jitpack.io/v/Lindroy/AndroidUtilsKt.svg)](https://jitpack.io/#Lindroy/AndroidUtilsKt)
 
 使用kotlin编写的Android工具类，主要采用扩展函数的方式。目前还在不断补充中。
@@ -10,10 +7,11 @@
 本说明文档遵循如下的规则：
 
 1. 根据工具类文件名的英文字母顺序排序。
-2. 接收类一栏为“/”的表示该方法或属性为全局成员，可在任意地方调用；接收类有具体类名（如Any、String?等）的表示采用扩展成员的写法；放在包“extension”；
+2. 接收类一栏为“/”的表示该方法或属性为全局成员，可在任意地方调用；接收类有具体类名（如Any、String?等）的表示采用扩展成员的写法；放在包“extension”中；
 3. 接收类一栏为“—”的表示采用静态类的写法，需要使用类名的形式调用里面的函数或属性，放在包“statics”中；
-4. 成员包含函数和属性，函数名称后面需要加“()”，属性则不用。
-5. 常量另外写一个表格。
+4. 成员包含函数和属性，函数名称后面需要加“()”，属性则不用；
+5. “JvmName”表示该成员在Java中调用的名称；
+6. 常量另外写一个表格。
 
 ## 配置方法
 
@@ -41,6 +39,9 @@ dependencies {
         AndUtil.init(this)
             .setDefaultSpFile()     //设置SharePreferences的默认表名，默认为“sp_util”
             .setServerTimeFormat()  //设置时间格式化中服务器时间格式，默认为“yyyy-MM-dd'T'HH:mm:ss.SSS”
+			.setLogGlobalConfig {   //配置日志打印工具类
+				……
+            }
 ```
 ## 工具类文档
 
@@ -101,7 +102,6 @@ dependencies {
 | navBarHeight | 获取虚拟导航栏的高度 | / | 必须在布局绘制完成之后调用 |
 | navBarColor | 获取/设置虚拟导航栏颜色 | Activity/Window | 颜色值为ColorInt |
 | setNavBarColorRes() | 获取/设置导航栏颜色 | Activity/Window | 参数为资源ID  |
-
 
  ------------
 
@@ -221,7 +221,7 @@ dependencies {
 | :------------: | :------------: | :------------: | :------------: |
 | setLogEnable() | 设置是否显示日志 | true  | / |
 | setMethodCount() | 设置显示的方法数 | 1  | / |
-| setMethodOffset() | 设置栈偏移量 | 0 / |
+| setMethodOffset() | 设置栈偏移量 | 0 |  /  |
 | setShowThread() | 设置是否显示线程 | true | / |
 | setShowGlobalTag() | 设置是否在临时Tag前面显示全局Tag | false  | / |
 | setLogStrategy()  | 自定义日志打印策略 | / | / |
@@ -311,14 +311,16 @@ DSL:
  ------------
 
 ### [ResourceUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/ResourceUtil.kt "ResourceUtil")：资源工具类
-| 成员名称 | 作用  | 接收类  | 备注  |
-| ------------ | ------------ | :------------: | :------------: |
-| getResColor()   | 获取颜色  | /  | /  |
-| getResDrawable()   | 获取图片资源  | / | 返回值可以为null  |
-| getResString() | 获取字符资源 | / | / |
-| getResDimenPx() | 获取dimens资源 | / | / |
-| getResDimenDp() | 获取dimens中单位为dp的资源 | / | / |
-| getResDimenSp() | 获取dimens中单位为Sp的资源 | /  | / |
+在Java中使用时，工具类名为`ResUtil`。
+
+| 成员名称 | JvmName | 作用  | 接收类  | 备注  |
+| ------------ | ------------ | ------------ | :------------: | :------------: |
+| getResColor()   | getColor() |获取颜色  | /  | /  |
+| getResDrawable() | getDrawable() | 获取图片资源  | / | 返回值可以为null  |
+| getResString() | getString()  | 获取字符资源 | / | / |
+| getResDimenPx() | getDimenPx() |获取dimens资源 | / | / |
+| getResDimenDp() | getDimenDp() |获取dimens中单位为dp的资源 | / | / |
+| getResDimenSp() | getDimenSp() | 获取dimens中单位为Sp的资源 | /  | / |
 
  ------------
 
@@ -504,6 +506,7 @@ tvSubscript.buildSpan("设置文字下标：H20") {
 ### [ViewUtil](https://github.com/Lindroy/AndroidUtilsKt/blob/master/androidutilskt/src/main/java/com/lindroid/androidutilskt/extension/ViewUtil.kt "ViewUtil")：View工具类
 | 成员名称 | 作用  | 接收类  | 备注  |
 | ------------ | ------------ | :------------: | :------------: |
+| inflate() | 填充一个View | / | / |
 | isVisible  | 当前View是否可见  | View | /  |
 | isInvisible | 当前View是否不可见  | View | / |
 | isGone | 当前View是否隐藏  | View | /  |

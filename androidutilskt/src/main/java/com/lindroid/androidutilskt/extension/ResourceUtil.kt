@@ -1,4 +1,5 @@
 @file:JvmName("ResUtil")
+
 package com.lindroid.androidutilskt.extension
 
 import android.support.annotation.ColorRes
@@ -11,8 +12,8 @@ import com.lindroid.androidutilskt.app.AndUtil
 /**
  * @author Lin
  * @date 2018/11/9
- * @function 获取图片、颜色等资源
- * @Description
+ * @function 资源相关工具类
+ * @Description 获取字符、图片、颜色等资源
  */
 
 /**
@@ -31,7 +32,7 @@ fun getResDrawable(@DrawableRes drawableRes: Int) = ContextCompat.getDrawable(An
  * 获取字符资源
  */
 @JvmName("getString")
-fun getResString(@StringRes stringId:Int,vararg formatArgs:Any) =AndUtil.appContext.getString(stringId,*formatArgs)
+fun getResString(@StringRes stringId: Int, vararg formatArgs: Any) = AndUtil.appContext.getString(stringId, *formatArgs)
 
 /**
  * 获取dimens资源

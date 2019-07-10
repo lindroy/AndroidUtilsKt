@@ -3,9 +3,11 @@
 package com.lindroid.androidutilskt.extension
 
 import android.graphics.Bitmap
+import android.support.annotation.LayoutRes
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.lindroid.androidutilskt.app.AndUtil
 
 /**
  * @author Lin
@@ -13,6 +15,12 @@ import android.widget.TextView
  * @function View工具类
  * @Description
  */
+
+/**
+ * 根据布局id填充一个布局
+ */
+@JvmOverloads
+fun inflate(@LayoutRes layoutId: Int, root: ViewGroup? = null) = View.inflate(AndUtil.appContext, layoutId, root)
 
 /**
  * 当前View是否可见
@@ -147,6 +155,7 @@ val View.viewWidth: Int
         return measuredWidth
     }
 
+
 /**
  * 获取TextView的String内容
  */
@@ -186,7 +195,7 @@ val TextView.isTextBlank: Boolean
 /**
  * 判断TextView的内容是否为null或空白
  */
-val TextView.isTextNullOrBlank:Boolean
+val TextView.isTextNullOrBlank: Boolean
     get() = text.isNullOrBlank()
 
 /**

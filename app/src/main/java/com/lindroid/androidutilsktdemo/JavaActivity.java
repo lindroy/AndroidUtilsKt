@@ -23,6 +23,7 @@ public class JavaActivity extends BaseActivity {
         super.initView();
         textView = findViewById(R.id.textView);
         textView.setTextColor(Color.BLACK);
+
     }
 
 
