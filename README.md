@@ -28,7 +28,7 @@
 
 ```
 dependencies {
-    implementation 'com.github.Lindroy:AndroidUtilsKt:latest-version'
+    implementation 'com.github.lindroy:AndroidUtilsKt:latest-version'
 }
 ```
 `latest-version`参见图标`jitpack`后面的版本号。
