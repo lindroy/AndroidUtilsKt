@@ -22,7 +22,7 @@ private fun showToast(message: CharSequence, duration: Int): Toast {
     return when (toast == null) {
         true -> {
             firstShowTime = System.currentTimeMillis()
-            toast = Toast.makeText(AndUtil.appContext, null, duration)
+            toast = Toast.makeText(AndUtil.appContext, "", duration)
             toast!!.apply {
                 //这里调用setText
                 setText(message)

@@ -1,9 +1,12 @@
+@file:JvmName("DeviceUtil")
+
 package com.lindroid.androidutilskt.extension.statusbar
 
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.net.wifi.WifiManager
+import android.os.Build
 import android.support.annotation.RequiresPermission
 import android.text.TextUtils
 import android.util.Log
@@ -114,3 +117,36 @@ fun getOsVersionName(key: String): String {
     name = name ?: ""
     return name
 }
+
+/**
+ * 获取deviceId
+ */
+val deviceId: String
+    get() {
+        val szDevIDShort = with(StringBuilder("35")) {
+            append(Build.BOARD.length % 10)
+            append(Build.BRAND.length % 10)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                append(Build.SUPPORTED_ABIS[0].length % 10)
+            } else {
+                append(Build.CPU_ABI.length % 10)
+            }
+            append(Build.DEVICE.length % 10)
+            append(Build.DISPLAY.length % 10)
+            append(Build.HOST.length % 10)
+            append(Build.ID.length % 10)
+            append(Build.MANUFACTURER.length % 10)
+            append(Build.MODEL.length % 10)
+            append(Build.PRODUCT.length % 10)
+            append(Build.TAGS.length % 10)
+            append(Build.TYPE.length % 10)
+            append(Build.USER.length % 10)
+        }.toString()
+        val serial = try {
+            Build::class.java.getField("SERIAL").get(null).toString()
+        } catch (e: Exception) {
+            "serial" // 随便一个初始化
+        }
+        return UUID(szDevIDShort.hashCode().toLong(), serial.hashCode().toLong()).toString()
+
+    }
