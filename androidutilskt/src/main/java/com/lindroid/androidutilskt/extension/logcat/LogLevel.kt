@@ -21,3 +21,13 @@ const val ASSERT = Log.ASSERT
 @Target(AnnotationTarget.FIELD, AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.TYPE)
 @Retention(AnnotationRetention.SOURCE)
 annotation class LogLevel
+
+fun logLevel(@LogLevel level: Int) = when(level){
+    VERBOSE->"VERBOSE"
+    DEBUG->"DEBUG"
+    INFO->"INFO"
+    WARN->"WARN"
+    ERROR->"ERROR"
+    ASSERT->"ASSERT"
+    else->"UNKNOWN"
+}

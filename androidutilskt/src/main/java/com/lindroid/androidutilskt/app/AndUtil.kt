@@ -5,6 +5,7 @@ import android.content.Context
 import android.support.annotation.ColorRes
 import android.support.annotation.StringRes
 import android.support.v4.content.ContextCompat
+import com.lindroid.androidutilskt.extension.logcat.DiskConfig
 import com.lindroid.androidutilskt.extension.logcat.LogConfig
 import com.lindroid.androidutilskt.extension.serverFormat
 import com.lindroid.androidutilskt.extension.setSpDefaultFile
@@ -53,6 +54,12 @@ object AndUtil {
          */
         fun setLogGlobalConfig(init: LogConfig.() -> Unit) = this.apply {
             LogConfig(false, init)
+        }
+        /**
+         * 设置LogUtil输出到磁盘的配置
+         */
+        fun setLogDiskConfig(init: DiskConfig.()->Unit) = this.apply {
+            DiskConfig(init)
         }
     }
 
