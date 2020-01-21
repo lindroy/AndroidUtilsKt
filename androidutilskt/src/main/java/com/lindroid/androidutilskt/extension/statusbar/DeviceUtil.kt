@@ -1,5 +1,3 @@
-@file:JvmName("DeviceUtil")
-
 package com.lindroid.androidutilskt.extension.statusbar
 
 import android.Manifest
@@ -117,6 +115,7 @@ fun getOsVersionName(key: String): String {
     name = name ?: ""
     return name
 }
+
 
 /**
  * 获取deviceId

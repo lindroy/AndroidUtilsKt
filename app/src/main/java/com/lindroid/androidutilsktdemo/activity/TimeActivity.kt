@@ -23,6 +23,7 @@ class TimeActivity(override val contentViewId: Int = R.layout.activity_time) : B
     override fun initView() {
         super.initView()
         initToolBar(R.string.util_time)
+        tvOriginalTime.text = "服务器时间示例：$serverTime"
         initCurTimeInfo()
         initServerTimeInfo()
     }
@@ -37,6 +38,10 @@ class TimeActivity(override val contentViewId: Int = R.layout.activity_time) : B
 
     @SuppressLint("SetTextI18n")
     private fun initServerTimeInfo() {
+        tvServerY.text = "服务器时间转换为年：${serverTime.formatTimeY()}"
+        tvServerM.text = "服务器时间转换为月：${serverTime.formatTimeM()}"
+        tvServerD.text = "服务器时间转换为日：${serverTime.formatTimeDD()}"
+        tvServerYM.text = "服务器时间转换为年月：${serverTime.formatTimeYM()}"
         tvServerYMD.text = "服务器时间转换为年月日：${serverTime.formatTimeYMD()}"
         tvServerYMDChinese.text = "服务器时间转换为年月日(汉字)：${serverTime.formatTimeYMDChinese()}"
         tvServerTime.text = "服务器时间转换为时间：${serverTime.formatTimeHM()}"

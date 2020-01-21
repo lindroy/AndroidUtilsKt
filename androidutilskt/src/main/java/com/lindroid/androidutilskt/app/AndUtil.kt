@@ -5,10 +5,12 @@ import android.content.Context
 import android.support.annotation.ColorRes
 import android.support.annotation.StringRes
 import android.support.v4.content.ContextCompat
+import com.lindroid.androidutilskt.extension.defTimeZone
 import com.lindroid.androidutilskt.extension.logcat.DiskConfig
 import com.lindroid.androidutilskt.extension.logcat.LogConfig
 import com.lindroid.androidutilskt.extension.serverFormat
 import com.lindroid.androidutilskt.extension.setSpDefaultFile
+import java.util.*
 
 /**
  * @author Lin
@@ -19,6 +21,7 @@ import com.lindroid.androidutilskt.extension.setSpDefaultFile
 object AndUtil {
     private lateinit var application: Application
 
+    @JvmStatic
     fun init(application: Application): Config {
         this.application = application
         return Config.build()
@@ -50,15 +53,21 @@ object AndUtil {
         fun setServerTimeFormat(timeFormat: String) = this.apply { serverFormat = timeFormat }
 
         /**
+         * 设置默认时区
+         */
+        fun setTimeZone(timeZone: TimeZone) = this.apply { defTimeZone = timeZone }
+
+        /**
          * 设置LogUtil配置
          */
         fun setLogGlobalConfig(init: LogConfig.() -> Unit) = this.apply {
             LogConfig(false, init)
         }
+
         /**
          * 设置LogUtil输出到磁盘的配置
          */
-        fun setLogDiskConfig(init: DiskConfig.()->Unit) = this.apply {
+        fun setLogDiskConfig(init:DiskConfig.()->Unit) = this.apply {
             DiskConfig(init)
         }
     }

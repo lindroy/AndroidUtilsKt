@@ -155,7 +155,6 @@ val View.viewWidth: Int
         return measuredWidth
     }
 
-
 /**
  * 获取TextView的String内容
  */

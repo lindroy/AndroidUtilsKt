@@ -18,7 +18,6 @@ open class AndroidLogAdapter : LogAdapter {
         this.formatStrategy = formatStrategy
     }
 
-    //    private var formatStrategy: FormatStrategy = AndroidFormatStrategy.newBuilder().build()
     private var formatStrategy: FormatStrategy = AndroidFormatStrategy.newBuilder().createFormatStrategy()
 
     /**

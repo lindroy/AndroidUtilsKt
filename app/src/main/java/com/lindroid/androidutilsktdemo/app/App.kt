@@ -30,6 +30,8 @@ class App : Application() {
                 setLogEnable(true)
                 setMethodCount(2)
             }
+            .setLogDiskConfig {  }
+
 //            .setDefaultSpFile()     //设置SharePreferences的默认表名，默认为“sp_util”
 //            .setServerTimeFormat()  //设置时间格式化中服务器时间格式，默认为“yyyy-MM-dd'T'HH:mm:ss.SSS”
         if (LeakCanary.isInAnalyzerProcess(this)) {

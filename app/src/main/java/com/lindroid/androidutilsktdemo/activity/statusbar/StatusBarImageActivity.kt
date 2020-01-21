@@ -2,6 +2,7 @@ package com.lindroid.androidutilsktdemo.activity.statusbar
 
 import com.lindroid.androidutilskt.extension.statusbar.setTransParentStatusBar
 import com.lindroid.androidutilskt.extension.statusbar.statusBarHeight
+import com.lindroid.androidutilskt.statics.AppManager
 import com.lindroid.androidutilsktdemo.R
 import com.lindroid.androidutilsktdemo.base.BaseActivity
 import com.youngfeng.snake.annotations.EnableDragToClose
@@ -34,6 +35,10 @@ class StatusBarImageActivity(override val contentViewId: Int = R.layout.activity
 2、标题栏的高度设为“wrap_content”，固定高度可通过“minHeight”设置；
 3、在代码中将标题栏的paddingTop或者marginTop设为状态栏高度。
         """.trimIndent()
+
+        imageView.setOnClickListener {
+            AppManager.finishActivity(StatusBarActivity::class.java)
+        }
     }
 
 }

@@ -52,7 +52,7 @@ task javadoc(type: Javadoc) {
     classifier = 'javadoc'
     from javadoc.destinationDir
 }*/
-//鍚屾椂娣诲姞涓変釜鏂规硶 for kotlin
+//同时添加三个方法 for kotlin
 task dokkaJavadoc(type: org.jetbrains.dokka.gradle.DokkaTask) {
     outputFormat = "javadoc"
     outputDirectory = "$buildDir/dokkaJavadoc"
@@ -79,7 +79,7 @@ artifacts {
     archives generateSourcesJar //sourcesJar
 }
 
-//瑙ｅ喅kotlin javadoc.options鎶遍敊
+//解决kotlin javadoc.options抱错
 dokka {
 //    outputFormat = 'html'
 //    outputDirectory = "${buildDir}/javadoc"

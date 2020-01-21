@@ -182,7 +182,7 @@ fun Activity.setStatusBarDarkMode(): Boolean {
 @SuppressLint("PrivateApi")
 private fun Window.setMIUIStatusBarMode(isLightMode: Boolean): Boolean {
     if (isMIUI6BELOW) {
-        Log.e(TAG, "当前MIUI版本低于6")
+//        Log.e(TAG, "当前MIUI版本低于6")
         return false
     }
     val clazz = javaClass

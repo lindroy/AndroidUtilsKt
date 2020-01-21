@@ -4,6 +4,7 @@ package com.lindroid.androidutilskt.extension
 import android.os.Handler
 import android.os.Looper
 import android.support.annotation.StringRes
+import android.widget.TextView
 import android.widget.Toast
 import com.lindroid.androidutilskt.app.AndUtil
 
@@ -16,8 +17,9 @@ import com.lindroid.androidutilskt.app.AndUtil
 private var toast: Toast? = null
 private var firstShowTime = 0L
 private var nextShowTime = 0L
+private var toastTextSize = 14
 
-private fun showToast(message: CharSequence, duration: Int): Toast {
+private fun showToast(message: CharSequence, duration: Int,textSize:Int = toastTextSize): Toast {
     fun durationTime() = if (duration == Toast.LENGTH_SHORT) 2000L else 3500L
     return when (toast == null) {
         true -> {
@@ -26,6 +28,7 @@ private fun showToast(message: CharSequence, duration: Int): Toast {
             toast!!.apply {
                 //这里调用setText
                 setText(message)
+                view.findViewById<TextView>(android.R.id.message).textSize = textSize.toFloat()
             }
         }
         false -> toast!!.apply {

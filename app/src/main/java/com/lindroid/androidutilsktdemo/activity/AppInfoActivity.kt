@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.activity_app_info.*
 @EnableDragToClose
 class AppInfoActivity(override val contentViewId: Int = R.layout.activity_app_info) : BaseActivity() {
 
+
     override fun initView() {
         super.initView()
         initToolBar(R.string.util_app_info)

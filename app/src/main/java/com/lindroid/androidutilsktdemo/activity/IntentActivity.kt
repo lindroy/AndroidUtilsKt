@@ -1,5 +1,6 @@
 package com.lindroid.androidutilsktdemo.activity
 
+import com.lindroid.androidutilskt.extension.extraParam
 import com.lindroid.androidutilskt.extension.shortToast
 import com.lindroid.androidutilskt.statics.IntentUtil
 import com.lindroid.androidutilsktdemo.R

@@ -1,9 +1,9 @@
 @file:JvmName("TimeUtil")
+
 package com.lindroid.androidutilskt.extension
 
 import android.util.Log
-import com.lindroid.androidutilskt.R
-import com.lindroid.androidutilskt.app.AndUtil
+import java.text.ParseException
 import java.text.ParsePosition
 import java.text.SimpleDateFormat
 import java.util.*
@@ -20,10 +20,14 @@ const val FORMAT_YMDHMS = "yyyy-MM-dd HH:mm:ss"
 const val FORMAT_YMD = "yyyy-MM-dd"
 const val FORMAT_YMD_CHINESE = "yyyy年MM月dd日"
 const val FORMAT_HM = "HH:mm"
+const val FORMAT_HMS = "HH:mm:ss"
 private const val TAG = "TimeUtil"
 
 /**服务器返回的时间格式**/
 internal var serverFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+
+/**默认时区，与主机的设置一致**/
+internal var defTimeZone = TimeZone.getDefault()
 
 /**获取当前年份**/
 val currentYear: Int
@@ -45,46 +49,133 @@ val currentTimeMillis: Long
 
 /**
  * 获取当前日期，默认格式为"yyyy-MM-dd"
+ * @param pattern:输出的格式
  */
 fun formatCurrentDate(pattern: String = FORMAT_YMD) = getTimeFormatStr(pattern)
 
 /**
  * 获取当前时间，默认格式为"yyyy-MM-dd HH:mm"
+ * @param pattern:输出的格式
  */
 fun formatCurrentDateTime(pattern: String = FORMAT_YMDHM) = getTimeFormatStr(pattern)
 
 /**
  * 获取当前时间，格式为"HH:mm"
+ * @param pattern:输出的格式
  */
 fun formatCurrentTime(pattern: String = FORMAT_HM) = getTimeFormatStr(pattern)
 
 /**
- * 将服务器时间格式转换为年月日
+ * 将服务器时间格式转换为年
+ * @param target:输出的格式
+ * @param source:源格式
  */
-fun String.formatTimeYMD(pattern: String = serverFormat): String =
-    formatTimeWithPattern(FORMAT_YMD, pattern)
+fun String.formatTimeY(target: String = "yyyy", source: String = serverFormat) =
+    formatTimeWithPattern(target, source)
+
+/**
+ * 将服务器时间格式转换为月
+ * @param target:输出的格式
+ * @param source:源格式
+ */
+fun String.formatTimeM(target: String = "MM", source: String = serverFormat) =
+    formatTimeWithPattern(target, source)
+
+/**
+ * 将服务器时间格式转换为年月
+ * @param target:输出的格式
+ * @param source:源格式
+ */
+fun String.formatTimeYM(target: String = "yyyy-MM", source: String = serverFormat) =
+    formatTimeWithPattern(target, source)
+
+/**
+ * 将服务器时间格式转换为日，保持两位，不足两位时在前面补上0
+ * @param target:输出的格式
+ * @param source:源格式
+ */
+fun String.formatTimeDD(target: String = "dd", source: String = serverFormat) =
+    formatTimeWithPattern(target, source)
+
+/**
+ * 将服务器时间格式转换为日
+ * @param target:输出的格式
+ * @param source:源格式
+ */
+fun String.formatTimeD(target: String = "dd", source: String = serverFormat) =
+    formatTimeDD(target, source).let {
+        if (it.startsWith("0")) {
+            it.replaceFirst("0", "")
+        } else it
+    }
+
+
+/**
+ * 将服务器时间格式转换为年月日
+ * @param target:输出的格式
+ * @param source:源格式
+ */
+fun String.formatTimeYMD(target: String = FORMAT_YMD, source: String = serverFormat): String =
+    formatTimeWithPattern(target, source)
 
 /**
  * 将服务器时间格式转换为年月日（带汉字）
+ * @param target:输出的格式
+ * @param source:源格式
  */
-fun String.formatTimeYMDChinese(pattern: String = serverFormat): String =
-    formatTimeWithPattern(FORMAT_YMD_CHINESE, pattern)
+fun String.formatTimeYMDChinese(
+    target: String = FORMAT_YMD_CHINESE,
+    source: String = serverFormat
+): String =
+    formatTimeWithPattern(target, source)
 
 /**
  * 将服务器时间格式转换为时分
+ * @param target:输出的格式
+ * @param source:源格式
  */
-fun String.formatTimeHM(pattern: String = serverFormat): String = formatTimeWithPattern(FORMAT_HM, pattern)
+fun String.formatTimeHM(target: String = FORMAT_HM, source: String = serverFormat): String =
+    formatTimeWithPattern(target, source)
+
+/**
+ * 将服务器时间格式转换为时分秒
+ * @param target:输出的格式
+ * @param source:源格式
+ */
+fun String.formatTimeHMS(target: String = FORMAT_HMS, source: String = serverFormat): String =
+    formatTimeWithPattern(target, source)
 
 /**
  * 将服务器时间格式转换为年月日时分
+ * @param target:输出的格式
+ * @param source:源格式
  */
-fun String.formatTimeYMDHM(pattern: String = serverFormat): String = formatTimeWithPattern(FORMAT_YMDHM, pattern)
+fun String.formatTimeYMDHM(target: String = FORMAT_YMDHM, source: String = serverFormat): String =
+    formatTimeWithPattern(target, source)
 
 /**
  * 将服务器时间格式转换为年月日时分秒
+ * @param target:输出的格式
+ * @param source:源格式
  */
-fun String.formatTimeYMDHMS(pattern: String = serverFormat): String =
-    formatTimeWithPattern(FORMAT_YMDHMS, pattern)
+fun String.formatTimeYMDHMS(target: String = FORMAT_YMDHMS,source: String = serverFormat): String =
+    formatTimeWithPattern(target, source)
+
+/**
+ * 根据服务器的时间判断星期
+ * @return:0表示星期日，1~6依次表示星期一到星期六
+ */
+fun String.formatTimeWeek(timeZone: TimeZone = defTimeZone): Int {
+    val formatter = SimpleDateFormat(FORMAT_YMD, Locale.getDefault())
+    val cal = Calendar.getInstance(timeZone)
+    return try {
+        cal.time = formatter.parse(this)
+        cal.get(Calendar.DAY_OF_WEEK) - 1
+    } catch (e: ParseException) {
+        Log.e(TAG, "星期转换错误：$this")
+        -1
+    }
+}
 
 /**
  * @param target 转换后的时间格式
@@ -103,20 +194,17 @@ private fun String.formatTimeWithPattern(target: String, source: String = server
     }
 }
 
-/**
- *
- */
-private fun getTimeFormatStr(pattern: String, original: Any = Date()) =
-    SimpleDateFormat(pattern, Locale.getDefault()).format(original)
+private fun getTimeFormatStr(pattern: String, source: Any = Date()) =
+    SimpleDateFormat(pattern, Locale.getDefault()).format(source)
         ?: ""
 
 
-private const val ONE_MINUTE = 60000L
-private const val ONE_HOUR = 3600000L
+//private const val ONE_MINUTE = 60000L
+//private const val ONE_HOUR = 3600000L
 
 /**
  * 获取某个时间与当前时间的比较值
- */
+ *//*
 fun String.formatRelativeTime(pattern: String = serverFormat): String {
     fun Long.toSecond() = this / 1000
     fun Long.toMinutes() = this.toSecond() / 60L
@@ -146,4 +234,4 @@ fun String.formatRelativeTime(pattern: String = serverFormat): String {
         delta >= 72 * ONE_HOUR -> this.formatTimeYMD()
         else -> this.formatTimeYMD()
     }
-}
+}*/

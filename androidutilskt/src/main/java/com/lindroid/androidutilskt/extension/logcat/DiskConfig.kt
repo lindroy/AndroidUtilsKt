@@ -2,7 +2,6 @@ package com.lindroid.androidutilskt.extension.logcat
 
 import android.os.Environment
 import android.os.HandlerThread
-import android.util.Log
 import com.lindroid.androidutilskt.extension.logcat.formatstrategy.CsvFormatStrategy
 import com.lindroid.androidutilskt.extension.logcat.logadapter.DiskLogAdapter
 import com.lindroid.androidutilskt.extension.logcat.logstrategy.DiskLogStrategy
@@ -27,12 +26,23 @@ class DiskConfig constructor() {
     internal var logStrategy: LogStrategy? = null
     private var init: (DiskConfig.() -> Unit)? = null
 
+    /**
+     * 设置保存日志文件的目录名称
+     */
     fun setFolderName(folderName: String) = this.also { it.folderName = folderName }
 
+    /**
+     * 保存的Tag
+     */
     fun setTag(tag: String) = this.also { it.tag = tag }
 
+    /**
+     * 设置时间，默认为日志打印到控制台的时间
+     */
     fun setDate(date: Date) = this.also { it.date = date }
-
+    /**
+     * 设置时间格式
+     */
     fun setDateFormat(format: SimpleDateFormat) = this.apply { dateFormat = format }
 
     constructor(init: (DiskConfig.() -> Unit)? = null) : this() {
@@ -63,7 +73,6 @@ class DiskConfig constructor() {
             //存储在根目录下
             val diskPath = Environment.getExternalStorageDirectory().absolutePath
             val folder = "$diskPath${File.separatorChar}$folderName"
-            Log.e("Tag","folder:$folder")
             val ht = HandlerThread("AndroidFileLogger.$folder")
             ht.start()
             val handler = DiskLogStrategy.WriteHandler(ht.looper, folder, MAX_BYTES)

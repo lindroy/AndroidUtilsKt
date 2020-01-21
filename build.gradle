@@ -8,7 +8,7 @@ buildscript {
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.1'
+        classpath 'com.android.tools.build:gradle:3.5.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
         classpath 'org.jetbrains.dokka:dokka-gradle-plugin:0.9.18'
@@ -19,6 +19,7 @@ buildscript {
 
 allprojects {
     repositories {
+        maven { url "http://192.168.40.7:8081/repository/xuanyu-group/" }
         google()
         jcenter()
         maven { url 'https://jitpack.io' }

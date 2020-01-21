@@ -20,7 +20,7 @@ class LogConfig constructor() {
     internal var isShowBorder = true
     internal var logStrategy: LogcatLogStrategy = LogcatLogStrategy()
     internal var tag: String? = "LogUtil"
-    private val init: (LogConfig.() -> Unit)? = null
+    private var init: (LogConfig.() -> Unit)? = null
     /**
      * 是否是临时性的设置
      */
@@ -29,6 +29,7 @@ class LogConfig constructor() {
     constructor(isTempConfig: Boolean, init: (LogConfig.() -> Unit)? = null) : this() {
         init?.run {
             this()
+            this@LogConfig.init = init
             this@LogConfig.isTempConfig = isTempConfig
             addLogConfig()
         }

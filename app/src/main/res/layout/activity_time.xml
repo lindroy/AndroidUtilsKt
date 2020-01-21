@@ -1,73 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.TimeActivity">
 
+
     <include layout="@layout/toolbar" />
 
-    <Button
-        android:text="重新获取"
-        android:id="@+id/btnRefresh"
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-    <TextView
-        android:text="——获取当前的时间信息——"
-        style="@style/LargeGrayTextStyle" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvCurYear"
-        style="@style/MiddleGrayTextStyle" />
+            <Button
+                android:id="@+id/btnRefresh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="重新获取" />
 
-    <TextView
-        android:id="@+id/tvCurMon"
-        style="@style/MiddleGrayTextStyle" />
+            <TextView
+                style="@style/LargeGrayTextStyle"
+                android:text="——获取当前的时间信息——" />
 
-    <TextView
-        android:id="@+id/tvCurDay"
-        style="@style/MiddleGrayTextStyle" />
+            <TextView
+                android:id="@+id/tvCurYear"
+                style="@style/MiddleGrayTextStyle" />
 
-    <TextView
-        android:id="@+id/tvCurMilli"
-        style="@style/MiddleGrayTextStyle" />
+            <TextView
+                android:id="@+id/tvCurMon"
+                style="@style/MiddleGrayTextStyle" />
 
-    <TextView
-        android:id="@+id/tvCurDate"
-        style="@style/MiddleGrayTextStyle" />
+            <TextView
+                android:id="@+id/tvCurDay"
+                style="@style/MiddleGrayTextStyle" />
 
-    <TextView
-        android:id="@+id/tvCurDateTime"
-        style="@style/MiddleGrayTextStyle" />
+            <TextView
+                android:id="@+id/tvCurMilli"
+                style="@style/MiddleGrayTextStyle" />
 
-    <TextView
-        android:id="@+id/tvCurTime"
-        style="@style/MiddleGrayTextStyle" />
+            <TextView
+                android:id="@+id/tvCurDate"
+                style="@style/MiddleGrayTextStyle" />
 
-    <TextView
-        android:text="——转换服务器时间——"
-        style="@style/LargeGrayTextStyle" />
+            <TextView
+                android:id="@+id/tvCurDateTime"
+                style="@style/MiddleGrayTextStyle" />
 
-    <TextView
-        android:id="@+id/tvServerYMD"
-        style="@style/MiddleGrayTextStyle" />
+            <TextView
+                android:id="@+id/tvCurTime"
+                style="@style/MiddleGrayTextStyle" />
 
-    <TextView
-        android:id="@+id/tvServerYMDChinese"
-        style="@style/MiddleGrayTextStyle" />
+            <TextView
+                style="@style/LargeGrayTextStyle"
+                android:text="——转换服务器时间——" />
 
-    <TextView
-        android:id="@+id/tvServerTime"
-        style="@style/MiddleGrayTextStyle" />
+            <TextView
+                android:id="@+id/tvOriginalTime"
+                style="@style/LargeGrayTextStyle" />
 
-    <TextView
-        android:id="@+id/tvServerYMDHM"
-        style="@style/MiddleGrayTextStyle" />
+            <TextView
+                android:id="@+id/tvServerY"
+                style="@style/MiddleGrayTextStyle"
+                android:layout_width="match_parent" />
 
-    <TextView
-        android:id="@+id/tvServerYMDHMS"
-        style="@style/MiddleGrayTextStyle" />
+            <TextView
+                android:id="@+id/tvServerM"
+                style="@style/MiddleGrayTextStyle"
+                android:layout_width="match_parent" />
+
+            <TextView
+                android:id="@+id/tvServerD"
+                style="@style/MiddleGrayTextStyle"
+                android:layout_width="match_parent" />
+
+            <TextView
+                android:id="@+id/tvServerYM"
+                style="@style/MiddleGrayTextStyle"
+                android:layout_width="match_parent" />
+
+            <TextView
+                android:id="@+id/tvServerYMD"
+                style="@style/MiddleGrayTextStyle" />
+
+            <TextView
+                android:id="@+id/tvServerYMDChinese"
+                style="@style/MiddleGrayTextStyle" />
+
+            <TextView
+                android:id="@+id/tvServerTime"
+                style="@style/MiddleGrayTextStyle" />
+
+            <TextView
+                android:id="@+id/tvServerYMDHM"
+                style="@style/MiddleGrayTextStyle" />
+
+            <TextView
+                android:id="@+id/tvServerYMDHMS"
+                style="@style/MiddleGrayTextStyle" />
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
 </LinearLayout>

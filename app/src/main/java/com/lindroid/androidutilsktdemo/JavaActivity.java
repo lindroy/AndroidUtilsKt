@@ -23,7 +23,14 @@ public class JavaActivity extends BaseActivity {
         super.initView();
         textView = findViewById(R.id.textView);
         textView.setTextColor(Color.BLACK);
-
+       /* AndUtil.init(this.getApplication())
+                .setLogGlobalConfig(new Function1<LogConfig, Unit>() {
+                    @Override
+                    public Unit invoke(LogConfig logConfig) {
+                        logConfig.setLogEnable()
+                        return null;
+                    }
+                });*/
     }
 
 
