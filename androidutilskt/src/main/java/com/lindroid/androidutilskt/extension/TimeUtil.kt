@@ -27,11 +27,14 @@ private const val TAG = "TimeUtil"
 internal var serverFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
 
 /**默认时区，与主机的设置一致**/
-internal var defTimeZone = TimeZone.getDefault()
+internal var defTimeZone:TimeZone = TimeZone.getDefault()
 
 /**获取当前年份**/
 val currentYear: Int
     get() = Calendar.getInstance().get(Calendar.YEAR)
+
+
+//fun currentYear(timeZone: TimeZone = defTimeZone)= Calendar.getInstance(timeZone).get(Calendar.YEAR)
 
 /**获取当前月份**/
 val currentMonth
@@ -51,18 +54,21 @@ val currentTimeMillis: Long
  * 获取当前日期，默认格式为"yyyy-MM-dd"
  * @param pattern:输出的格式
  */
+@JvmOverloads
 fun formatCurrentDate(pattern: String = FORMAT_YMD) = getTimeFormatStr(pattern)
 
 /**
  * 获取当前时间，默认格式为"yyyy-MM-dd HH:mm"
  * @param pattern:输出的格式
  */
+@JvmOverloads
 fun formatCurrentDateTime(pattern: String = FORMAT_YMDHM) = getTimeFormatStr(pattern)
 
 /**
  * 获取当前时间，格式为"HH:mm"
  * @param pattern:输出的格式
  */
+@JvmOverloads
 fun formatCurrentTime(pattern: String = FORMAT_HM) = getTimeFormatStr(pattern)
 
 /**
@@ -70,7 +76,18 @@ fun formatCurrentTime(pattern: String = FORMAT_HM) = getTimeFormatStr(pattern)
  * @param target:输出的格式
  * @param source:源格式
  */
+@JvmOverloads
 fun String.formatTimeY(target: String = "yyyy", source: String = serverFormat) =
+    formatTimeWithPattern(target, source)
+
+
+/**
+ * 将服务器时间格式转换为月，保持两位，不足两位时在前面补上0
+ * @param target:输出的格式
+ * @param source:源格式
+ */
+@JvmOverloads
+fun String.formatTimeMM(target: String = "MM", source: String = serverFormat) =
     formatTimeWithPattern(target, source)
 
 /**
@@ -78,14 +95,16 @@ fun String.formatTimeY(target: String = "yyyy", source: String = serverFormat) =
  * @param target:输出的格式
  * @param source:源格式
  */
+@JvmOverloads
 fun String.formatTimeM(target: String = "MM", source: String = serverFormat) =
-    formatTimeWithPattern(target, source)
+    formatTimeWithPattern(target, source).removeFirstZero()
 
 /**
  * 将服务器时间格式转换为年月
  * @param target:输出的格式
  * @param source:源格式
  */
+@JvmOverloads
 fun String.formatTimeYM(target: String = "yyyy-MM", source: String = serverFormat) =
     formatTimeWithPattern(target, source)
 
@@ -94,6 +113,7 @@ fun String.formatTimeYM(target: String = "yyyy-MM", source: String = serverForma
  * @param target:输出的格式
  * @param source:源格式
  */
+@JvmOverloads
 fun String.formatTimeDD(target: String = "dd", source: String = serverFormat) =
     formatTimeWithPattern(target, source)
 
@@ -102,12 +122,9 @@ fun String.formatTimeDD(target: String = "dd", source: String = serverFormat) =
  * @param target:输出的格式
  * @param source:源格式
  */
+@JvmOverloads
 fun String.formatTimeD(target: String = "dd", source: String = serverFormat) =
-    formatTimeDD(target, source).let {
-        if (it.startsWith("0")) {
-            it.replaceFirst("0", "")
-        } else it
-    }
+    formatTimeDD(target, source).removeFirstZero()
 
 
 /**
@@ -115,6 +132,7 @@ fun String.formatTimeD(target: String = "dd", source: String = serverFormat) =
  * @param target:输出的格式
  * @param source:源格式
  */
+@JvmOverloads
 fun String.formatTimeYMD(target: String = FORMAT_YMD, source: String = serverFormat): String =
     formatTimeWithPattern(target, source)
 
@@ -123,6 +141,7 @@ fun String.formatTimeYMD(target: String = FORMAT_YMD, source: String = serverFor
  * @param target:输出的格式
  * @param source:源格式
  */
+@JvmOverloads
 fun String.formatTimeYMDChinese(
     target: String = FORMAT_YMD_CHINESE,
     source: String = serverFormat
@@ -134,6 +153,7 @@ fun String.formatTimeYMDChinese(
  * @param target:输出的格式
  * @param source:源格式
  */
+@JvmOverloads
 fun String.formatTimeHM(target: String = FORMAT_HM, source: String = serverFormat): String =
     formatTimeWithPattern(target, source)
 
@@ -142,6 +162,7 @@ fun String.formatTimeHM(target: String = FORMAT_HM, source: String = serverForma
  * @param target:输出的格式
  * @param source:源格式
  */
+@JvmOverloads
 fun String.formatTimeHMS(target: String = FORMAT_HMS, source: String = serverFormat): String =
     formatTimeWithPattern(target, source)
 
@@ -150,6 +171,7 @@ fun String.formatTimeHMS(target: String = FORMAT_HMS, source: String = serverFor
  * @param target:输出的格式
  * @param source:源格式
  */
+@JvmOverloads
 fun String.formatTimeYMDHM(target: String = FORMAT_YMDHM, source: String = serverFormat): String =
     formatTimeWithPattern(target, source)
 
@@ -158,13 +180,15 @@ fun String.formatTimeYMDHM(target: String = FORMAT_YMDHM, source: String = serve
  * @param target:输出的格式
  * @param source:源格式
  */
-fun String.formatTimeYMDHMS(target: String = FORMAT_YMDHMS,source: String = serverFormat): String =
+@JvmOverloads
+fun String.formatTimeYMDHMS(target: String = FORMAT_YMDHMS, source: String = serverFormat): String =
     formatTimeWithPattern(target, source)
 
 /**
  * 根据服务器的时间判断星期
  * @return:0表示星期日，1~6依次表示星期一到星期六
  */
+@JvmOverloads
 fun String.formatTimeWeek(timeZone: TimeZone = defTimeZone): Int {
     val formatter = SimpleDateFormat(FORMAT_YMD, Locale.getDefault())
     val cal = Calendar.getInstance(timeZone)
@@ -194,9 +218,16 @@ private fun String.formatTimeWithPattern(target: String, source: String = server
     }
 }
 
-private fun getTimeFormatStr(pattern: String, source: Any = Date()) =
-    SimpleDateFormat(pattern, Locale.getDefault()).format(source)
-        ?: ""
+private fun getTimeFormatStr(target: String, source: Any = Date()) =
+    SimpleDateFormat(target, Locale.getDefault()).format(source) ?: ""
+
+
+/**
+ * 去除前面的0
+ */
+private fun String.removeFirstZero() = if (this.startsWith("0")){
+    replaceFirst("0", "")
+}else this
 
 
 //private const val ONE_MINUTE = 60000L
