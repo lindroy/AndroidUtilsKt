@@ -2,6 +2,9 @@
 
 [![](https://jitpack.io/v/Lindroy/AndroidUtilsKt.svg)](https://jitpack.io/#Lindroy/AndroidUtilsKt)
 
+*暂停维护*
+由于本人疏忽，个别类丢失了，所以建议需要使用的朋友直接参考复制里面的代码。
+
 使用kotlin编写的Android工具类，主要采用扩展函数的方式。目前还在不断补充中。
 
 本说明文档遵循如下的规则：
